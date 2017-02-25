@@ -1,2 +1,3 @@
 Ev3_Localization/bin/
 Ev3_Localization/obj/Debug/MainWindow.g.cs
+*.aux
