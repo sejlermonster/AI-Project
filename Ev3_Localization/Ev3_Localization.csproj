@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Landmark.cs" />
+    <Compile Include="Measurement.cs" />
     <Compile Include="Models\Particle.cs" />
     <Compile Include="ParticleFilter.cs" />
     <Compile Include="RobotMotion.cs" />
