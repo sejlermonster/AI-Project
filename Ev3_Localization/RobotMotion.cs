@@ -22,20 +22,22 @@ namespace Ev3_Localization
             _motorA = motorA;
             _motorD = motorB;
         }
-        public async Task DriveForward()
+        public async Task DriveForward(int distance)
         {
-            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, _time, true);
-            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, _time, true);
+            var time = DistanceInCentimetersToSeconds(distance);
+            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, time, true);
+            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, time, true);
             await _brick.BatchCommand.SendCommandAsync();
-            Thread.Sleep(Convert.ToInt32(_time));
+            Thread.Sleep(Convert.ToInt32(time));
         }
 
-        public async Task DriveBackwards()
+        public async Task DriveBackwards(int distance)
         {
-            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, _time, true);
-            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, _time, true);
+            var time = DistanceInCentimetersToSeconds(distance);
+            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, time, true);
+            _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, time, true);
             await _brick.BatchCommand.SendCommandAsync();
-            Thread.Sleep(Convert.ToInt32(_time));
+            Thread.Sleep(Convert.ToInt32(time));
         }
 
         public async Task TurnRight(int degrees)
@@ -59,12 +61,19 @@ namespace Ev3_Localization
 
         private static float DegreesToSeconds(int degrees)
         {
-            float timeToTurn360 = 2510;
+            float timeToTurn360 = 2660;
             var val = ((310 / 270) * (360-degrees))/(360/90);
             //float timeToTurn360 = 2820;
             var seconds =  degrees*(timeToTurn360/360) + val;
             Debug.WriteLine("Degrees" + degrees + " seconds: " + seconds);
             return seconds;
+        }
+
+        private static UInt32 DistanceInCentimetersToSeconds(double distance)
+        {
+            var val = 0.7 * distance / 8;
+            var time = Convert.ToUInt32(distance * 62 - val*62);
+            return time;
         }
     }
 }

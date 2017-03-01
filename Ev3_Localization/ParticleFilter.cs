@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media.TextFormatting;
@@ -108,6 +109,14 @@ namespace Ev3_Localization
             }
             Particles = particles;
             NormalizeParticleWeights();
+        }
+
+        public void PrintParticles()
+        {
+            foreach (var particle in Particles)
+            {
+                Debug.WriteLine("Particle 1: X: " + particle.Position.X + "Y: " + particle.Position.Y );
+            }
         }
 
         private double CalculateShortestDistance(Particle particle)

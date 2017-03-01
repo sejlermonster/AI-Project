@@ -11,6 +11,7 @@ namespace Ev3_Localization
     public class RobotSensing
     {
         private readonly Brick _brick;
+        public static float DistanceMeasurement { get; set; }
         public RobotSensing(Brick brick)
         {
             _brick = brick;
@@ -20,7 +21,7 @@ namespace Ev3_Localization
         private static void OnBrickChanged(object sender, BrickChangedEventArgs e)
         {
             // print out the value of the sensor on Port 1 (more on this later...)
-            Debug.WriteLine(e.Ports[InputPort.One].SIValue);
+            DistanceMeasurement = e.Ports[InputPort.One].SIValue;
         }
     }
 }
