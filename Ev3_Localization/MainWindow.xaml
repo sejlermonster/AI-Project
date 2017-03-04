@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ev3_Localization"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded_1">
+        Title="MainWindow" Height="530" Width="530" Loaded="Window_Loaded_1">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="22*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="437*"/>
-        </Grid.ColumnDefinitions>
-
+        <Border Width="500" Height="500" VerticalAlignment="Top" BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1">
+            <Canvas x:Name="canvas" Background="#00FFFFFF" RenderTransformOrigin=".5,.5" Margin="1,1,1,1">
+                <Canvas.RenderTransform>
+                    <RotateTransform Angle="180"></RotateTransform>
+                </Canvas.RenderTransform>
+                <Canvas.LayoutTransform>
+                    <ScaleTransform ScaleX="-1" CenterX=".5" CenterY=".5" />
+                </Canvas.LayoutTransform>
+            </Canvas>
+        </Border>
     </Grid>
 </Window>

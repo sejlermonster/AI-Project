@@ -9,10 +9,11 @@ namespace Ev3_Localization.Models
 {
     public class Particle : IComparable
     {
+        private readonly double _variance = 1.5;
         public Point Position { get; set; }
         public double OrientationInRadians { get; set; }
         public double Weight { get; set; }
-
+        
         public int CompareTo(object obj)
         {
             var obj1 = obj as Particle;
@@ -22,6 +23,22 @@ namespace Ev3_Localization.Models
                 return 0;
             else
                 return 1;
+        }
+
+
+        public void ApplyGaussianNoiseForPosition()
+        {
+            this.Position = new Point
+            {
+
+                X = Position.X + (double)GaussianNoise.NextGaussian(0, 1.5),
+                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 1.5)
+            };
+        }
+
+        public void ApplyGaussianNoiseForOrientation()
+        {
+           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 0.0002 * (2 * Math.PI)));
         }
 
         public Particle Clone()

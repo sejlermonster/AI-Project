@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lego.Ev3.Core;
 
 namespace Ev3_Localization
@@ -12,16 +7,27 @@ namespace Ev3_Localization
     {
         private readonly Brick _brick;
         public static float DistanceMeasurement { get; set; }
-        public RobotSensing(Brick brick)
+        public static float Gyro { get; set; }
+        public static bool SensingReady { get; set; }
+        public RobotSensing(Brick brick )
         {
             _brick = brick;
             _brick.BrickChanged += OnBrickChanged;
+            _brick.Ports[InputPort.Four].SetMode(GyroscopeMode.Angle);
+        }
+
+        public double GetDistanceInCentimeters()
+        {
+            return _brick.Ports[InputPort.One].SIValue - 8.6;
+        }
+
+        public double GetGyroData()
+        {
+            return _brick.Ports[InputPort.Four].SIValue;
         }
 
         private static void OnBrickChanged(object sender, BrickChangedEventArgs e)
         {
-            // print out the value of the sensor on Port 1 (more on this later...)
-            DistanceMeasurement = e.Ports[InputPort.One].SIValue;
         }
     }
 }

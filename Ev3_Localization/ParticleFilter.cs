@@ -33,11 +33,12 @@ namespace Ev3_Localization
             for (int i = 0; i < numberOfParticles; i++)
             {
                 var particle = new Particle
-                               {
-                                   Weight = 1d / Convert.ToDouble(numberOfParticles),
-                                   Position = new Point(random.Next(0, sizeX), random.Next(0, sizeY)),
-                                   OrientationInRadians = Math.PI * random.Next(0, 360) / 180
-                               };
+                {
+                    Weight = 1d / Convert.ToDouble(numberOfParticles),
+                    Position = new Point(random.Next(0, sizeX), random.Next(0, sizeY)),
+                    //OrientationInRadians = Math.PI * random.Next(0, 360) / 180
+                    OrientationInRadians = Math.PI * (random.Next(0, 4)*90) / 180
+                };
                 Particles.Add(particle);
             }
         }
@@ -46,8 +47,12 @@ namespace Ev3_Localization
         {
             foreach (var particle in Particles)
             {
-                particle.Position = new Point((particle.Position.X + Math.Cos(particle.OrientationInRadians) * distance) % _worldMatrix.GetLength(0),
-                                              (particle.Position.Y + Math.Sin(particle.OrientationInRadians) * distance % _worldMatrix.GetLength(1)));
+                particle.Position = new Point(particle.Position.X + Math.Cos(particle.OrientationInRadians) * distance, // % _worldMatrix.GetLength(0),
+                                              particle.Position.Y + Math.Sin(particle.OrientationInRadians) * distance); // % _worldMatrix.GetLength(1)));
+            }
+            foreach (var particle in Particles)
+            {
+                particle.ApplyGaussianNoiseForPosition();
             }
         }
 
@@ -56,7 +61,11 @@ namespace Ev3_Localization
             var angleInRadians = angleInDegrees / 180 * Math.PI;
             foreach (var particle in Particles)
             {
-                particle.OrientationInRadians = (particle.OrientationInRadians + angleInRadians) % 2*Math.PI;
+                particle.OrientationInRadians = (particle.OrientationInRadians - angleInRadians) % (2 * Math.PI);
+            }
+            foreach (var particle in Particles)
+            {
+                particle.ApplyGaussianNoiseForOrientation();
             }
         }
 
@@ -65,7 +74,12 @@ namespace Ev3_Localization
             var angleInRadians = angleInDegrees / 180 * Math.PI;
             foreach (var particle in Particles)
             {
-                particle.OrientationInRadians = (particle.OrientationInRadians - angleInRadians) % 2 * Math.PI;
+                particle.OrientationInRadians = (particle.OrientationInRadians + angleInRadians) % (2 * Math.PI);
+            }
+
+            foreach (var particle in Particles)
+            {
+                particle.ApplyGaussianNoiseForPosition();
             }
         }
 
@@ -99,9 +113,10 @@ namespace Ev3_Localization
                 var distance = CalculateShortestDistance(particle);
                 particle.Weight = highestPossibleDistance - Math.Abs(measurement - distance);
             }
-
+            
             var particles = Particles.OrderBy(x => x.Weight).Reverse().ToList();
             int i = particles.Count;
+            //Belønning
             foreach (var particle in particles)
             {
                 particle.Weight = particle.Weight * i;
@@ -115,7 +130,7 @@ namespace Ev3_Localization
         {
             foreach (var particle in Particles)
             {
-                Debug.WriteLine("Particle 1: X: " + particle.Position.X + "Y: " + particle.Position.Y );
+                Debug.WriteLine("Particle 1: X: " + particle.Position.X + "Y: " + particle.Position.Y + "Direction: " + (particle.OrientationInRadians * 180/Math.PI));
             }
         }
 
