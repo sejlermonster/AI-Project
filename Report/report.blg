@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: plainnat.bst
+A level-1 auxiliary file: chapter/Frontpage.aux
+A level-1 auxiliary file: chapter/introduction.aux
+A level-1 auxiliary file: chapter/theory.aux
+A level-1 auxiliary file: chapter/Localization.aux
+A level-1 auxiliary file: chapter/KalmanFilter.aux
+A level-1 auxiliary file: chapter/ParticleFilter.aux
+A level-1 auxiliary file: chapter/Search.aux
+A level-1 auxiliary file: chapter/PID.aux
+A level-1 auxiliary file: chapter/SLAM.aux
+A level-1 auxiliary file: chapter/project.aux
+A level-1 auxiliary file: chapter/SystemDescription.aux
+A level-1 auxiliary file: chapter/Implementation.aux
+A level-1 auxiliary file: chapter/Discussion.aux
+A level-1 auxiliary file: chapter/Conclusion.aux
+Database file #1: bibliografi.bib
+Warning--empty publisher in propRobotics
+You've used 1 entry,
+            2773 wiz_defined-function locations,
+            611 strings with 5233 characters,
+and the built_in function-call counts, 326 in all, are:
+= -- 21
+> -- 10
+< -- 1
++ -- 4
+- -- 3
+* -- 19
+:= -- 57
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 3
+chr.to.int$ -- 1
+cite$ -- 3
+duplicate$ -- 20
+empty$ -- 33
+format.name$ -- 4
+if$ -- 61
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 13
+preamble$ -- 1
+purify$ -- 3
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 2
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 6
+warning$ -- 1
+while$ -- 3
+width$ -- 0
+write$ -- 18
+(There was 1 warning)

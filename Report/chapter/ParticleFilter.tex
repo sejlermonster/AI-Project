@@ -1,2 +1,17 @@
-\chapter{ParticleFilter}
+\chapter{Particle Filter}
 \label{chp:partFilter}
+
+The Kalman filter described in chapter \ref{chp:kalman} used Gaussians to describe the belif of posterio. The particle filter instead represents this by a set of random samples. This enables it to represent the belief in a much broader space of distribution.
+
+In a particle filter a set of particles are sampled and they all denote a possible true state at time $t$. Every particle include a likelihood of that particle being the true state. This means that the denser an area is of particles the more likely the true state is in that area.
+
+The algorithm can be described with the following steps:
+\begin{itemize}
+	\item 1. Generate hypotheical state for time t 
+	\item 2. Calculate importance weight based on measurement
+	\item 3. Resample based on importance weight
+\end{itemize}
+
+First the particles are generated randomly. Then given a measurement the importance weight is calculated. This indicates how much a specific particle agrees with the measurement. The particles are then resampled. The resampling is done by creating a new set of replacement particles based on the importance weight. The higher the importance weight the higher probability of the particle being added multiple times.
+
+They idea behind of the Particle filter is to represent the posterio by a set of random samples drawn.
