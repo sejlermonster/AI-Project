@@ -92,8 +92,8 @@ namespace Ev3_Localization
             var particles2 = new List<Particle>();
             var index = random.Next(0, Particles.Count);
             var beta = 0.0;
-            var maxParticle = Particles.Max();
-            var max = maxParticle.Weight;
+            var maxParticleWeight = Particles.Max(x => x.Weight);
+            var max = maxParticleWeight;
             for (int i = 0; i < Particles.Count; i++)
             {
                 beta += random.NextDouble() * max;

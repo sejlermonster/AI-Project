@@ -7,11 +7,38 @@ In a particle filter a set of particles are sampled and they all denote a possib
 
 The algorithm can be described with the following steps:
 \begin{itemize}
-	\item 1. Generate hypotheical state for time t 
-	\item 2. Calculate importance weight based on measurement
+	\item 1. Generate hypothetical state for time t 
+	\item 2. Calculate importance weight based on measurement and normalize
 	\item 3. Resample based on importance weight
 \end{itemize}
 
 First the particles are generated randomly. Then given a measurement the importance weight is calculated. This indicates how much a specific particle agrees with the measurement. The particles are then resampled. The resampling is done by creating a new set of replacement particles based on the importance weight. The higher the importance weight the higher probability of the particle being added multiple times.
 
-They idea behind of the Particle filter is to represent the posterio by a set of random samples drawn.
+One specific algorithm for resampling is using a technique presented in the course on udacity called the resampling wheel algorithm. This algorithm randomly draws from the old particle set. The likelihood of the particle being picked is determined by the weight.
+
+\myFigure{ResampleWheel.PNG}{Resample wheel algorithm}{fig:ResampleWheel}{0.4} 
+
+
+The is illustrated in figure \ref{fig:ResampleWheel}. The weight of the particle is illustrated by the size of the slice of the circle. So basically the bigger the slice the higher the probability of the particle being drawn.
+
+\FloatBarrier
+The algorithm first defines an index randomly from 0 up to $N-1,$ where $N$ is the number of particles. $\beta$ is then initialized to 0. 
+
+A for loop then runs from i = 0 up to N-1. A new $\beta$ value is picked by $\beta$ and adding a random picked number from the uniform distribution from 0 to 2 times the maximum $\omega$ value, where $\omega$ is the weight of the particles. A while loop then runs while $\beta$ is bigger than the weight of the particle at the index. In every iteration the weight of the particle at the index is subtracted from $\beta$ and the next index is then picked. Modulus N ensures that the algorithm does go out of index. 
+
+When the value of $\beta$ is smaller than the weight of the particle at index, then the particle at the index is picked. So a higher weight of the particle means bigger chance of being picked for the new set particles. 
+
+\begin{lstlisting}[caption={Pesudo code for the resampling wheel}, label=lst:wheel, mathescape=true]
+index = U[0...N-1]
+$\beta$ = 0;
+for i = 0, i < N, i++
+	$\beta$ = $\beta$ + U{0....2*$\omega_(max)$}
+	while $\beta$  > $p[index].\omega$ 
+		beta -= p[index].$\omega$
+		index = (index+1) % N
+	pick p[index]
+\end{lstlisting}
+
+An example of using a particle filter is for localization of a moving robot. In this example every movement of the robot will alos be applied to the particles. The sensor measurement of the robot will be used to calculate the importance weight of the particles. Resampling enough time will lead the particles to approximately located at the position of the robot.
+
+
