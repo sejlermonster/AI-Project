@@ -31,14 +31,14 @@ namespace Ev3_Localization.Models
             this.Position = new Point
             {
 
-                X = Position.X + (double)GaussianNoise.NextGaussian(0, 1.5),
-                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 1.5)
+                X = Position.X + (double)GaussianNoise.NextGaussian(0, 5),
+                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 5)
             };
         }
 
         public void ApplyGaussianNoiseForOrientation()
         {
-           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 0.0002 * (2 * Math.PI)));
+           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(3.0 /180.0 * Math.PI));
         }
 
         public Particle Clone()

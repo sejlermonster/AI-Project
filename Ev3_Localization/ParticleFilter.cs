@@ -43,7 +43,7 @@ namespace Ev3_Localization
             }
         }
 
-        public void MoveParticles(int distance)
+        public void MoveParticles(double distance)
         {
             foreach (var particle in Particles)
             {
@@ -85,6 +85,9 @@ namespace Ev3_Localization
 
         public void Resampling(double measurement)
         {
+            if (measurement > _worldMatrix.GetLength(0) && measurement > _worldMatrix.GetLength(1))
+                return;
+
             SetImportanceWeight(measurement);
             var particles2 = new List<Particle>();
             var index = random.Next(0, Particles.Count);

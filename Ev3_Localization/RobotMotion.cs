@@ -70,7 +70,7 @@ namespace Ev3_Localization
             var startDegree = _robotSensing.GetGyroData();
             var endDegree = startDegree + degrees;
             double currentDegree = startDegree;
-            while (currentDegree < endDegree - 3|| currentDegree > endDegree) 
+            while (currentDegree < endDegree - 0.07*degrees || currentDegree > endDegree)
             {
                 if (currentDegree > endDegree)
                 {
@@ -92,7 +92,7 @@ namespace Ev3_Localization
             //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, time, true);
             //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, time, true);
             //await _brick.BatchCommand.SendCommandAsync();
-            ////Thread.Sleep(Convert.ToInt32(time+500));
+            //Thread.Sleep(Convert.ToInt32(time+500));
 
         }
 
@@ -131,7 +131,7 @@ namespace Ev3_Localization
             float timeToTurn360 = 2660;
             var val = ((310 / 270) * (360-degrees))/(360/90);
             //float timeToTurn360 = 2820;
-            var seconds =  (degrees*(timeToTurn360/360) + val) * 5.0;
+            var seconds = (degrees * (timeToTurn360 / 360) + val); //* 5.0;
             Debug.WriteLine("Degrees" + degrees + " seconds: " + seconds);
             return seconds;
         }
