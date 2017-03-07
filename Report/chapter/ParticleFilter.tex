@@ -14,7 +14,7 @@ The algorithm can be described with the following steps:
 
 First the particles are generated randomly. Then given a measurement the importance weight is calculated. This indicates how much a specific particle agrees with the measurement. The particles are then resampled. The resampling is done by creating a new set of replacement particles based on the importance weight. The higher the importance weight the higher probability of the particle being added multiple times.
 
-One specific algorithm for resampling is using a technique presented in the course on udacity called the resampling wheel algorithm. This algorithm randomly draws from the old particle set. The likelihood of the particle being picked is determined by the weight.
+One specific algorithm for resampling is using a technique presented in the udacity course \emph{Artifical Intelligence in Robotcs}\citep{udacity}. The algorithm is called the resampling wheel. This algorithm randomly draws from the old particle set. The likelihood of the particle being picked is determined by the weight.
 
 \myFigure{ResampleWheel.PNG}{Resample wheel algorithm}{fig:ResampleWheel}{0.4} 
 
