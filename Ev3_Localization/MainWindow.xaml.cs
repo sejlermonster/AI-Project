@@ -35,6 +35,11 @@ namespace Ev3_Localization
         private List<Landmark> _landmarks;
         private int _numberOfParticles = 1000;
         private int _resampleCounter = 0;
+        private int _xStart = 50;
+        private int _yStart = 50;
+        private int _xEnd = 60;
+        private int _yEnd = 60;
+
         private AStarSearch _aStarSearch;
 
         public MainWindow()
@@ -44,13 +49,15 @@ namespace Ev3_Localization
 
         private async void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            _brick = new Brick(new BluetoothCommunication("COM3"));
-            await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
-            await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
-            _brick.BrickChanged += OnBrickChanged;
-            _robotSensing = new RobotSensing(_brick);
-            _robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
+            //_brick = new Brick(new BluetoothCommunication("COM3"));
+            //await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
+            //await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
+            //_brick.BrickChanged += OnBrickChanged;
+            //_robotSensing = new RobotSensing(_brick);
+            //_robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
+            
             var world = new double[125, 125];
+
             _landmarks = new List<Landmark>
                             {
                                 new Landmark(new Point(16, 109.5), new Point(27.5,109.5), new Point(16, 106), new Point(27.5,106.5)),
@@ -58,6 +65,10 @@ namespace Ev3_Localization
                                 new Landmark(new Point(88.5, 32.5), new Point(100, 32.5), new Point(88.5, 29 ), new Point(100, 29)),
                                 new Landmark(new Point(85.5, 102.5), new Point(89, 102.5), new Point(85.5, 91), new Point(89, 91))
                             };
+
+            var AStarSearch = new AStarSearch(125, 125, _landmarks);
+            AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
+            AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
             _particleFilter = new ParticleFilter(_landmarks, world);
 
             _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0), world.GetLength(1));
