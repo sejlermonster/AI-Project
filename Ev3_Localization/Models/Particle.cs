@@ -13,6 +13,7 @@ namespace Ev3_Localization.Models
         public Point Position { get; set; }
         public double OrientationInRadians { get; set; }
         public double Weight { get; set; }
+        public double Distance { get; set; }
         
         public int CompareTo(object obj)
         {
@@ -31,14 +32,19 @@ namespace Ev3_Localization.Models
             this.Position = new Point
             {
 
-                X = Position.X + (double)GaussianNoise.NextGaussian(0, 5),
-                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 5)
+                X = Position.X + (double)GaussianNoise.NextGaussian(0, 3),
+                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 3)
             };
         }
 
         public void ApplyGaussianNoiseForOrientation()
         {
-           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(3.0 /180.0 * Math.PI));
+           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 3.0 /180.0 * Math.PI));
+        }
+
+        public void ApplyNoiseForMeasurement()
+        {
+            Distance = Distance + GaussianNoise.NextGaussian(0, 3);
         }
 
         public Particle Clone()

@@ -35,11 +35,11 @@ namespace Ev3_Localization
         private List<Landmark> _landmarks;
         private int _numberOfParticles = 1000;
         private int _resampleCounter = 0;
+        private AStarSearch _aStarSearch;
 
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private async void Window_Loaded_1(object sender, RoutedEventArgs e)
@@ -61,6 +61,9 @@ namespace Ev3_Localization
             _particleFilter = new ParticleFilter(_landmarks, world);
 
             _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0), world.GetLength(1));
+
+            //_aStarSearch = new AStarSearch(world.GetLength(0), world.GetLength(1), _landmarks);
+            //_aStarSearch.PrintMap();
         }
 
         private async Task StartDriving()
@@ -69,7 +72,7 @@ namespace Ev3_Localization
             {
                 await _robotMotion.TurnRight(30);
                 _particleFilter.ParticlesTurnRight(30);
-                _particleFilter.Resampling(_brick.Ports[InputPort.One].SIValue);
+                _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
                 _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
                 _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
                 Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
@@ -79,7 +82,7 @@ namespace Ev3_Localization
 
             await _robotMotion.DriveForward(15);
             _particleFilter.MoveParticles(15);
-            _particleFilter.Resampling(_brick.Ports[InputPort.One].SIValue);
+            _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
@@ -88,7 +91,7 @@ namespace Ev3_Localization
 
             await _robotMotion.DriveForward(15);
             _particleFilter.MoveParticles(15);
-            _particleFilter.Resampling(_brick.Ports[InputPort.One].SIValue);
+            _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
             Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());

@@ -113,8 +113,9 @@ namespace Ev3_Localization
             var highestPossibleDistance = Math.Sqrt(Math.Pow(_worldMatrix.GetLength(0), 2) + Math.Pow(_worldMatrix.GetLength(1), 2));
             foreach (var particle in Particles)
             {
-                var distance = CalculateShortestDistance(particle);
-                particle.Weight = highestPossibleDistance - Math.Abs(measurement - distance);
+                particle.Distance = CalculateShortestDistance(particle);
+                particle.ApplyNoiseForMeasurement();
+                particle.Weight = highestPossibleDistance - Math.Abs(measurement - particle.Distance);
             }
             
             var particles = Particles.OrderBy(x => x.Weight).Reverse().ToList();

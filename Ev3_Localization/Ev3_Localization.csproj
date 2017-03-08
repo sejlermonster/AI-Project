@@ -59,8 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AStarSearch.cs" />
     <Compile Include="GaussianNoise.cs" />
-    <Compile Include="Landmark.cs" />
+    <Compile Include="Models\Landmark.cs" />
     <Compile Include="Measurement.cs" />
     <Compile Include="Models\Particle.cs" />
     <Compile Include="ParticleFilter.cs" />
