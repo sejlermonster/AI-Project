@@ -25,7 +25,7 @@ namespace Ev3_Localization
         {
             return _brick.Ports[InputPort.Four].SIValue;
         }
-
+        
         private static void OnBrickChanged(object sender, BrickChangedEventArgs e)
         {
         }

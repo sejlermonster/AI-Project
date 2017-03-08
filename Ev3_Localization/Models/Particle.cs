@@ -32,19 +32,19 @@ namespace Ev3_Localization.Models
             this.Position = new Point
             {
 
-                X = Position.X + (double)GaussianNoise.NextGaussian(0, 3),
-                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 3)
+                X = Position.X + (double)GaussianNoise.NextGaussian(0, 2),
+                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 2)
             };
         }
 
         public void ApplyGaussianNoiseForOrientation()
         {
-           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 3.0 /180.0 * Math.PI));
+           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 1.0 /180.0 * Math.PI));
         }
 
         public void ApplyNoiseForMeasurement()
         {
-            Distance = Distance + GaussianNoise.NextGaussian(0, 3);
+            Distance = Distance + GaussianNoise.NextGaussian(0, 2);
         }
 
         public Particle Clone()

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using Lego.Ev3.Core;
 
 namespace Ev3_Localization
@@ -25,26 +26,27 @@ namespace Ev3_Localization
             _motorD = motorB;
             _robotSensing = robotSensing;
         }
+
         public async Task DriveForward(int distance)
         {
             var startDistance = _robotSensing.GetDistanceInCentimeters();
             var endDistance = startDistance - distance;
             double currentDistance = startDistance;
-            while (currentDistance < endDistance-1.5 || currentDistance > endDistance + 1.5)
+            while (currentDistance < endDistance - 1 || currentDistance > endDistance + 1)
             {
                 if (currentDistance > endDistance)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
-                    Thread.Sleep(100);
+                    Thread.Sleep(45);
                 }
                 else if (currentDistance < endDistance)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
-                    Thread.Sleep(100);
+                    Thread.Sleep(45);
                 }
                 currentDistance = _robotSensing.GetDistanceInCentimeters();
             }
@@ -70,19 +72,19 @@ namespace Ev3_Localization
             var startDegree = _robotSensing.GetGyroData();
             var endDegree = startDegree + degrees;
             double currentDegree = startDegree;
-            while (currentDegree < endDegree - 0.07*degrees || currentDegree > endDegree)
+            while (currentDegree < endDegree - 0.02 * degrees || currentDegree > endDegree + 0.01*degrees)
             {
-                if (currentDegree > endDegree)
+                if (currentDegree > endDegree + 0.01 * degrees)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
                     Thread.Sleep(100);
                 }
-                else if (currentDegree < endDegree)
+                else if (currentDegree < endDegree - 0.02 * degrees)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
                     Thread.Sleep(100);
                 }
@@ -129,7 +131,7 @@ namespace Ev3_Localization
         private static double DegreesToSeconds(int degrees)
         {
             float timeToTurn360 = 2660;
-            var val = ((310 / 270) * (360-degrees))/(360/90);
+            var val = ((310 / 270) * (360 - degrees)) / (360 / 90);
             //float timeToTurn360 = 2820;
             var seconds = (degrees * (timeToTurn360 / 360) + val); //* 5.0;
             Debug.WriteLine("Degrees" + degrees + " seconds: " + seconds);
@@ -139,7 +141,7 @@ namespace Ev3_Localization
         private static UInt32 DistanceInCentimetersToSeconds(double distance)
         {
             var val = 0.7 * distance / 8;
-            var time = Convert.ToUInt32(distance * 62 - val*62);
+            var time = Convert.ToUInt32(distance * 62 - val * 62);
             return time;
         }
     }

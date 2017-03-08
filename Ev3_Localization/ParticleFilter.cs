@@ -61,7 +61,11 @@ namespace Ev3_Localization
             var angleInRadians = angleInDegrees / 180 * Math.PI;
             foreach (var particle in Particles)
             {
-                particle.OrientationInRadians = (particle.OrientationInRadians - angleInRadians) % (2 * Math.PI);
+                var newOrientation = (particle.OrientationInRadians - angleInRadians) % (2 * Math.PI);
+                if (newOrientation < 0)
+                    newOrientation = newOrientation + 2*Math.PI;
+                particle.OrientationInRadians = newOrientation;
+
             }
             foreach (var particle in Particles)
             {
@@ -74,7 +78,10 @@ namespace Ev3_Localization
             var angleInRadians = angleInDegrees / 180 * Math.PI;
             foreach (var particle in Particles)
             {
-                particle.OrientationInRadians = (particle.OrientationInRadians + angleInRadians) % (2 * Math.PI);
+                var newOrientation = (particle.OrientationInRadians + angleInRadians) % (2 * Math.PI);
+                if (newOrientation < 0)
+                    newOrientation = newOrientation + 2 * Math.PI;
+                particle.OrientationInRadians = newOrientation;
             }
 
             foreach (var particle in Particles)
@@ -85,7 +92,7 @@ namespace Ev3_Localization
 
         public void Resampling(double measurement)
         {
-            if (measurement > _worldMatrix.GetLength(0) && measurement > _worldMatrix.GetLength(1))
+            if (measurement > Math.Sqrt(Math.Pow(_worldMatrix.GetLength(0), 2) + Math.Pow(_worldMatrix.GetLength(1), 2)) || measurement < 4)
                 return;
 
             SetImportanceWeight(measurement);
@@ -96,7 +103,7 @@ namespace Ev3_Localization
             var max = maxParticleWeight;
             for (int i = 0; i < Particles.Count; i++)
             {
-                beta += random.NextDouble() * max;
+                beta = beta + random.NextDouble() * 2*max;
                 while (beta > Particles[index].Weight)
                 {
                     beta -= Particles[index].Weight;
@@ -121,11 +128,11 @@ namespace Ev3_Localization
             var particles = Particles.OrderBy(x => x.Weight).Reverse().ToList();
             int i = particles.Count;
             //Belønning
-            foreach (var particle in particles)
-            {
-                particle.Weight = particle.Weight * i;
-                i--;
-            }
+            //foreach (var particle in particles)
+            //{
+            //    particle.Weight = particle.Weight * i/2;
+            //    i--;
+            //}
             Particles = particles;
             NormalizeParticleWeights();
         }
