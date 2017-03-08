@@ -128,11 +128,11 @@ namespace Ev3_Localization
             var particles = Particles.OrderBy(x => x.Weight).Reverse().ToList();
             int i = particles.Count;
             //Belønning
-            //foreach (var particle in particles)
-            //{
-            //    particle.Weight = particle.Weight * i/2;
-            //    i--;
-            //}
+            foreach (var particle in particles)
+            {
+                particle.Weight = particle.Weight * i;
+                i--;
+            }
             Particles = particles;
             NormalizeParticleWeights();
         }

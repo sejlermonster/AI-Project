@@ -32,8 +32,8 @@ namespace Ev3_Localization.Models
             this.Position = new Point
             {
 
-                X = Position.X + (double)GaussianNoise.NextGaussian(0, 2),
-                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 2)
+                X = Position.X + (double)GaussianNoise.NextGaussian(0, 5),
+                Y = Position.Y + (double)GaussianNoise.NextGaussian(0, 5)
             };
         }
 
@@ -44,7 +44,7 @@ namespace Ev3_Localization.Models
 
         public void ApplyNoiseForMeasurement()
         {
-            Distance = Distance + GaussianNoise.NextGaussian(0, 2);
+            Distance = Distance + GaussianNoise.NextGaussian(0, 3);
         }
 
         public Particle Clone()

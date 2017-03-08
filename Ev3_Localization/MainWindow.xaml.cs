@@ -33,7 +33,7 @@ namespace Ev3_Localization
         private RobotSensing _robotSensing;
         private readonly uint _time = 5000;
         private List<Landmark> _landmarks;
-        private int _numberOfParticles = 1000;
+        private int _numberOfParticles = 10000;
         private int _resampleCounter = 0;
         private int _xStart = 50;
         private int _yStart = 50;
@@ -49,11 +49,11 @@ namespace Ev3_Localization
 
         private async void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            _brick = new Brick(new BluetoothCommunication("COM3"));
-            await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
-            await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
-            _robotSensing = new RobotSensing(_brick);
-            _robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
+            //_brick = new Brick(new BluetoothCommunication("COM3"));
+            //await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
+            //await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
+            //_robotSensing = new RobotSensing(_brick);
+            //_robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
             var world = new double[125, 125];
 
             _landmarks = new List<Landmark>
@@ -64,9 +64,9 @@ namespace Ev3_Localization
                              new Landmark(new Point(85, 91), new Point(89, 91), new Point(85, 79), new Point(89, 79))
                          };
 
-            var AStarSearch = new AStarSearch(125, 125, _landmarks);
-            AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
-            AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
+            //var AStarSearch = new AStarSearch(125, 125, _landmarks);
+            //AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
+            //AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
             _particleFilter = new ParticleFilter(_landmarks, world);
 
             _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0), world.GetLength(1));
@@ -75,15 +75,22 @@ namespace Ev3_Localization
             //_aStarSearch.PrintMap();
 
             // When everything is setup initialize
-            _brick.BrickChanged += OnBrickChanged;
+            // _brick.BrickChanged += OnBrickChanged;
+
+            TestParticleFilter();
+            Dispatcher.Invoke(DrawParticlesOnCanvas);
+            Dispatcher.Invoke(DrawLandmarks);
+            //DrawSimulatedRobot(20,95);
+
+            _particleFilter.PrintParticles();
 
         }
 
         private async Task StartDriving()
         {
 
-            await StartLocalization();
-            //TestParticleFilter();
+            //await StartLocalization();
+            TestParticleFilter();
             Dispatcher.Invoke(DrawParticlesOnCanvas);
             Dispatcher.Invoke(DrawLandmarks);
             //DrawSimulatedRobot(20,95);
@@ -94,7 +101,6 @@ namespace Ev3_Localization
         private async Task StartLocalization()
         {
             Dispatcher.Invoke(DrawLandmarks);
-            Dispatcher.Invoke(DrawParticlesOnCanvas);
             Dispatcher.Invoke(DrawParticlesOnCanvas);
 
             Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
@@ -246,38 +252,51 @@ namespace Ev3_Localization
         {
             Rectangle rect = new Rectangle
             {
-                Width = weight/25,
-                Height = weight/25,
+                Width = 4,
+                Height = 4,
                 Fill = Brushes.Black
             };
             canvas.Children.Add(rect);
-            Canvas.SetLeft(rect, x-rect.Width/2);
-            Canvas.SetTop(rect, y-rect.Height/2);
+            Canvas.SetLeft(rect, x*4 - 2);
+            Canvas.SetTop(rect, y*4 - 2);
+            //Rectangle rect = new Rectangle
+            //{
+            //    Width = weight/25,
+            //    Height = weight/25,
+            //    Fill = Brushes.Black
+            //};
+            //canvas.Children.Add(rect);
+            //Canvas.SetLeft(rect, x-rect.Width/2);
+            //Canvas.SetTop(rect, y-rect.Height/2);
         }
 
         private void DrawParticlesOnCanvas()
         {
-            //canvas.Children.Clear();
-            var particleList = new List<Pair<Particle, int>>();
+            canvas.Children.Clear();
             foreach (var particle in _particleFilter.Particles)
             {
-                try
-                {
-                    var uniqueParticle = particleList.Where(x => x.Item1.Position.X == particle.Position.X).Where(x => x.Item1.Position.Y == particle.Position.Y).Where(x => x.Item1.OrientationInRadians == particle.OrientationInRadians).Select(x => x.Item2 = x.Item2 + 1);
-                    if(uniqueParticle.ToList().Count == 0)
-                        particleList.Add(new Pair<Particle, int>(particle, 1));
-                }
-                catch (Exception)
-                {
-                    particleList.Add(new Pair<Particle, int>(particle, 1));
-                }
+                DrawPoint(particle.Position.X, particle.Position.Y, 1);
             }
+            //var particleList = new List<Pair<Particle, int>>();
+            //foreach (var particle in _particleFilter.Particles)
+            //{
+            //    try
+            //    {
+            //        var uniqueParticle = particleList.Where(x => x.Item1.Position.X == particle.Position.X).Where(x => x.Item1.Position.Y == particle.Position.Y).Where(x => x.Item1.OrientationInRadians == particle.OrientationInRadians).Select(x => x.Item2 = x.Item2 + 1);
+            //        if(uniqueParticle.ToList().Count == 0)
+            //            particleList.Add(new Pair<Particle, int>(particle, 1));
+            //    }
+            //    catch (Exception)
+            //    {
+            //        particleList.Add(new Pair<Particle, int>(particle, 1));
+            //    }
+            //}
 
-            foreach (var tuple in particleList)
-            {
-                DrawPoint(tuple.Item1.Position.X * 4, tuple.Item1.Position.Y * 4, tuple.Item2);
+            //foreach (var tuple in particleList)
+            //{
+            //    DrawPoint(tuple.Item1.Position.X * 4, tuple.Item1.Position.Y * 4, tuple.Item2);
 
-            }
+            //}
         }
 
         private void DrawSimulatedRobot(int x, int y)
@@ -309,38 +328,70 @@ namespace Ev3_Localization
         private void TestParticleFilter()
         {
             // Should return approx x: 20, y: 95, -180 degrees
-            _particleFilter.Resampling(30);
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(105);
-            _particleFilter.Resampling(105);
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(75);
-            _particleFilter.Resampling(75);
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(20);
-            _particleFilter.Resampling(20);
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(30);
-            _particleFilter.Resampling(30);
+            Dispatcher.Invoke(DrawParticlesOnCanvas);
 
+            _particleFilter.Resampling(30);
+            _particleFilter.Resampling(30);
+            DrawParticlesOnCanvas();
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            
+            _particleFilter.ParticlesTurnRight(90);
+            _particleFilter.Resampling(105);
+            _particleFilter.Resampling(105);
+            DrawParticlesOnCanvas();
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+
+            _particleFilter.ParticlesTurnRight(90);
+            _particleFilter.Resampling(64);
+            _particleFilter.Resampling(64);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
+
+            _particleFilter.ParticlesTurnRight(90);
+            _particleFilter.Resampling(20);
+            _particleFilter.Resampling(20);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
+            _particleFilter.ParticlesTurnRight(90);
+            _particleFilter.Resampling(30);
+            _particleFilter.Resampling(30);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
 
             _particleFilter.MoveParticles(10);
             _particleFilter.Resampling(20);
             _particleFilter.Resampling(20);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
             _particleFilter.MoveParticles(10);
             _particleFilter.Resampling(10);
             _particleFilter.Resampling(10);
-
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
 
             _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(65.5);
-            _particleFilter.Resampling(65.5);
+            _particleFilter.Resampling(65);
+            _particleFilter.Resampling(65);
+
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
             _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(92.5);
-            _particleFilter.Resampling(92.5);
+            _particleFilter.Resampling(84);
+            _particleFilter.Resampling(84);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
             _particleFilter.ParticlesTurnRight(90);
             _particleFilter.Resampling(20);
             _particleFilter.Resampling(20);
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            DrawParticlesOnCanvas();
+
+            _particleFilter.PrintParticles();
         }
     }
 }
