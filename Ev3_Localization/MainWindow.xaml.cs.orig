@@ -49,24 +49,43 @@ namespace Ev3_Localization
 
         private async void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             _brick = new Brick(new BluetoothCommunication("COM3"));
             await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
             await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
             _robotSensing = new RobotSensing(_brick);
             _robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
+=======
+            //_brick = new Brick(new BluetoothCommunication("COM3"));
+            //await _brick.ConnectAsync(TimeSpan.FromMilliseconds(20));
+            //await _brick.DirectCommand.PlayToneAsync(100, 1000, 300);
+            //_brick.BrickChanged += OnBrickChanged;
+            //_robotSensing = new RobotSensing(_brick);
+            //_robotMotion = new RobotMotion(_brick, _time, _motorA, _motorD, _robotSensing);
+            
+>>>>>>> 8f0e806896a5471423706853e5f32aa74054f4ed
             var world = new double[125, 125];
 
             _landmarks = new List<Landmark>
+<<<<<<< HEAD
                          {
                              new Landmark(new Point(18.5, 98), new Point(30.5, 98), new Point(18.5, 94), new Point(30.5, 94)),
                              //new Landmark(new Point(24.5,56), new Point(36,56), new Point(24.5, 52.5), new Point(36,52.5)),
                              new Landmark(new Point(87.5, 34.5), new Point(99.5, 34.5), new Point(87.5, 30.5), new Point(99.5, 30.5)),
                              new Landmark(new Point(85, 91), new Point(89, 91), new Point(85, 79), new Point(89, 79))
                          };
+=======
+                            {
+                                new Landmark(new Point(16, 109.5), new Point(27.5,109.5), new Point(16, 106), new Point(27.5,106.5)),
+                                //new Landmark(new Point(24.5,56), new Point(36,56), new Point(24.5, 52.5), new Point(36,52.5)),
+                                new Landmark(new Point(88.5, 32.5), new Point(100, 32.5), new Point(88.5, 29 ), new Point(100, 29)),
+                                new Landmark(new Point(85.5, 102.5), new Point(89, 102.5), new Point(85.5, 91), new Point(89, 91))
+                            };
 
             var AStarSearch = new AStarSearch(125, 125, _landmarks);
             AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
             AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
+>>>>>>> 8f0e806896a5471423706853e5f32aa74054f4ed
             _particleFilter = new ParticleFilter(_landmarks, world);
 
             _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0), world.GetLength(1));
