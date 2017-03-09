@@ -16,14 +16,14 @@
 \contentsline {section}{\numberline {9.1}Hardware}{15}{section.9.1}
 \contentsline {subsection}{\numberline {9.1.1}Devloping for Lego Mindstorm}{15}{subsection.9.1.1}
 \contentsline {section}{\numberline {9.2}Structure and design}{15}{section.9.2}
-\contentsline {section}{\numberline {9.3}Particle Filter}{15}{section.9.3}
+\contentsline {section}{\numberline {9.3}Particle Filter}{16}{section.9.3}
 \contentsline {subsection}{\numberline {9.3.1}Simulation}{17}{subsection.9.3.1}
 \contentsline {section}{\numberline {9.4}A*}{19}{section.9.4}
 \contentsline {section}{\numberline {9.5}Combining Particle Filter and A*}{19}{section.9.5}
 \contentsline {chapter}{\chapternumberline {10}Results}{20}{chapter.10}
 \contentsline {chapter}{\chapternumberline {11}Discussion}{21}{chapter.11}
 \contentsline {chapter}{\chapternumberline {12}Conclusion}{22}{chapter.12}
-\contentsline {chapter}{Bibliography}{23}{section*.9}
+\contentsline {chapter}{Bibliography}{23}{section*.10}
 \setcounter {tocdepth}1
 \setlength \cftchapternumwidth {1cm}
 \changetocdepth {0}

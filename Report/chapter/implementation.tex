@@ -11,7 +11,11 @@ Even though the Lego Mindstorm robot was very inaccurate in some situations it a
 A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This allowed for easily developing advanced algorithms for the Lego Mindstorm robot.
 
 \section{Structure and design}
-The complete software is structured in different classes. One class implements the particle filter and a different class implemenet A*
+The structure of the developed software is illustrated with a UML class diagram in figure \ref{fig:class}. The main class initializes the world map and the landmarks in it. Main also initializes ParticleFilter, Astar, RobotMotion and RobotSensing. The ParticleFilter class manipulates a list of the type \emph{Particle}. The class \emph{Particle} uses \emph{GaussianNoise} to apply gaussian noise for movement and measurements. 
+
+\myFigure{classDiagram.png}{Class diagram}{fig:class}{1} 
+
+In the following sections the implemented particle filter and A* algorithm will be explained in details.
 
 \section{Particle Filter}
 In this project a particle filter was implemented and used for localiation of the robot. Furthermore a class for robot movement and robot sensing was implemented. 
