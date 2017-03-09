@@ -1,2 +1,26 @@
 \chapter{Localization}
 \label{chp:local}
+
+Localization is the ability for a machine to locate itself in space. When talking about localization it is often divided into local and global. Local is when the robot knows it initial position and global is when the robot does not know its initial position. Then there is also the kidnapped robot problem which is when a robot is moved at runtime in a global localization. multiple sensors can be used to help the machine gain da in the world it is located in.
+ 
+A way for the robot to localize itself in the world is by using Monte Carlo Localization. 
+It works in a static environment where it use data from sensors to locate where it is in the world.
+The robot sense to gain information about the world, and can make an estimate of the most likely position in the world. when the robot moves it lose information about where it is in the world. So the robot then sense again an make a new most likely position in the world.
+
+The interesting part in this scenario is how the robot makes the estimate of its most likely position. 
+It uses Bayes rule:
+
+\begin{center}
+	$P(X_xy|Z) = \dfrac{P(Z|X_xy) P(X_xy)}{P(Z)}$
+\end{center}
+
+$P(X_i|Z)$ seeks to calculate the believe of the robots location after seeing the measurement. And we compute it with the calculation right for the equal sign. 
+$P(X)$ is the prior and its multiplied with the chances of seeing a given measurement for every given position namely $P(Z|X)$. In other words, it is the measurement probability. \emph{xy} represents that the robot does this for every coordinate in the world. $P(Z)$ is divided to normalize the result and it is the sum over all \emph{i} of $P(Z|X_xy) P(X_xy)$.
+
+The robot becomes more insecure about its location when moving because it adds uncertainty of the estimation of the location and moving can add errors in the calculation. An example is when the robot turns 90$\degree$ i actually turns 92$\degree$. This does not as much, but if it turn ten times the robot will be 20$\degree$ off. So moving can add uncertainty to the calculation. 
+
+An Monte Carlo localization example is shown in figure \ref{fig:MCLex}. Is shows a robot moving right in a one dimensional world with three doors. in \emph{a} is has not detected anything, so the believe is uniform. Then it detects a door in \emph{b}. $P(Z|X)$ shows that the robot either are in front of one of the three doors. now the believe reflects the measurements. 
+\emph{c} shows the robot moving more to the right. In \emph{d} the robots detect another door. now we multiplies our believes and the robot now has a strong believe that it is in front of the door no. two. 
+\emph{e} shows that the believe reflects the position of the robot pretty well. 
+
+\myFigure{MCLex.PNG}{Monte Carlo localization example of locating a robot \citep{propRobotics}}{fig:MCLex}{1} 
