@@ -115,7 +115,38 @@ namespace Ev3_Localization
             NormalizeParticleWeights();
         }
 
-        public void SetImportanceWeight(double measurement)
+        public MeanAndVariance GetLocationMeanAndVariance()
+        {
+            double meanX = 0;
+            double meanY = 0;
+            double varianceX = 0;
+            double varianceY = 0;
+           
+            foreach (var particle in Particles)
+            {
+                meanX += particle.Position.X;
+                meanY += particle.Position.Y;
+            }
+            meanX = meanX / Particles.Count;
+            meanY = meanY / Particles.Count;
+
+            foreach (var particle in Particles)
+            {
+                varianceX += Math.Pow(particle.Position.X-meanX, 2);
+                varianceY += Math.Pow(particle.Position.Y-meanY, 2);
+            }
+
+            varianceX = varianceX / Particles.Count;
+            varianceY = varianceY / Particles.Count;
+
+            return new MeanAndVariance()
+            {
+                Mean = new Point(meanX, meanY),
+                Variance = new Point(varianceX, varianceY)
+            };
+        }
+
+        private void SetImportanceWeight(double measurement)
         {
             var highestPossibleDistance = Math.Sqrt(Math.Pow(_worldMatrix.GetLength(0), 2) + Math.Pow(_worldMatrix.GetLength(1), 2));
             foreach (var particle in Particles)

@@ -18,47 +18,48 @@ A level-1 auxiliary file: chapter/Discussion.aux
 A level-1 auxiliary file: chapter/Conclusion.aux
 Database file #1: bibliografi.bib
 Warning--entry type for "udacity" isn't style-file defined
---line 13 of file bibliografi.bib
+--line 25 of file bibliografi.bib
+Warning--empty publisher in feedbackSystem
 Warning--empty publisher in propRobotics
-You've used 2 entries,
+You've used 3 entries,
             2773 wiz_defined-function locations,
-            616 strings with 5367 characters,
-and the built_in function-call counts, 623 in all, are:
-= -- 47
-> -- 20
-< -- 2
-+ -- 8
-- -- 6
-* -- 34
-:= -- 102
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 7
-chr.to.int$ -- 2
-cite$ -- 5
-duplicate$ -- 35
-empty$ -- 65
-format.name$ -- 8
-if$ -- 125
+            621 strings with 5453 characters,
+and the built_in function-call counts, 916 in all, are:
+= -- 68
+> -- 30
+< -- 3
++ -- 12
+- -- 9
+* -- 51
+:= -- 149
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 10
+chr.to.int$ -- 3
+cite$ -- 8
+duplicate$ -- 55
+empty$ -- 97
+format.name$ -- 12
+if$ -- 185
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 2
-newline$ -- 18
-num.names$ -- 8
-pop$ -- 25
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 12
+pop$ -- 38
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 9
 quote$ -- 0
-skip$ -- 27
+skip$ -- 39
 stack$ -- 0
-substring$ -- 4
-swap$ -- 2
+substring$ -- 6
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 17
-warning$ -- 1
-while$ -- 6
+type$ -- 23
+warning$ -- 2
+while$ -- 9
 width$ -- 0
-write$ -- 30
-(There were 2 warnings)
+write$ -- 41
+(There were 3 warnings)

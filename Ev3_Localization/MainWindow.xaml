@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ev3_Localization"
         mc:Ignorable="d"
-        Title="MainWindow" Height="530" Width="530" Loaded="Window_Loaded_1">
+        Title="MainWindow" Height="530" Width="800" Loaded="Window_Loaded_1">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Border Width="500" Height="500" VerticalAlignment="Top" BorderBrush="Red" HorizontalAlignment="Left" BorderThickness="1">
             <Canvas x:Name="canvas" Background="#00FFFFFF" RenderTransformOrigin=".5,.5" Margin="1,1,1,1">
                 <Canvas.RenderTransform>
@@ -17,5 +21,12 @@
                 </Canvas.LayoutTransform>
             </Canvas>
         </Border>
+        
+        <Button Width="50" Height="50" Grid.Column="1" Margin="75,158,75,294.5" Click="Button_Click_forward">Forward</Button>
+        <Button Width="50" Height="50" Grid.Column="1" RenderTransformOrigin="0.37,1.8" Margin="75,296,75,156.5" Click="Button_Click_backward">Back</Button>
+        <Button Width="50" Height="50" Grid.Column="1" RenderTransformOrigin="0.36,4.54" Margin="66,406,84,46.5" Click="Button_Click_scan">Scan</Button>
+        <Button Width="50" Height="50" Grid.Column="1" Margin="130,226,20,226.5" Click="Button_Click_right">Right</Button>
+        <Button Width="50" Height="50" Grid.Column="1" Margin="10,226,140,226.5" Click="Button_Click_left">Left</Button>
+        <Button Width="50" Height="50" Grid.Column="1" RenderTransformOrigin="0.36,4.54" Margin="130,406,20,46.5" Click="Button_Click_simulate" Content="Simulate"/>
     </Grid>
 </Window>
