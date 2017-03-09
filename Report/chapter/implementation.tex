@@ -1,2 +1,90 @@
 \chapter{Implementation}
 \label{chp:impl}
+\section{Hardware}
+The chosen hardware for the project was a Lego Mindstorm EV3 robot. With the robot two motors was included and sensors such as a gyroscope and a ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem.
+
+Using the motors, gyroscope and ultrasound sensor showed some inaccuracy.  The gyroscope has a documented accuracy of +/- 3 degrees and the ultrasonic sensor has a documented accuracy of +/-1 centimeters. Further experiments showed that the ultrasonic sensor could not guarantee any accuracy if the angle to the measured object was no perpendicular. This gave some problems throughout the development and the ultrasonic sensor could yield measurements of for example 90 centimeters when the distance was only 10 centimeters. 
+
+Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors. 
+
+\subsection{Devloping for Lego Mindstorm}
+A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This allowed for easily developing advanced algorithms for the Lego Mindstorm robot.
+
+\section{Structure and design}
+The complete software is structured in different classes. One class implements the particle filter and a different class implemenet A*
+
+\section{Particle Filter}
+In this project a particle filter was implemented and used for localiation of the robot. Furthermore a class for robot movement and robot sensing was implemented. 
+
+The particle filter is initialized with 3 parameters: the number of particles to be randomly generated and the length on the x and y axis.
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Initialization of the particle filter}, label=lst:wheel, mathescape=true]             
+_particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0),
+world.GetLength(1));
+\end{lstlisting}
+
+After the particles are generated the Particle filter can be used for moving around the particles and resampling. The resampling is implemented as explained in chapter \ref{chp:partFilter} with the resampling wheel algorithm. The implemented resampling function is shown in \emph{BLABLA}. The method is called with a measurement. First a method is called for calculating the importance weight of each particle. This function looks at each particle and calculates the distance to the nearest object in the orientation of the particle. This distance is then compared with the measurement and based on this the weight is calculated.
+
+When the importance weight is calculated a new list of particles is create and then the resampling wheel algorithm is implemented and particles are added to the new list: \emph{particles2}. When the algorithm is done the list of particles is set equal to the new list \emph{particles2} and the weights are normalized.
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Resampling wheel}, label=lst:wheel, mathescape=true]                          
+public void Resampling(double measurement)
+{
+	SetImportanceWeight(measurement);
+	var particles2 = new List<Particle>();
+	var index = random.Next(0, Particles.Count);
+	var beta = 0.0;
+	var maxParticleWeight = Particles.Max(x => x.Weight);
+	var max = maxParticleWeight;
+	for (int i = 0; i < Particles.Count; i++)
+	{
+		beta = beta + random.NextDouble() * 2*max;
+		while (beta > Particles[index].Weight)
+		{
+			beta -= Particles[index].Weight;
+			index = (index + 1) % Particles.Count;
+		}
+		particles2.Add(Particles[index].Clone());
+	}
+	Particles = particles2;
+	NormalizeParticleWeights();
+}
+\end{lstlisting}
+
+When moving particles forwards or backwards the function MoveParticle is used. This function can be seen in the listing below. The function ensures that the particles are moved in the direction of the particle by using sine and cosine. When the position is set for a particle Gaussian noise is added for the particle. This is done because the movement of the robot is inaccurate. 
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Resampling wheel}, label=lst:wheel,  basicstyle=\tiny, mathescape=true]        
+public void MoveParticles(double distance)
+ {
+ 	foreach (var particle in Particles)
+ 	{
+ 		particle.Position = new Point(
+ 		particle.Position.X + Math.Cos(particle.OrientationInRadians) * distance, 
+ 		particle.Position.Y + Math.Sin(particle.OrientationInRadians) * distance); 
+ 		particle.ApplyGaussianNoiseForPosition();
+ 	}
+ }
+\end{lstlisting}
+
+\subsection{Simulation}
+This section present a simple simulation of the particle filter. In the example the simulated robot is placed in the world at coordinates (23,64) and will first scan the area, then drive forward twice and scan the area again. When the simulated robot drives forward it also measures the distance in that direction. This is similar to how the lego mindstorm is implemented.
+
+In figure \ref{fig:sim1} the world is initialized. The red dot is the robot, the direction of the robot is displayed by the small line drawn from the square. The particles are the black dots. The landmarks placed in the world are colored green, orange and blue. In the illustration the particles are spread out uniformly in the world. In figure \ref{fig:sim2} the robot has made its first 360 degree scan and taken measurement every 90 degree. The particles are now centered around a few specific places in the world. The location is still very uncertain, this is mainly caused by the symmetry of the world.
+
+\mySubFigure{Simulation/1_Initialized.PNG}{Simulation/2_afterScan.PNG}{}{Intialized particles and world}{Robot makes a 360 degree scan}{fig:sim}{fig:sim1}{fig:sim2}
+
+In figure \ref{sim1} and \ref{sim2} the robot drives forward 10 centimeters twice. The robot takes a measurement after each 10 centimeters. As illustrated the particles are now beginning to be concentrated around the simulated robot.
+
+\mySubFigure{Simulation/3_afterMoveAndMeas.PNG}{Simulation/4_afterMoveAndMeas.PNG}{}{Robot moves forward and measures distance}{Robot moves forward again and measures distance}{fig:sim}{fig:sim1}{fig:sim2}
+
+In figure \ref{fig:5} the robots makes 360 degree scan and takes measurement every 90 degree. After the scan the location is very certain and the particles are all located around the simulated robot.
+
+\myFigure{Simulation/5_afterScan.PNG}{Robot makes a 360 degree scan}{fig:5}{0.4} 
+
+\section{A*}
+
+
+\section{Combining Particle Filter and A*}

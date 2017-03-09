@@ -19,6 +19,7 @@ namespace Ev3_Localization
     /// </summary>
     public partial class MainWindow : Window
     {
+        private int _simulationCounter = 0;
         private Brick _brick;
         private bool _flag;
         private double _robotGyroPreviousMeasurement;
@@ -77,12 +78,11 @@ namespace Ev3_Localization
             // When everything is setup initialize
             // _brick.BrickChanged += OnBrickChanged;
 
-            TestParticleFilter();
-            Dispatcher.Invoke(DrawParticlesOnCanvas);
-            Dispatcher.Invoke(DrawLandmarks);
+            //TestParticleFilter();
+            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            //Dispatcher.Invoke(DrawLandmarks);
             //DrawSimulatedRobot(20,95);
-
-            _particleFilter.PrintParticles();
+            //_particleFilter.PrintParticles();
 
         }
 
@@ -159,92 +159,18 @@ namespace Ev3_Localization
 
             Dispatcher.Invoke(DrawParticlesOnCanvas);
 
-            //for (int i = 0; i < 90 / 30; i++)
-            //{
-            //    await _robotMotion.TurnRight(30);
-            //    _particleFilter.ParticlesTurnRight(30);
-            //    _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //    _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //    Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-            //}
-
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-
-            //Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-            //await _robotMotion.DriveForward(20);
-            //_particleFilter.MoveParticles(20);
-            //_particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //_particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-
-            //Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-            //await _robotMotion.DriveForward(20);
-            //_particleFilter.MoveParticles(20);
-            //_particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //_particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-
-            //for (int i = 0; i < 360 / 30; i++)
-            //{
-            //    await _robotMotion.TurnRight(30);
-            //    _particleFilter.ParticlesTurnRight(30);
-            //    _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //    _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
-            //    Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
-            //}
-
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+   
         }
 
         private async void OnBrickChanged(object sender, BrickChangedEventArgs e)
         {
             var gyroMeasuremnt = _robotSensing.GetGyroData();
 
-            //if (_resampleCounter > 10)
-            //{
-            //    var distanceMeasurement = _robotSensing.GetDistanceInCentimeters();
-
-            //    if (_flag)
-            //    {
-            //        if (gyroMeasuremnt > _robotGyroPreviousMeasurement)
-            //        {
-            //            var gyroChange = gyroMeasuremnt - _robotGyroPreviousMeasurement+1;
-            //            _particleFilter.ParticlesTurnRight(gyroChange);
-            //            Debug.WriteLine("Turned: " + gyroChange + " Degrees");
-            //            _robotGyroPreviousMeasurement = _robotSensing.GetGyroData();
-            //        }
-            //        else if (gyroMeasuremnt < _robotGyroPreviousMeasurement)
-            //        {
-            //            var gyroChange = _robotGyroPreviousMeasurement - gyroMeasuremnt+1;
-            //            _particleFilter.ParticlesTurnLeft(gyroChange);
-            //            Debug.WriteLine("Turned: " + gyroChange + " Degrees");
-            //            _robotGyroPreviousMeasurement = _robotSensing.GetGyroData();
-            //        }
-
-            //        var distanceChange = _robotDistancePreviousMeasurement - distanceMeasurement;
-            //        if (distanceChange > 1 || distanceChange < -1)
-            //        {
-            //            _particleFilter.MoveParticles(distanceChange);
-            //            _particleFilter.Resampling(distanceMeasurement);
-            //            Console.WriteLine("Distance: " + distanceMeasurement + "cm");
-            //            _robotDistancePreviousMeasurement = _robotSensing.GetDistanceInCentimeters();
-            //        }
-            //    }
-            //    _resampleCounter = 0;
-            //}
-            //else
-            //    _resampleCounter++;
-
-
 
             if (!_flag && gyroMeasuremnt != 0)
             {
                 _flag = true;
-                Task.Factory.StartNew(() => StartDriving());
+               // Task.Factory.StartNew(() => StartDriving());
             }
         }
 
@@ -252,13 +178,13 @@ namespace Ev3_Localization
         {
             Rectangle rect = new Rectangle
             {
-                Width = 4,
-                Height = 4,
+                Width = 2,
+                Height = 2,
                 Fill = Brushes.Black
             };
             canvas.Children.Add(rect);
-            Canvas.SetLeft(rect, x*4 - 2);
-            Canvas.SetTop(rect, y*4 - 2);
+            Canvas.SetLeft(rect, x*4 - 1);
+            Canvas.SetTop(rect, y*4 - 1);
             //Rectangle rect = new Rectangle
             //{
             //    Width = weight/25,
@@ -301,10 +227,15 @@ namespace Ev3_Localization
 
         private void DrawSimulatedRobot(int x, int y)
         {
-            Rectangle rect = new Rectangle { Width = 4, Height = 4, Fill = Brushes.Red };
+            Rectangle rect = new Rectangle { Width = 6, Height = 6, Fill = Brushes.Red };
             canvas.Children.Add(rect);
-            Canvas.SetLeft(rect, x * 4 - 2);
-            Canvas.SetTop(rect, y * 4 - 2);
+            Canvas.SetLeft(rect, x * 4 - 3);
+            Canvas.SetTop(rect, y * 4 - 3);
+
+            Rectangle rectA = new Rectangle { Width = 2, Height = 14, Fill = Brushes.Red };
+            canvas.Children.Add(rectA);
+            Canvas.SetLeft(rectA, x * 4 - 1);
+            Canvas.SetTop(rectA, y * 4 - 1);
         }
 
         private void DrawLandmarks()
@@ -327,71 +258,134 @@ namespace Ev3_Localization
 
         private void TestParticleFilter()
         {
-            // Should return approx x: 20, y: 95, -180 degrees
+         
+        }
+
+        private async void Button_Click_forward(object sender, RoutedEventArgs e)
+        {
+            await _robotMotion.DriveForward(10);
+            _particleFilter.MoveParticles(10);
+            //_particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+            _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+            Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
+            Dispatcher.Invoke(DrawLandmarks);
             Dispatcher.Invoke(DrawParticlesOnCanvas);
+        }
 
-            _particleFilter.Resampling(30);
-            _particleFilter.Resampling(30);
-            DrawParticlesOnCanvas();
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            
+        private async void Button_Click_backward(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void Button_Click_right(object sender, RoutedEventArgs e)
+        {
+            await _robotMotion.TurnRight(90);
             _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(105);
-            _particleFilter.Resampling(105);
-            DrawParticlesOnCanvas();
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
+            _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+            _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+            Dispatcher.Invoke(DrawLandmarks);
+            Dispatcher.Invoke(DrawParticlesOnCanvas);
+        }
 
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(64);
-            _particleFilter.Resampling(64);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
+        private async void Button_Click_left(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private async void Button_Click_scan(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 360 / 90; i++)
+            {
+                await _robotMotion.TurnRight(90);
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+                _particleFilter.Resampling(_robotSensing.GetDistanceInCentimeters());
+                Debug.WriteLine(_robotSensing.GetDistanceInCentimeters());
+            }
+            Dispatcher.Invoke(DrawLandmarks);
+            Dispatcher.Invoke(DrawParticlesOnCanvas);
+        }
+        private async void Button_Click_simulate(object sender, RoutedEventArgs e)
+        {
+            // Should return approx x: 20, y: 95, -180 degrees
+            if (_simulationCounter == 0)
+            {
+                Dispatcher.Invoke(DrawParticlesOnCanvas);
+                Dispatcher.Invoke(DrawLandmarks);
+                DrawSimulatedRobot(23, 64);
+            }
+
+            if (_simulationCounter == 1)
+            {
+                //SCAN.. taking measuremnts from 360
+                _particleFilter.Resampling(30);
+                _particleFilter.Resampling(30);
+
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(102);
+                _particleFilter.Resampling(102);
+
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(64);
+                _particleFilter.Resampling(64);
+
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(20);
+                _particleFilter.Resampling(20);
+
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(30);
+                _particleFilter.Resampling(30);
+                DrawParticlesOnCanvas();
+                Dispatcher.Invoke(DrawLandmarks);
+                DrawSimulatedRobot(23, 64);
+            }
+
+            if (_simulationCounter == 2)
+            {
+                _particleFilter.MoveParticles(10);
+                _particleFilter.Resampling(20);
+                _particleFilter.Resampling(20);
+                //Dispatcher.Invoke(DrawParticlesOnCanvas);
+                DrawParticlesOnCanvas();
+                Dispatcher.Invoke(DrawLandmarks);
+                DrawSimulatedRobot(23, 74);
+            }
+
+            if (_simulationCounter == 3)
+            {
+                _particleFilter.MoveParticles(10);
+                _particleFilter.Resampling(10);
+                _particleFilter.Resampling(10);
+                DrawParticlesOnCanvas();
+                Dispatcher.Invoke(DrawLandmarks);
+                DrawSimulatedRobot(23, 84);
+            }
+
+            if (_simulationCounter == 4)
+            {
+                // SCAN
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(62);
+                _particleFilter.Resampling(62);
+
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(84);
+                _particleFilter.Resampling(84);
 
 
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(20);
-            _particleFilter.Resampling(20);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
+                _particleFilter.ParticlesTurnRight(90);
+                _particleFilter.Resampling(20);
+                _particleFilter.Resampling(20);
+                DrawParticlesOnCanvas();
+                Dispatcher.Invoke(DrawLandmarks);
+                DrawSimulatedRobot(23, 84);
+                Console.WriteLine("Simulation Done");
+            }
 
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(30);
-            _particleFilter.Resampling(30);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
 
-            _particleFilter.MoveParticles(10);
-            _particleFilter.Resampling(20);
-            _particleFilter.Resampling(20);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
-
-            _particleFilter.MoveParticles(10);
-            _particleFilter.Resampling(10);
-            _particleFilter.Resampling(10);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
-
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(65);
-            _particleFilter.Resampling(65);
-
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
-
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(84);
-            _particleFilter.Resampling(84);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
-
-            _particleFilter.ParticlesTurnRight(90);
-            _particleFilter.Resampling(20);
-            _particleFilter.Resampling(20);
-            //Dispatcher.Invoke(DrawParticlesOnCanvas);
-            DrawParticlesOnCanvas();
-
-            _particleFilter.PrintParticles();
+            _simulationCounter++;
+            //if (_simulationCounter > 4)
+            //    _simulationCounter = 0;
         }
     }
 }
