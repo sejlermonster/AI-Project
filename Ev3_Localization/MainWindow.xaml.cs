@@ -35,10 +35,10 @@ namespace Ev3_Localization
         private List<Landmark> _landmarks;
         private int _numberOfParticles = 10000;
         private int _resampleCounter = 0;
-        private int _xStart = 50;
-        private int _yStart = 50;
-        private int _xEnd = 60;
-        private int _yEnd = 60;
+        private int _xStart = 0;
+        private int _yStart = 0;
+        private int _xEnd = 4;
+        private int _yEnd = 4;
 
         private AStarSearch _aStarSearch;
 
@@ -64,9 +64,9 @@ namespace Ev3_Localization
                              new Landmark(new Point(85, 91), new Point(89, 91), new Point(85, 79), new Point(89, 79))
                          };
 
-            //var AStarSearch = new AStarSearch(125, 125, _landmarks);
-            //AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
-            //AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
+            var AStarSearch = new AStarSearch(5, 5, _landmarks);
+            AStarSearch.PrintMap(_xStart,_yStart,_xEnd,_yEnd);
+            AStarSearch.FindPath(_xStart, _yStart, _xEnd, _yEnd);
             _particleFilter = new ParticleFilter(_landmarks, world);
 
             _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0), world.GetLength(1));
