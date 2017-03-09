@@ -1,2 +1,39 @@
 \chapter{Search}
 \label{chp:search}
+
+\section{Search algorithm}
+
+Search is an algorithm for locating the path that a robot would need to follow to get to a specific destination. It is thereby a solution to the fundamental problem of Motion Planning for a robot. 
+
+When dealing with a robot in any environment, the robot will need a way to plan a route to its destination without colliding with any obstacles. In a discrete world you could just pre-plan a route, but if you are dealing with for example a car in the real world, then you would not be able to do so. Then it would be necessary to make the robot calculate its own route on the fly and that is what the Search algorithm offers.
+
+So the overall planning problem can be seen as some given knowledge;
+\begin{itemize}
+	\item 1. A world map is given, so the robot can see where the destination is compared to itself.
+	\item 2. A start location is given, so the robot knows where it is.
+	\item 3. An end destination is given, så the robot knows where it should end.
+	\item 4. A cost function is given, and is used by the robot to determine which path is the optimal one.
+\end{itemize}
+
+The goal is then to use this information to calculate a safe path that also has the lowest cost. Cost is something that is especially relevant for autonomous cars, where for example a left turn will be more demanding and time consuming than a right turn. Cost can be seen as any resource the robot might use, e.g. time or battery/fuel.
+
+Looking at the robot environment as a discrete world, it can be visualized as a grid, as seen in figure \ref{fig:SearchAlgo}. The red field is the start location and the green is the destination. The obstacles that a robot might encounter are represented by -1 and the rest of the numbers are the distances from the start location to that specific coordinate. This means that the number in the green field is the shortest distance to the destination, even though there are different paths to use. 
+
+The Search algorithm works by exploring every adjacent grid cell to see if the robot would be able to move further in that direction, and then expanding to those cells. It then explores the adjacent cells of the cells it just expanded to. This continues until the whole grid is explored, and the destination is found. 
+
+Every time the algorithm explores a new cell it also increments the distance value, and associates it with the cell that has been explored. This way it fills out the grid with distance values, and by using the lowest distance value as direction, it will find the shortest path to the destination. 
+
+\myFigure{Search/Search_Algo.JPG}{Search Algorithm}{fig:SearchAlgo}{0.6} 
+
+Of course some of this is wasted effort. Since the Search algorithm goes through all of the paths in the grid, some of the explored paths will be in the wrong direction. A way to improve this is to implement the A* algorithm.  
+
+\section{A* algorithm}
+The A* algorithm is a more efficient variant of the Search Algorithm, since it does not necessarily need to expand to all states. It uses a heuristic function to better see the direction of the goal. The heuristic function is set up as a grid with the same dimensions as the world. The whole grid is filled with numbers indicating the cells distance to goal. This is visualized in figure \ref{fig:Heuristic}. The Heuristic function grid is made without any indication of obstacles, because the direction is seen as an optimistic guess.
+
+The A* algorithm is mostly a question of combining the heuristic function with the distance values of the Search algorithm. When updating the list of which cells to explore, the Search algorithm takes the cell with the lowest distance value first, but the A* algorithm looks at the lowest distance value plus the Heuristic value corresponding to that cell. This means that it takes the individual cells' distance to goal into account, and that makes it more efficient. 
+
+The result of the algorithm is that the robot would not necessarily need to explore every state, and thereby give the optimal path faster. A possible result is shown in figure \ref{fig:Astar}.
+
+\myFigure{Search/AstarHeuristic.JPG}{A* Heuristic function grid}{fig:Heuristic}{0.6} 
+
+\myFigure{Search/Astar.JPG}{A* algorithm path}{fig:Astar}{0.6} 
