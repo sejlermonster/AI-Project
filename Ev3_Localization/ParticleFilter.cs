@@ -47,8 +47,8 @@ namespace Ev3_Localization
         {
             foreach (var particle in Particles)
             {
-                particle.Position = new Point(particle.Position.X + Math.Cos(particle.OrientationInRadians) * distance, // % _worldMatrix.GetLength(0),
-                                              particle.Position.Y + Math.Sin(particle.OrientationInRadians) * distance); // % _worldMatrix.GetLength(1)));
+                particle.Position = new Point(particle.Position.X + Math.Cos(particle.OrientationInRadians) * distance, 
+                                              particle.Position.Y + Math.Sin(particle.OrientationInRadians) * distance); 
             }
             foreach (var particle in Particles)
             {

@@ -14,6 +14,7 @@ A level-1 auxiliary file: chapter/SLAM.aux
 A level-1 auxiliary file: chapter/project.aux
 A level-1 auxiliary file: chapter/SystemDescription.aux
 A level-1 auxiliary file: chapter/Implementation.aux
+A level-1 auxiliary file: chapter/Resultater.aux
 A level-1 auxiliary file: chapter/Discussion.aux
 A level-1 auxiliary file: chapter/Conclusion.aux
 Database file #1: bibliografi.bib
@@ -23,7 +24,7 @@ Warning--empty publisher in feedbackSystem
 Warning--empty publisher in propRobotics
 You've used 3 entries,
             2773 wiz_defined-function locations,
-            621 strings with 5453 characters,
+            622 strings with 5475 characters,
 and the built_in function-call counts, 916 in all, are:
 = -- 68
 > -- 30
