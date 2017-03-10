@@ -69,7 +69,7 @@ _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0),
 world.GetLength(1));
 \end{lstlisting}
 
-After the particles are generated the Particle filter can be used for moving around the particles and resampling. The resampling is implemented as explained in chapter \ref{chp:partFilter} with the resampling wheel algorithm. The implemented resampling function is shown in \emph{BLABLA}. The method is called with a measurement. First a method is called for calculating the importance weight of each particle. This function looks at each particle and calculates the distance to the nearest object in the orientation of the particle. This distance is then compared with the measurement and based on this the weight is calculated.
+After the particles are generated the Particle filter can be used for moving around the particles and resampling. The resampling is implemented as explained in chapter \ref{chp:partFilter} with the resampling wheel algorithm. The implemented resampling function is shown in Listing \ref{lst:wheel}. The method is called with a measurement. First a method is called for calculating the importance weight of each particle. This function looks at each particle and calculates the distance to the nearest object in the orientation of the particle. This distance is then compared with the measurement and based on this the weight is calculated.
 
 When the importance weight is calculated a new list of particles is create and then the resampling wheel algorithm is implemented and particles are added to the new list: \emph{particles2}. When the algorithm is done the list of particles is set equal to the new list \emph{particles2} and the weights are normalized.
 
@@ -98,10 +98,10 @@ public void Resampling(double measurement)
 }
 \end{lstlisting}
 
-When moving particles forwards or backwards the function MoveParticle is used. This function can be seen in the listing below. The function ensures that the particles are moved in the direction of the particle by using sine and cosine. When the position is set for a particle Gaussian noise is added for the particle. This is done because the movement of the robot is inaccurate. 
+When moving particles forwards or backwards the function MoveParticle is used. This function can be seen in listing \ref{lst:move}. The function ensures that the particles are moved in the direction of the particle by using sine and cosine. When the position is set for a particle Gaussian noise is added for the particle. This is done because the movement of the robot is inaccurate. 
 
 \lstset{style=sharpc}
-\begin{lstlisting}[caption={Resampling wheel}, label=lst:wheel,  basicstyle=\tiny, mathescape=true]        
+\begin{lstlisting}[caption={Resampling wheel}, label=lst:move,  basicstyle=\tiny, mathescape=true]        
 public void MoveParticles(double distance)
  {
  	foreach (var particle in Particles)
@@ -121,10 +121,11 @@ In figure \ref{fig:sim1} the world is initialized. The red dot is the robot, the
 
 \mySubFigure{Simulation/1_Initialized.PNG}{Simulation/2_afterScan.PNG}{}{Intialized particles and world}{Robot makes a 360 degree scan}{fig:sim}{fig:sim1}{fig:sim2}
 
-In figure \ref{sim1} and \ref{sim2} the robot drives forward 10 centimeters twice. The robot takes a measurement after each 10 centimeters. As illustrated the particles are now beginning to be concentrated around the simulated robot.
+In figure \ref{fig:sim3} and \ref{fig:sim4} the robot drives forward 10 centimeters twice. The robot takes a measurement after each 10 centimeters. As illustrated the particles are now beginning to be concentrated around the simulated robot.
 
-\mySubFigure{Simulation/3_afterMoveAndMeas.PNG}{Simulation/4_afterMoveAndMeas.PNG}{}{Robot moves forward and measures distance}{Robot moves forward again and measures distance}{fig:sim}{fig:sim1}{fig:sim2}
+\mySubFigure{Simulation/3_afterMoveAndMeas.PNG}{Simulation/4_afterMoveAndMeas.PNG}{}{Robot moves forward and measures distance}{Robot moves forward again and measures distance}{fig:simA}{fig:sim3}{fig:sim4}
 
+\FloatBarrier
 In figure \ref{fig:5} the robots makes 360 degree scan and takes measurement every 90 degree. After the scan the location is very certain and the particles are all located around the simulated robot.
 
 \myFigure{Simulation/5_afterScan.PNG}{Robot makes a 360 degree scan}{fig:5}{0.4} 

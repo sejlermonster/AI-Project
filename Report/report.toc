@@ -22,13 +22,13 @@
 \contentsline {subsection}{\numberline {8.3.2}Measurements}{23}{subsection.8.3.2}
 \contentsline {section}{\numberline {8.4}Particle Filter}{24}{section.8.4}
 \contentsline {subsection}{\numberline {8.4.1}Simulation}{25}{subsection.8.4.1}
-\contentsline {section}{\numberline {8.5}A*}{28}{section.8.5}
-\contentsline {subsection}{\numberline {8.5.1}Simulation}{29}{subsection.8.5.1}
+\contentsline {section}{\numberline {8.5}A*}{27}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Simulation}{28}{subsection.8.5.1}
 \contentsline {section}{\numberline {8.6}Combining Particle Filter and A*}{30}{section.8.6}
-\contentsline {chapter}{\chapternumberline {9}Results}{32}{chapter.9}
-\contentsline {chapter}{\chapternumberline {10}Discussion}{33}{chapter.10}
-\contentsline {chapter}{\chapternumberline {11}Conclusion}{34}{chapter.11}
-\contentsline {chapter}{Bibliography}{35}{section*.24}
+\contentsline {chapter}{\chapternumberline {9}Results}{31}{chapter.9}
+\contentsline {chapter}{\chapternumberline {10}Discussion}{32}{chapter.10}
+\contentsline {chapter}{\chapternumberline {11}Conclusion}{33}{chapter.11}
+\contentsline {chapter}{Bibliography}{34}{section*.24}
 \setcounter {tocdepth}1
 \setlength \cftchapternumwidth {1cm}
 \changetocdepth {0}
