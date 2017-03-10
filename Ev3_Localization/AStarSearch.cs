@@ -17,12 +17,26 @@ namespace Ev3_Localization
         
         public AStarSearch(int xLength, int yLength, List<Landmark> landmarks)
         {
+            var modifiedLandmarks = new List<Landmark> {
+                new Landmark(new Point(Convert.ToInt32(landmarks[0].UpperLeft.X)/10, Convert.ToInt32(landmarks[0].UpperLeft.Y )/ 10),
+                                                                    new Point(Convert.ToInt32(landmarks[0].UpperRight.X) / 10, Convert.ToInt32(landmarks[0].UpperRight.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[0].BottomLeft.X) / 10, Convert.ToInt32(landmarks[0].BottomLeft.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[0].BottomRight.X) / 10, Convert.ToInt32(landmarks[0].BottomRight.Y) / 10)),
+                    new Landmark(new Point(Convert.ToInt32(landmarks[1].UpperLeft.X)/10, Convert.ToInt32(landmarks[1].UpperLeft.X )/ 10),
+                                                                    new Point(Convert.ToInt32(landmarks[1].UpperRight.X) / 10, Convert.ToInt32(landmarks[1].UpperRight.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[1].BottomLeft.X) / 10, Convert.ToInt32(landmarks[1].BottomLeft.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[1].BottomRight.X) / 10, Convert.ToInt32(landmarks[1].BottomRight.Y) / 10)),
+                        new Landmark(new Point(Convert.ToInt32(landmarks[2].UpperLeft.X)/10, Convert.ToInt32(landmarks[2].UpperLeft.Y)/ 10),
+                                                                    new Point(Convert.ToInt32(landmarks[2].UpperRight.X) / 10, Convert.ToInt32(landmarks[2].UpperRight.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[2].BottomLeft.X) / 10, Convert.ToInt32(landmarks[2].BottomLeft.Y) / 10),
+                                                                    new Point(Convert.ToInt32(landmarks[2].BottomRight.X) / 10, Convert.ToInt32(landmarks[2].BottomRight.Y) / 10)),
+            };
             _worldMatrixWithPossiblePaths = new int[xLength, yLength];
             for (int i = 0; i < _worldMatrixWithPossiblePaths.GetLength(0); i++)
             {
                 for (int j = 0; j < _worldMatrixWithPossiblePaths.GetLength(1); j++)
                 {
-                    foreach (var landmark in landmarks)
+                    foreach (var landmark in modifiedLandmarks)
                     {
                         if(_worldMatrixWithPossiblePaths[i, j] == 0)
                         {
@@ -82,14 +96,8 @@ namespace Ev3_Localization
             }
         }
 
-        public void FindPath(int xStart, int yStart, int xEnd, int yEnd)
+        public List<List<int>> FindPath(int xStart, int yStart, int xEnd, int yEnd)
         {
-            _worldMatrixWithPossiblePaths[0,1] = 1;
-            _worldMatrixWithPossiblePaths[1, 1] = 1;
-            _worldMatrixWithPossiblePaths[2, 1] = 1;
-            _worldMatrixWithPossiblePaths[3, 1] = 1;
-            _worldMatrixWithPossiblePaths[4, 1] = 0;
-
             int[,] heuristic = GenerateHeuristicFunciton(_worldMatrixWithPossiblePaths.GetLength(1), _worldMatrixWithPossiblePaths.GetLength(0), xEnd, yEnd);
 
             // Create expand matrix with all -1
@@ -243,6 +251,7 @@ namespace Ev3_Localization
                     }
                 }
             }
+            return robotActions;
         }
 
         private int InArea(int x, int y, Landmark landmark)

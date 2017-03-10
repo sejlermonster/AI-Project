@@ -17,6 +17,9 @@ The structure of the developed software is illustrated with a UML class diagram 
 
 In the following sections the implemented particle filter and A* algorithm will be explained in details.
 
+\section{Robot motion}
+Using only P
+
 \section{Particle Filter}
 In this project a particle filter was implemented and used for localiation of the robot. Furthermore a class for robot movement and robot sensing was implemented. 
 
@@ -89,6 +92,56 @@ In figure \ref{fig:5} the robots makes 360 degree scan and takes measurement eve
 \myFigure{Simulation/5_afterScan.PNG}{Robot makes a 360 degree scan}{fig:5}{0.4} 
 
 \section{A*}
+When the approximate location of the robot in this project is found, an A* algorithm is used to determine a path to the goal destination. The A* algorithm is initialized with 3 parameters: the length on the x an y axis, and the coordinates of the landmarks of the environment in which the robot is placed. 
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Initialization of the A* algorithm}, label=lst:Astar_init, mathescape=true]             
+_aStarSearch = new AStarSearch(world.GetLength(0), world.GetLength(1),
+ _landmarks);
+\end{lstlisting}
+
+It uses the environment information to create its heuristic function and to make a path from its own position to the goal destination. The basis for the algorithm is explained in chapter \ref{chp:search} and as it is mentioned the A* algorithm is a more efficient variant of the Search algorithm, meaning the basic functionality is the same. 
+
+When the algorithm has knowledge of the environment, it can begin searching for paths to the goal destination. It does this by exploring adjacent paths to see if they are walkable. However it first checks two things: if it has run out of paths to explore, or if it is already at the goal destination. If neither of these are true it will go into the for-loop illustrated in listing \ref{lst:search_func}. 
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Functionality of Search}, label=lst:search_func, mathescape=true]             
+for (int i = 0; i < delta.Count; i++)
+{
+	int x2 = x + delta[i][0];
+	int y2 = y + delta[i][1];
+
+	if (x2 >= 0 && x2 < _worldMatrixWithPossiblePaths.GetLength(0) && 
+	    y2 >= 0 && y2 < _worldMatrixWithPossiblePaths.GetLength(1))
+	{
+		if(worldClosed[x2,y2] == 0 && 
+		   _worldMatrixWithPossiblePaths[x2,y2] == 0 || 
+		   worldClosed[x2, y2] == 99 && 
+		   _worldMatrixWithPossiblePaths[x2, y2] == 0)
+		{
+			int g2 = g + cost;
+			var h2 = heuristic[x2, y2];
+			var f2 = g2 + h2;
+			open.Add(new List<int>()
+			{
+				f2, g2, h2, x2, y2
+			});
+			worldClosed[x2, y2] = 2;
+			possibleMovements.Add(new List<int>()
+			{
+				f2, x2, y2
+			});
+		}
+	}
+}
+\end{lstlisting}
+
+\emph{delta} is a list of directions the robot can go to explore new paths, meaning the loop checks all the directions from the state it is at that moment. For every one of those directions it checks if it can move that way, or if there is an obstacle. It also checks if the direction is even inside the environment in which it is placed. If the direction is indeed a possible path to expand to it will add it to the list of open expansions, it will close the path so it cannot be explored more than once, and it will add it to the list of possible movements.
+
+The A* part of this loop is when the heuristic function is introduced. \emph{g2} is the distance value from the robots position to the path point in question, \emph{h2} is the distance from the path point to the goal, and \emph{f2} is the combination of the two. By combining them the algorithm can chose the shortest path to the goal.
+
+\subsection{Simulation}
+
 
 
 \section{Combining Particle Filter and A*}

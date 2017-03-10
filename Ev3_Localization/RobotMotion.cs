@@ -39,23 +39,17 @@ namespace Ev3_Localization
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 30, true);
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
-                    Thread.Sleep(45);
+                    Thread.Sleep(100);
                 }
                 else if (currentDistance < endDistance)
                 {
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 30, true);
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
-                    Thread.Sleep(45);
+                    Thread.Sleep(100);
                 }
                 currentDistance = _robotSensing.GetDistanceInCentimeters();
             }
-
-            //var time = DistanceInCentimetersToSeconds(distance);
-            //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, 40, time, true);
-            //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, 42, time, true);
-            //await _brick.BatchCommand.SendCommandAsync();
-            //Thread.Sleep(Convert.ToInt32(time));
         }
 
         public async Task DriveBackwards(int distance)
@@ -72,7 +66,7 @@ namespace Ev3_Localization
             var startDegree = _robotSensing.GetGyroData();
             var endDegree = startDegree + degrees;
             double currentDegree = startDegree;
-            while (currentDegree < endDegree - 0.02 * degrees || currentDegree > endDegree + 0.01*degrees)
+            while (currentDegree < endDegree - 0.025 * degrees || currentDegree > endDegree + 0.01*degrees)
             {
                 if (currentDegree > endDegree + 0.01 * degrees)
                 {
@@ -81,7 +75,7 @@ namespace Ev3_Localization
                     await _brick.BatchCommand.SendCommandAsync();
                     Thread.Sleep(100);
                 }
-                else if (currentDegree < endDegree - 0.02 * degrees)
+                else if (currentDegree < endDegree - 0.025 * degrees)
                 {
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 30, true);
                     _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 30, true);
@@ -90,12 +84,6 @@ namespace Ev3_Localization
                 }
                 currentDegree = _robotSensing.GetGyroData();
             }
-            //var time = Convert.ToUInt32(DegreesToSeconds(degrees));
-            //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, time, true);
-            //_brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, time, true);
-            //await _brick.BatchCommand.SendCommandAsync();
-            //Thread.Sleep(Convert.ToInt32(time+500));
-
         }
 
         public async Task TurnLeft(int degrees)
@@ -103,19 +91,19 @@ namespace Ev3_Localization
             var startDegree = _robotSensing.GetGyroData();
             var endDegree = startDegree - degrees;
             double currentDegree = startDegree;
-            while (currentDegree > endDegree + 1 || currentDegree < endDegree - 1)
+            while (currentDegree > endDegree +  0.025*degrees || currentDegree < endDegree - 0.01*degrees)
             {
-                if (currentDegree > endDegree)
+                if (currentDegree > endDegree + 0.01 *degrees)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, _motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, -_motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
                     Thread.Sleep(100);
                 }
-                else if (currentDegree < endDegree)
+                else if (currentDegree < endDegree - 0.025*degrees)
                 {
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 40, true);
-                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 40, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.A, -_motorA, 30, true);
+                    _brick.BatchCommand.TurnMotorAtPowerForTime(OutputPort.D, _motorD, 30, true);
                     await _brick.BatchCommand.SendCommandAsync();
                     Thread.Sleep(100);
                 }

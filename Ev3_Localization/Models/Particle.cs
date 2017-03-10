@@ -39,7 +39,7 @@ namespace Ev3_Localization.Models
 
         public void ApplyGaussianNoiseForOrientation()
         {
-           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 1.0 /180.0 * Math.PI));
+           OrientationInRadians = OrientationInRadians + (GaussianNoise.NextGaussian(0, 5.0 /180.0 * Math.PI));
         }
 
         public void ApplyNoiseForMeasurement()
