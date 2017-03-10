@@ -1,6 +1,67 @@
 \chapter{PID}
 \label{chp:pid}
-A PID controller is used for control problems.It is short for \emph{proportional-integral-derivative} which describes the different ways its 
+A PID controller is used for control problems.It is short for \emph{proportional-integral-derivative} which describes the three different part of the algorithm. The PID controller only relies on measured process variables. Different combinations of controllers exists were only some terms are combined. For example P, PI or PD can be used for different scenarios. 
+
+The proportional term depends on the measured error. So this can be use to correct when for example turning a robot. This term only depends on the error, $e(t)$ and therefore it will only be marginally stable. When using only a P controller the robot overshoot and it will oscillate around the correct value. In a PID controller the proportional term is weighted by a gain. The formula for the P term can be seen below.
+\begin{center}
+	$K_p e(t)$
+\end{center}
+
+The integral term depends on the sum of all errors observed. This for example useful for a system with a systematic bias. So if the error becomes larger and larger the integral term can fix that. This term is also weighted by a gain which can be seen in the formula for the integral term below.
+
+\begin{center}
+	$K_i \int_{0}^{t} e(\tau) d\tau$
+\end{center}
+
+The derivative term depends on how the error changes over time. For example it will start turning less and less the smaller the error gets. This makes the overshoot of the proportional term smaller. This term is also weighted by a gain. This can be seen in the formula for the derivative term below.
+
+\begin{center}
+	$K_d \dfrac{de(t)}{dt}$
+\end{center}
+
+The PID combines the P, I and D into a PID controller. The formula is as below.
+
+\begin{center}
+	$u(t) =  K_p e(t) + K_i \int_{0}^{t} e(\tau) d\tau + K_d \dfrac{de(t)}{dt}$
+\end{center}
+
+Also this process of combing the three terms is illustrated in figure \ref{fig:pid}. The illustration describes how the three terms are combined into one control output. It displays how the Set-point is the desired value and the feedback value is the measured one. These two values are combined into an error value $e(t)$ used by the PID controller.
+
+\myFigure{PID.PNG}{Graphical view of the PID controller  \citep{PIDImage}}{fig:pid}{1} 
+
+\FloatBarrier
 
 
+The gain values $K_p$, $K_i$ and $K_d$ in the formulas are though not just specific values. A big part of creating a sufficient PID controller is finding good gain values. Different algorithms for doing so exists. The Twiddle algorithm is an example of such an algorithm. The Twiddle algorithm works as a local hill climbing algorithm and by doing so tries to find the best values for $K_p$, $K_i$ and $K_d$
+
+Pseduo code for the Twiddle algorithm is illustrated in listing \ref{lst:twiddle}. Twiddle initializes a parameter vector to zero and initialize a change vector to one.  Then the error is calculated. A iteration then begins until a specified threshold is achieved. First the change vector is added to the parameter vector. The algorithm then check if this yields a better error. If not it then tries lowering the value and checks if this yields a better error. If this does not yield a better error then the parameter vector is changed with smaller step sizes.  In this way it tries to optimize each of the gains.
+
+\newpage
+
+\begin{lstlisting}[caption={Pseduo code for Twiddle}, label=lst:twiddle, mathescape=true]
+p = [0, 0, 0]
+dp = [1, 1, 1]
+best_err = GetError()
+
+threshold = 0.001
+
+while sum(dp) > threshold:
+	for i in range(len(p)):
+		p[i] += dp[i]
+		err = GetError()
+		
+		if err < best_err: 
+			best_err = err
+			dp[i] *= 1.1
+		else: 
+			p[i] -= 2*dp[i]
+			err = GetError()
+		
+			if err < best_err:
+				best_err = err
+				dp[i] *= 1.05
+			else 
+				p[i] += dp[i]
+				dp[i] *= 0.9
+	\end{lstlisting}
 \citep{feedbackSystem}
