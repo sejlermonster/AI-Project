@@ -3,16 +3,91 @@
 
 The robot is implemented with a particle filter and a A* search algorithm that helps it localize and navigate trough the known map. 
 
-\myFigure{worldmap.PNG}{The known map the robot has to navigate in \ref{fig:SLAMex}}{fig:Omegatable}{0.7}
+\myFigure{worldmap.PNG}{The known map the robot has to navigate in \ref{fig:SLAMex}}{fig:Omegatable}{0.6}
 
-The robot was placed between two obstacles and with the help of the particle filter and A* it needed to navigate down to the left lower corner. 
+The robot was placed between two obstacles as shown in figure \ref{fig:result00} and with the help of the particle filter and A* it needed to navigate down to the left lower corner. 
 
-"Billede fra film hvor robotten står i start position og måske med en cirkel/firkant hvor mål er"
-
-When looking at the particles they represents very well the location of the robot. 
-
-"Billeder af particle filter og billede fra film, hvor position og particles passer"
+\mySubFigureA{RobotSnippets/00_initial.JPG}{FinalRun/00_BeforeFirstScan.PNG}
+{Initial robot position and Particle filter before any scans}
+{Robot position}{Particle filter output}{fig:result00}{fig:rob00}{fig:part00}
 
 
+\mySubFigureA{RobotSnippets/0_firstMeasurement.JPG}{FinalRun/0_AfterFirstScan.PNG}
+{Robot position and Particle filter after first scan}
+{Robot position}{Particle filter output}{fig:result0}{fig:rob0}{fig:part0}
+
+\FloatBarrier
+When looking at the particles they represent the location of the robot at a greater and greater precision, by becoming a cluster of particles around the robot's coordinates. So after the first 360 degree scan, the particles begin to move together. This is illustrated in figure \ref{fig:result0}.
+
+
+\mySubFigureA{RobotSnippets/1_measurement.JPG}{FinalRun/1_AfterFirstMove.PNG}
+{Robot position and Particle filter after first move}
+{Robot position}{Particle filter output}{fig:result1}{fig:rob1}{fig:part1}
+
+The next step for the robot is to check if it can move forward. If it can it will do so, and scan afterwards. This makes the particles move even closer together as shown in figure \ref{fig:result1}.
+
+
+\mySubFigureA{RobotSnippets/2_measurement.JPG}{FinalRun/2_AfterScan.PNG}
+{Robot position and Particle filter after three scans}
+{Robot position}{Particle filter output}{fig:result2}{fig:rob2}{fig:part2}
+
+\FloatBarrier
+After three scans it is clear that the particles are forming a cluster around the robot, as seen in figure \ref{fig:result2}. 
+
+
+\mySubFigureA{RobotSnippets/3_measurement.JPG}{FinalRun/3_AfterScan.PNG}
+{Robot position and Particle filter after four scans}
+{Robot position}{Particle filter output}{fig:result3}{fig:rob3}{fig:part3}
+
+\FloatBarrier
+After four scans the scans the robot seems to have found itself, since the particles are all in one cluster as seen figure \ref{fig:result3}.
+
+
+\mySubFigureA{RobotSnippets/4_measurement.JPG}{FinalRun/4_AfterScan.PNG}
+{Robot position and Particle filter after five scans}
+{Robot position}{Particle filter output}{fig:result4}{fig:rob4}{fig:part4}
+
+\FloatBarrier
+In figure \ref{fig:result4} it is seen that the particles actually split up again, even though the robot is now up to five scans. This is due to the fact that the map has symmetric constructions and therefore some of the measurements will fit in more than one direction. That is why the particles was in the right cluster at the last scan, but some did not have the right rotation. 
+
+
+\mySubFigureA{RobotSnippets/5_measurement.JPG}{FinalRun/5_AfterScan.PNG}
+{Robot position and Particle filter after six scans}
+{Robot position}{Particle filter output}{fig:result5}{fig:rob5}{fig:part5}
+
+\FloatBarrier
+In figure \ref{fig:result5} most of the particles are still shown in the right position, but some are moving in the wrong direction.
+
+
+\mySubFigureA{RobotSnippets/7_measurement.JPG}{FinalRun/7_AfterScan.PNG}
+{Robot position and Particle filter after eight scans}
+{Robot position}{Particle filter output}{fig:result7}{fig:rob7}{fig:part7}
+
+\FloatBarrier
+After eight scans the robot is once again certain about its position, as shown in figure \ref{fig:result7}.
+
+
+\mySubFigureA{RobotSnippets/8_measurement.JPG}{FinalRun/8_AfterScan.PNG}
+{Robot position and Particle filter after nine scans}
+{Robot position}{Particle filter output}{fig:result8}{fig:rob8}{fig:part8}
+
+\FloatBarrier
+Since the robot gets very close to a wall, it turns 90 degrees to the left and moves forward before scanning again. As illustrated in figure  \ref{fig:result8} the particles follows the robot.
+
+
+\mySubFigureA{RobotSnippets/10_measurement.JPG}{FinalRun/10_AfterScan.PNG}
+{Robot position and Particle filter after eleven scans}
+{Robot position}{Particle filter output}{fig:result10}{fig:rob10}{fig:part10}
+
+\FloatBarrier
+In figure \ref{fig:result10} it is seen that the robot is moving toward its goal, and the particles still have knowledge about its approximate position.
+
+
+\mySubFigureA{RobotSnippets/11_measurement.JPG}{FinalRun/11_AfterScan.PNG}
+{Robot position and Particle filter after twelve scans}
+{Robot position}{Particle filter output}{fig:result11}{fig:rob11}{fig:part11}
+
+\FloatBarrier
+Figure \ref{fig:result11} shows the robot at its goal destination, and the particles are all in a cluster on top of it. This marks a successful run through the environment, though with a slight uncertainty at times.
 
  
