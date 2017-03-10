@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.23)  9 MAR 2017 19:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.23)  10 MAR 2017 12:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1613,7 +1613,11 @@ Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 (./report.aux (./chapter/Frontpage.aux) (./chapter/introduction.aux)
 (./chapter/theory.aux) (./chapter/Localization.aux) (./chapter/KalmanFilter.aux
 ) (./chapter/ParticleFilter.aux) (./chapter/Search.aux) (./chapter/PID.aux)
-(./chapter/SLAM.aux) (./chapter/project.aux) (./chapter/SystemDescription.aux)
+(./chapter/SLAM.aux
+
+LaTeX Warning: Label `fig:Omegatable' multiply defined.
+
+) (./chapter/project.aux) (./chapter/SystemDescription.aux)
 (./chapter/Implementation.aux
 
 LaTeX Warning: Label `lst:wheel' multiply defined.
@@ -1804,17 +1808,17 @@ l.83     \include{chapter/introduction}
 
 
 
-]
+] [2]
 \openout2 = `chapter/introduction.aux'.
 
  (./chapter/introduction.tex)
-[2
+[3
 
 
 ]
 \openout2 = `chapter/theory.aux'.
 
- (./chapter/theory.tex [3
+ (./chapter/theory.tex [4
 
 
 
@@ -1822,42 +1826,42 @@ l.83     \include{chapter/introduction}
 \openout2 = `chapter/Localization.aux'.
 
  (./chapter/Localization.tex
-<figure/MCLex.PNG, id=132, 600.2425pt x 772.8875pt>
+<figure/MCLex.PNG, id=138, 600.2425pt x 772.8875pt>
 File: figure/MCLex.PNG Graphic file (type png)
  <use figure/MCLex.PNG>
 Package pdftex.def Info: figure/MCLex.PNG used on input line 26.
 (pdftex.def)             Requested size: 418.25368pt x 538.56454pt.
 )
-[4
+[5
 
 
 
-] [5 <./figure/MCLex.PNG>]
+] [6 <./figure/MCLex.PNG>]
 \openout2 = `chapter/KalmanFilter.aux'.
 
- (./chapter/KalmanFilter.tex [6
+ (./chapter/KalmanFilter.tex [7
 
 
 
 ]
-<figure/kalmanFilterGaussians.PNG, id=168, 452.0639pt x 395.22656pt>
+<figure/kalmanFilterGaussians.PNG, id=174, 452.0639pt x 395.22656pt>
 File: figure/kalmanFilterGaussians.PNG Graphic file (type png)
 
 <use figure/kalmanFilterGaussians.PNG>
 Package pdftex.def Info: figure/kalmanFilterGaussians.PNG used on input line 45
 .
 (pdftex.def)             Requested size: 418.25368pt x 365.66327pt.
-) [7 <./figure/kalmanFilterGaussians.PNG>] [8]
+) [8 <./figure/kalmanFilterGaussians.PNG>] [9]
 \openout2 = `chapter/ParticleFilter.aux'.
 
  (./chapter/ParticleFilter.tex
-<figure/ResampleWheel.PNG, id=187, 222.8325pt x 225.46735pt>
+<figure/ResampleWheel.PNG, id=193, 222.8325pt x 225.46735pt>
 File: figure/ResampleWheel.PNG Graphic file (type png)
 
 <use figure/ResampleWheel.PNG>
 Package pdftex.def Info: figure/ResampleWheel.PNG used on input line 19.
 (pdftex.def)             Requested size: 167.2989pt x 169.27898pt.
- [9
+ [10
 
 
 
@@ -1887,11 +1891,11 @@ LaTeX Font Info:    Try loading font information for TS1+pcr on input line 35.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)) [10]
+)) [11]
 \openout2 = `chapter/Search.aux'.
 
 
-(./chapter/Search.tex) [11
+(./chapter/Search.tex) [12
 
 
 
@@ -1904,21 +1908,40 @@ Overfull \hbox (3.22684pt too wide) in paragraph at lines 3--4
  for \OT1/cmr/m/it/10.95 proportional-integral-derivative
  []
 
-) [12
+) [13
 
 
 
 ]
 \openout2 = `chapter/SLAM.aux'.
 
- (./chapter/SLAM.tex) [13
+ (./chapter/SLAM.tex
+<figure/SLAMex.PNG, id=232, 383.4325pt x 245.91875pt>
+File: figure/SLAMex.PNG Graphic file (type png)
+ <use figure/SLAMex.PNG>
+Package pdftex.def Info: figure/SLAMex.PNG used on input line 31.
+(pdftex.def)             Requested size: 418.25368pt x 268.2675pt.
+
+<figure/Table.PNG, id=237, 1587.9325pt x 307.1475pt>
+File: figure/Table.PNG Graphic file (type png)
+ <use figure/Table.PNG>
+Package pdftex.def Info: figure/Table.PNG used on input line 36.
+(pdftex.def)             Requested size: 418.25368pt x 80.9016pt.
+
+<figure/newtable.PNG, id=240, 1585.925pt x 307.1475pt>
+File: figure/newtable.PNG Graphic file (type png)
+
+<use figure/newtable.PNG>
+Package pdftex.def Info: figure/newtable.PNG used on input line 40.
+(pdftex.def)             Requested size: 418.25368pt x 81.00002pt.
+) [14
 
 
 
-]
+] [15 <./figure/SLAMex.PNG> <./figure/Table.PNG> <./figure/newtable.PNG>]
 \openout2 = `chapter/project.aux'.
 
- (./chapter/project.tex [14
+ (./chapter/project.tex [16
 
 
 
@@ -1926,7 +1949,7 @@ Overfull \hbox (3.22684pt too wide) in paragraph at lines 3--4
 \openout2 = `chapter/SystemDescription.aux'.
 
 
-(./chapter/SystemDescription.tex) [15
+(./chapter/SystemDescription.tex) [17
 
 
 
@@ -1934,20 +1957,20 @@ Overfull \hbox (3.22684pt too wide) in paragraph at lines 3--4
 \openout2 = `chapter/Implementation.aux'.
 
  (./chapter/Implementation.tex
-<figure/classDiagram.png, id=240, 949.5475pt x 475.7775pt>
+<figure/classDiagram.png, id=268, 949.5475pt x 475.7775pt>
 File: figure/classDiagram.png Graphic file (type png)
 
 <use figure/classDiagram.png>
 Package pdftex.def Info: figure/classDiagram.png used on input line 16.
 (pdftex.def)             Requested size: 418.25368pt x 209.5678pt.
- [16
+ [18
 
 
 
 ]
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
-) [17 <./figure/classDiagram.png>]
+) [19 <./figure/classDiagram.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 65.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
@@ -1955,8 +1978,8 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
- [18]
-<figure/Simulation/1_Initialized.PNG, id=299, 377.91188pt x 377.91188pt>
+ [20]
+<figure/Simulation/1_Initialized.PNG, id=327, 377.91188pt x 377.91188pt>
 File: figure/Simulation/1_Initialized.PNG Graphic file (type png)
 
 <use figure/Simulation/1_Initialized.PNG>
@@ -1964,7 +1987,7 @@ Package pdftex.def Info: figure/Simulation/1_Initialized.PNG used on input line
  82.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/2_afterScan.PNG, id=300, 378.28828pt x 378.28828pt>
+<figure/Simulation/2_afterScan.PNG, id=328, 378.28828pt x 378.28828pt>
 File: figure/Simulation/2_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/2_afterScan.PNG>
@@ -1973,12 +1996,12 @@ Package pdftex.def Info: figure/Simulation/2_afterScan.PNG used on input line 8
 (pdftex.def)             Requested size: 209.12683pt x 209.12704pt.
 
 
-LaTeX Warning: Reference `sim1' on page 19 undefined on input line 83.
+LaTeX Warning: Reference `sim1' on page 21 undefined on input line 83.
 
 
-LaTeX Warning: Reference `sim2' on page 19 undefined on input line 83.
+LaTeX Warning: Reference `sim2' on page 21 undefined on input line 83.
 
-<figure/Simulation/3_afterMoveAndMeas.PNG, id=301, 377.91188pt x 377.91188pt>
+<figure/Simulation/3_afterMoveAndMeas.PNG, id=329, 377.91188pt x 377.91188pt>
 File: figure/Simulation/3_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/3_afterMoveAndMeas.PNG>
@@ -1986,7 +2009,7 @@ Package pdftex.def Info: figure/Simulation/3_afterMoveAndMeas.PNG used on input
  line 86.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/4_afterMoveAndMeas.PNG, id=302, 377.91188pt x 378.66469pt>
+<figure/Simulation/4_afterMoveAndMeas.PNG, id=330, 377.91188pt x 378.66469pt>
 File: figure/Simulation/4_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/4_afterMoveAndMeas.PNG>
@@ -1994,19 +2017,19 @@ Package pdftex.def Info: figure/Simulation/4_afterMoveAndMeas.PNG used on input
  line 86.
 (pdftex.def)             Requested size: 209.12683pt x 209.54314pt.
 
-<figure/Simulation/5_afterScan.PNG, id=304, 377.53546pt x 377.91188pt>
+<figure/Simulation/5_afterScan.PNG, id=332, 377.53546pt x 377.91188pt>
 File: figure/Simulation/5_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/5_afterScan.PNG>
 Package pdftex.def Info: figure/Simulation/5_afterScan.PNG used on input line 8
 9.
 (pdftex.def)             Requested size: 167.2989pt x 167.46385pt.
- [19 <./figure/Simulation/1_Initialized.PNG> <./figure/Simulation/2_afterScan.P
-NG>]) [20 <./figure/Simulation/3_afterMoveAndMeas.PNG> <./figure/Simulation/4_a
+ [21 <./figure/Simulation/1_Initialized.PNG> <./figure/Simulation/2_afterScan.P
+NG>]) [22 <./figure/Simulation/3_afterMoveAndMeas.PNG> <./figure/Simulation/4_a
 fterMoveAndMeas.PNG> <./figure/Simulation/5_afterScan.PNG>]
 \openout2 = `chapter/Resultater.aux'.
 
- (./chapter/Resultater.tex) [21
+ (./chapter/Resultater.tex) [23
 
 
 
@@ -2014,14 +2037,14 @@ fterMoveAndMeas.PNG> <./figure/Simulation/5_afterScan.PNG>]
 \openout2 = `chapter/Discussion.aux'.
 
  (./chapter/Discussion.tex)
-[22
+[24
 
 
 
 ]
 \openout2 = `chapter/Conclusion.aux'.
 
- (./chapter/Conclusion.tex) [23
+ (./chapter/Conclusion.tex) [25
 
 
 
@@ -2030,7 +2053,7 @@ fterMoveAndMeas.PNG> <./figure/Simulation/5_afterScan.PNG>]
 Package caption Warning: Unused \captionsetup[table] on input line 25.
 See the caption package documentation for explanation.
 
-[24
+[26
 
 
 ]
@@ -2048,7 +2071,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 617ACCF9C42BDBFEE9A77B75C3F20482;786.
+(rerunfilecheck)             Checksum: E65EECB2ACCAAC842FAA94E2E7DF9454;786.
 
 
 LaTeX Warning: There were undefined references.
@@ -2059,41 +2082,42 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 32379 strings out of 493089
- 582656 string characters out of 6134842
- 806062 words of memory out of 5000000
- 35144 multiletter control sequences out of 15000+600000
- 16466 words of font info for 58 fonts, out of 8000000 for 9000
+ 32404 strings out of 493089
+ 583083 string characters out of 6134842
+ 806641 words of memory out of 5000000
+ 35159 multiletter control sequences out of 15000+600000
+ 16825 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,12n,92p,10417b,1435s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsl9.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
-blic/cm-super/sfrm0700.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/cm-super/sfrm1000.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/co
-urier/ucrr8a.pfb>
-Output written on report.pdf (25 pages, 1004077 bytes).
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsl9.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/cm-super/sfrm0700.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/cm-super/sfrm1000.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/c
+ourier/ucrr8a.pfb>
+Output written on report.pdf (27 pages, 1062874 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 369 compressed objects within 4 object streams
- 111 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 475 PDF objects out of 1000 (max. 8388607)
+ 388 compressed objects within 4 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 

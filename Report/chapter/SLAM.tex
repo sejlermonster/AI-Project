@@ -1,2 +1,44 @@
 \chapter{SLAM}
 \label{chp:slam}
+
+SLAM is a method for mapping and it a short term for "\emph{\textbf{S}simultaneous \textbf{L}ocalization \textbf{A}nd \textbf{M}apping}."
+In the other theory sections the world or map has been known, bu what if the robot moves in a map that is not known?. It is here SLAM comes into play.It is a big field with a lot of studies but the focus in this section will be on the method \emph{Graph SLAM}
+
+\section{Graph SLAM}
+
+Graph SLAM is about to reduce the mapping problem to a couple of intuitive addition into a matrix and a vector.
+It can be written on the formula
+
+\begin{center}
+	$\Omega^{-1} \cdot \xi = \mu$
+\end{center}
+
+This gives the best solution ($\mu$) for all landmark positions ($\xi$) or world positions ($\Omega$).
+
+SLAM graph calculates with different constraints namely
+
+
+\begin{itemize}
+	\item The initial location
+	\item Relative motion constraints
+	\item Relative measurements constraints
+\end{itemize}
+
+The initial location, is the start position of the robot. it counts as the only absolute constraint. Relative motion constraints is when the robot moves in the world and relative measurements constraints is if the robot measure some landmarks in the world.
+
+The easiest way to explain the formula and SLAM graph is by showing it in an example.
+
+\myFigure{SLAMex.PNG}{SLAM example where a robot moves and i measures a landmark \citep{propRobotics}}{fig:SLAMex}{1} 
+ 
+The robot has it initial location in $X_1$ and moves to $X_2$ and then to $X_3$. The square with the \emph{L} inside is a landmark. When the robot is in position $X_1$ and $X_3$ i measure the landmark.
+Now this can be transform into a $\Omega$ table and a $/xi$ table. The tables will look like this.
+
+\myFigure{Table.PNG}{$\Omega$ and $\xi$ tables for the example in figure \ref{fig:SLAMex}}{fig:Omegatable}{1}
+
+Lets say that the robot moves 5 steps from $X_1$ to $X_2$. Then the robot believe that $X_2$ should be $X_1$ + 5. The way this is inserted into $\Omega$ on place $X_1$/$X_1$ there is inserted 1 and on place $X_1$/$X_2$ there is inserted -1. this gives the equation $X_1$ - $X_2$ = -5 and $X_2$ - $X_1$ = 5. This values is added to the tables, so the table with the new values looks like:
+
+\myFigure{newtable.PNG}{The table with the added values in the $\Omega$ and $\xi$ tables for the example in figure \ref{fig:SLAMex}}{fig:Omegatable}{1}
+
+The same is done throughout the whole table, and at the end, you can dot the two tables together and the output will be $\mu$ which will contain all the best position for landmarks and the world
+
+If new constraints is performed or discovered these can be added to the $\Omega$ and $\mu$ table.
