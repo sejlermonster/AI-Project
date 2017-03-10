@@ -5,30 +5,30 @@
 \contentsline {chapter}{\chapternumberline {2}Localization}{5}{chapter.2}
 \contentsline {chapter}{\chapternumberline {3}Kalman Filter}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Kalman Filter}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Extended Kalman Filter}{9}{section.3.2}
-\contentsline {chapter}{\chapternumberline {4}Particle Filter}{10}{chapter.4}
-\contentsline {chapter}{\chapternumberline {5}Search}{12}{chapter.5}
-\contentsline {section}{\numberline {5.1}Search algorithm}{12}{section.5.1}
-\contentsline {section}{\numberline {5.2}A* algorithm}{13}{section.5.2}
-\contentsline {chapter}{\chapternumberline {6}PID}{15}{chapter.6}
-\contentsline {chapter}{\chapternumberline {7}SLAM}{18}{chapter.7}
-\contentsline {section}{\numberline {7.1}Graph SLAM}{18}{section.7.1}
-\contentsline {part}{\partnumberline {II}Project}{20}{part.2}
-\contentsline {chapter}{\chapternumberline {8}Project description}{21}{chapter.8}
-\contentsline {chapter}{\chapternumberline {9}Implementation}{22}{chapter.9}
-\contentsline {section}{\numberline {9.1}Hardware}{22}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Devloping for Lego Mindstorm}{22}{subsection.9.1.1}
-\contentsline {section}{\numberline {9.2}Structure and design}{22}{section.9.2}
-\contentsline {section}{\numberline {9.3}Robot motion}{23}{section.9.3}
-\contentsline {section}{\numberline {9.4}Particle Filter}{23}{section.9.4}
-\contentsline {subsection}{\numberline {9.4.1}Simulation}{24}{subsection.9.4.1}
-\contentsline {section}{\numberline {9.5}A*}{26}{section.9.5}
-\contentsline {subsection}{\numberline {9.5.1}Simulation}{28}{subsection.9.5.1}
-\contentsline {section}{\numberline {9.6}Combining Particle Filter and A*}{29}{section.9.6}
-\contentsline {chapter}{\chapternumberline {10}Results}{30}{chapter.10}
-\contentsline {chapter}{\chapternumberline {11}Discussion}{31}{chapter.11}
-\contentsline {chapter}{\chapternumberline {12}Conclusion}{32}{chapter.12}
-\contentsline {chapter}{Bibliography}{33}{section*.20}
+\contentsline {chapter}{\chapternumberline {4}Particle Filter}{9}{chapter.4}
+\contentsline {chapter}{\chapternumberline {5}Search}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Search algorithm}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}A* algorithm}{12}{section.5.2}
+\contentsline {chapter}{\chapternumberline {6}PID}{14}{chapter.6}
+\contentsline {chapter}{\chapternumberline {7}SLAM}{17}{chapter.7}
+\contentsline {section}{\numberline {7.1}Graph SLAM}{17}{section.7.1}
+\contentsline {part}{\partnumberline {II}Project}{19}{part.2}
+\contentsline {chapter}{\chapternumberline {8}Implementation}{20}{chapter.8}
+\contentsline {section}{\numberline {8.1}Hardware}{20}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Devloping for Lego Mindstorm}{21}{subsection.8.1.1}
+\contentsline {section}{\numberline {8.2}Structure and design}{21}{section.8.2}
+\contentsline {section}{\numberline {8.3}Robot motion and measurements}{22}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Motion}{22}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Measurements}{23}{subsection.8.3.2}
+\contentsline {section}{\numberline {8.4}Particle Filter}{24}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Simulation}{25}{subsection.8.4.1}
+\contentsline {section}{\numberline {8.5}A*}{27}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Simulation}{28}{subsection.8.5.1}
+\contentsline {section}{\numberline {8.6}Combining Particle Filter and A*}{30}{section.8.6}
+\contentsline {chapter}{\chapternumberline {9}Results}{31}{chapter.9}
+\contentsline {chapter}{\chapternumberline {10}Discussion}{32}{chapter.10}
+\contentsline {chapter}{\chapternumberline {11}Conclusion}{33}{chapter.11}
+\contentsline {chapter}{Bibliography}{34}{section*.24}
 \setcounter {tocdepth}1
 \setlength \cftchapternumwidth {1cm}
 \changetocdepth {0}
