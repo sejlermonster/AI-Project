@@ -1,9 +1,11 @@
 \chapter{Implementation}
 \label{chp:impl}
 \section{Hardware}
-The chosen hardware for the project was a Lego Mindstorm EV3 robot. With the robot two motors was included and sensors such as a gyroscope and a ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem.
+The chosen hardware for the project was a Lego Mindstorm EV3 robot. The robot set included two motors along with sensors such as a gyroscope and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem.
 
-Using the motors, gyroscope and ultrasound sensor showed some inaccuracy.  The gyroscope has a documented accuracy of +/- 3 degrees and the ultrasonic sensor has a documented accuracy of +/-1 centimeters. Further experiments showed that the ultrasonic sensor could not guarantee any accuracy if the angle to the measured object was no perpendicular. This gave some problems throughout the development and the ultrasonic sensor could yield measurements of for example 90 centimeters when the distance was only 10 centimeters. 
+Using the motors, gyroscope and ultrasound sensor showed some inaccuracy.  The gyroscope has a documented accuracy of +/- 3 degrees and the ultrasonic sensor has a documented accuracy of +/-1 centimeters. Further experiments showed that the ultrasonic sensor could not guarantee any accuracy if the angle to the measured object was not perpendicular. This gave some problems throughout the development and the ultrasonic sensor could yield measurements of for example 90 centimeters when the distance was only 10 centimeters. 
+
+Through the various testruns the robot also showed different performance depending on the current batterylife. This meant that to get a proper testrun, it was important to make sure that the battery was fully charged. 
 
 Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors. 
 
