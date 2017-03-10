@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.9.3)  10 MAR 2017 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.9.3)  10 MAR 2017 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1770,21 +1770,21 @@ ABD: EveryShipout initializing macros
 
 
 
-{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./report.toc)
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./report.tocp
+dfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
+een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.83     \include{chapter/introduction}
-                                        [1
+l.30 ...e {chapter}{Bibliography}{31}{section*.15}
+                                                   [1
 
 
 
-] [2]
+]) [2]
 \openout2 = `chapter/introduction.aux'.
 
- (./chapter/introduction.tex)
-[3
+
+(./chapter/introduction.tex) [3
 
 
 ]
@@ -1797,8 +1797,9 @@ l.83     \include{chapter/introduction}
 ])
 \openout2 = `chapter/Localization.aux'.
 
- (./chapter/Localization.tex
-<figure/MCLex.PNG, id=140, 600.2425pt x 772.8875pt>
+
+(./chapter/Localization.tex
+<figure/MCLex.PNG, id=144, 600.2425pt x 772.8875pt>
 File: figure/MCLex.PNG Graphic file (type png)
  <use figure/MCLex.PNG>
 Package pdftex.def Info: figure/MCLex.PNG used on input line 26.
@@ -1816,7 +1817,7 @@ Package pdftex.def Info: figure/MCLex.PNG used on input line 26.
 
 
 ]
-<figure/kalmanFilterGaussians.PNG, id=176, 452.0639pt x 395.22656pt>
+<figure/kalmanFilterGaussians.PNG, id=181, 452.0639pt x 395.22656pt>
 File: figure/kalmanFilterGaussians.PNG Graphic file (type png)
 
 <use figure/kalmanFilterGaussians.PNG>
@@ -1827,7 +1828,7 @@ Package pdftex.def Info: figure/kalmanFilterGaussians.PNG used on input line 45
 \openout2 = `chapter/ParticleFilter.aux'.
 
  (./chapter/ParticleFilter.tex
-<figure/ResampleWheel.PNG, id=195, 222.8325pt x 225.46735pt>
+<figure/ResampleWheel.PNG, id=199, 222.8325pt x 225.46735pt>
 File: figure/ResampleWheel.PNG Graphic file (type png)
 
 <use figure/ResampleWheel.PNG>
@@ -1868,7 +1869,7 @@ File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 
 
 (./chapter/Search.tex
-<figure/Search/Search_Algo.JPG, id=223, 315.1775pt x 254.45062pt>
+<figure/Search/Search_Algo.JPG, id=227, 315.1775pt x 254.45062pt>
 File: figure/Search/Search_Algo.JPG Graphic file (type jpg)
 
 <use figure/Search/Search_Algo.JPG>
@@ -1879,7 +1880,7 @@ Package pdftex.def Info: figure/Search/Search_Algo.JPG used on input line 26.
 
 
 ]
-<figure/Search/AstarHeuristic.JPG, id=232, 316.68312pt x 255.45438pt>
+<figure/Search/AstarHeuristic.JPG, id=236, 316.68312pt x 255.45438pt>
 File: figure/Search/AstarHeuristic.JPG Graphic file (type jpg)
 
 <use figure/Search/AstarHeuristic.JPG>
@@ -1887,7 +1888,7 @@ Package pdftex.def Info: figure/Search/AstarHeuristic.JPG used on input line 37
 .
 (pdftex.def)             Requested size: 250.95476pt x 202.43819pt.
 
-<figure/Search/Astar.JPG, id=233, 315.1775pt x 253.94875pt>
+<figure/Search/Astar.JPG, id=237, 315.1775pt x 253.94875pt>
 File: figure/Search/Astar.JPG Graphic file (type jpg)
 
 <use figure/Search/Astar.JPG>
@@ -1903,7 +1904,7 @@ Overfull \hbox (3.22684pt too wide) in paragraph at lines 3--4
  for \OT1/cmr/m/it/10.95 proportional-integral-derivative
  []
 
-<figure/PID.PNG, id=245, 1574.88374pt x 706.64pt>
+<figure/PID.PNG, id=249, 1574.88374pt x 706.64pt>
 File: figure/PID.PNG Graphic file (type png)
  <use figure/PID.PNG>
 Package pdftex.def Info: figure/PID.PNG used on input line 30.
@@ -1939,7 +1940,7 @@ Package pdftex.def Info: figure/PID.PNG used on input line 30.
 \openout2 = `chapter/Implementation.aux'.
 
  (./chapter/Implementation.tex
-<figure/classDiagram.png, id=311, 949.5475pt x 475.7775pt>
+<figure/classDiagram.png, id=315, 949.5475pt x 475.7775pt>
 File: figure/classDiagram.png Graphic file (type png)
 
 <use figure/classDiagram.png>
@@ -1953,88 +1954,89 @@ Package pdftex.def Info: figure/classDiagram.png used on input line 16.
 (c:/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 ) [22 <./figure/classDiagram.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 65.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 68.
  (c:/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
  [23]
-<figure/Simulation/1_Initialized.PNG, id=368, 377.91188pt x 377.91188pt>
+<figure/Simulation/1_Initialized.PNG, id=371, 377.91188pt x 377.91188pt>
 File: figure/Simulation/1_Initialized.PNG Graphic file (type png)
 
 <use figure/Simulation/1_Initialized.PNG>
 Package pdftex.def Info: figure/Simulation/1_Initialized.PNG used on input line
- 82.
+ 85.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/2_afterScan.PNG, id=369, 378.28828pt x 378.28828pt>
+<figure/Simulation/2_afterScan.PNG, id=372, 378.28828pt x 378.28828pt>
 File: figure/Simulation/2_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/2_afterScan.PNG>
 Package pdftex.def Info: figure/Simulation/2_afterScan.PNG used on input line 8
-2.
+5.
 (pdftex.def)             Requested size: 209.12683pt x 209.12704pt.
 
 
-LaTeX Warning: Reference `sim1' on page 24 undefined on input line 83.
+LaTeX Warning: Reference `sim1' on page 24 undefined on input line 86.
 
 
-LaTeX Warning: Reference `sim2' on page 24 undefined on input line 83.
+LaTeX Warning: Reference `sim2' on page 24 undefined on input line 86.
 
-<figure/Simulation/3_afterMoveAndMeas.PNG, id=370, 377.91188pt x 377.91188pt>
+<figure/Simulation/3_afterMoveAndMeas.PNG, id=373, 377.91188pt x 377.91188pt>
 File: figure/Simulation/3_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/3_afterMoveAndMeas.PNG>
 Package pdftex.def Info: figure/Simulation/3_afterMoveAndMeas.PNG used on input
- line 86.
+ line 89.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/4_afterMoveAndMeas.PNG, id=371, 377.91188pt x 378.66469pt>
+<figure/Simulation/4_afterMoveAndMeas.PNG, id=374, 377.91188pt x 378.66469pt>
 File: figure/Simulation/4_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/4_afterMoveAndMeas.PNG>
 Package pdftex.def Info: figure/Simulation/4_afterMoveAndMeas.PNG used on input
- line 86.
+ line 89.
 (pdftex.def)             Requested size: 209.12683pt x 209.54314pt.
 
-<figure/Simulation/5_afterScan.PNG, id=373, 377.53546pt x 377.91188pt>
+<figure/Simulation/5_afterScan.PNG, id=376, 377.53546pt x 377.91188pt>
 File: figure/Simulation/5_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/5_afterScan.PNG>
-Package pdftex.def Info: figure/Simulation/5_afterScan.PNG used on input line 8
-9.
+Package pdftex.def Info: figure/Simulation/5_afterScan.PNG used on input line 9
+2.
 (pdftex.def)             Requested size: 167.2989pt x 167.46385pt.
  [24 <./figure/Simulation/1_Initialized.PNG> <./figure/Simulation/2_afterScan.P
-NG>]) [25 <./figure/Simulation/3_afterMoveAndMeas.PNG> <./figure/Simulation/4_a
-fterMoveAndMeas.PNG> <./figure/Simulation/5_afterScan.PNG>]
+NG>] [25 <./figure/Simulation/3_afterMoveAndMeas.PNG> <./figure/Simulation/4_af
+terMoveAndMeas.PNG> <./figure/Simulation/5_afterScan.PNG>] [26]) [27]
 \openout2 = `chapter/Resultater.aux'.
 
- (./chapter/Resultater.tex) [26
+ (./chapter/Resultater.tex) [28
 
 
 
 ]
 \openout2 = `chapter/Discussion.aux'.
 
- (./chapter/Discussion.tex)
-[27
+
+(./chapter/Discussion.tex) [29
 
 
 
 ]
 \openout2 = `chapter/Conclusion.aux'.
 
- (./chapter/Conclusion.tex) [28
+ (./chapter/Conclusion.tex) [30
 
 
 
-] (./report.bbl) (./style/appendix.tex)
+] (./report.bbl)
+(./style/appendix.tex)
 
 Package caption Warning: Unused \captionsetup[table] on input line 25.
 See the caption package documentation for explanation.
 
-[29
+[31
 
 
 ]
@@ -2063,10 +2065,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 33135 strings out of 493091
- 593735 string characters out of 6138532
- 809417 words of memory out of 5000000
- 35858 multiletter control sequences out of 15000+600000
+ 33191 strings out of 493091
+ 594526 string characters out of 6138532
+ 809772 words of memory out of 5000000
+ 35878 multiletter control sequences out of 15000+600000
  16466 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,12n,92p,10419b,1435s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2092,10 +2094,10 @@ onts/cm/cmti10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb>
 <c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texliv
 e/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (30 pages, 1246780 bytes).
+Output written on report.pdf (32 pages, 1253603 bytes).
 PDF statistics:
- 525 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 148 named destinations out of 1000 (max. 500000)
+ 579 PDF objects out of 1000 (max. 8388607)
+ 489 compressed objects within 5 object streams
+ 184 named destinations out of 1000 (max. 500000)
  198 words of extra memory for PDF output out of 10000 (max. 10000000)
 
