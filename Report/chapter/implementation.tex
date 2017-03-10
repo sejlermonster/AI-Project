@@ -1,7 +1,13 @@
 \chapter{Implementation}
 \label{chp:impl}
+
+This chapter describes the implementation of the project. The project tries to solve the kidnapped robot problem. This is a classic problem where a self driving robot is carried to an abitrary location in a world map. In this project the robot must find its way to a pre defined location as well. In the implementation Particle filter is used for localization while A* is used for path finding.
+
 \section{Hardware}
-The chosen hardware for the project was a Lego Mindstorm EV3 robot. The robot set included two motors along with sensors such as a gyroscope and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem.
+The chosen hardware for the project was a Lego Mindstorm EV3 robot. The robot set included two motors along with sensors such as a gyroscope and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem. The assembled robot is shown in figure \ref{fig:legoRobot}
+
+\myFigure{LegoRobot.jpg}{Assembled Lego Mindstor EV3 robot}{fig:legoRobot}{0.7} 
+\FloatBarrier
 
 Using the motors, gyroscope and ultrasound sensor showed some inaccuracy.  The gyroscope has a documented accuracy of +/- 3 degrees and the ultrasonic sensor has a documented accuracy of +/-1 centimeters. Further experiments showed that the ultrasonic sensor could not guarantee any accuracy if the angle to the measured object was not perpendicular. This gave some problems throughout the development and the ultrasonic sensor could yield measurements of for example 90 centimeters when the distance was only 10 centimeters. 
 
@@ -10,7 +16,7 @@ Through the various testruns the robot also showed different performance dependi
 Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors. 
 
 \subsection{Devloping for Lego Mindstorm}
-A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This allowed for easily developing advanced algorithms for the Lego Mindstorm robot.
+A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This allowed for easily developing advanced algorithms for the Lego Mindstorm robot. It also enabled the to easily follow how the algorithms processed and for example graphically draw all the particles on a map
 
 \section{Structure and design}
 The structure of the developed software is illustrated with a UML class diagram in figure \ref{fig:class}. The main class initializes the world map and the landmarks in it. Main also initializes ParticleFilter, Astar, RobotMotion and RobotSensing. The ParticleFilter class manipulates a list of the type \emph{Particle}. The class \emph{Particle} uses \emph{GaussianNoise} to apply gaussian noise for movement and measurements. 
@@ -19,16 +25,46 @@ The structure of the developed software is illustrated with a UML class diagram 
 
 In the following sections the implemented particle filter and A* algorithm will be explained in details.
 
-\section{Robot motion}
-Using only P
+\section{Robot motion and measurements}
+\subsection{Motion}
+Robot motion is implemented for rotation around the center of the robot and movement forwards and backwards. The rotation of the robot is implemented with a "point turn" where one wheel moves forward while the other moves backwards. The rotation of the robot is illustrated on figure \ref{fig:rotation}
 
+
+\myFigure{RobotRotation.png}{Robot rotation around point \citep{pointTurn}}{fig:rotation}{0.7} 
+
+The movement forwards and backwards simply applies force to both motors. 
+
+On both rotation and movement a P controller was implemented. When rotating the robot the gyroscope is use for calculating the error. For movements, the ultrasonic sensor is used for calculating the error. In general for both rotation and movement a very small force was applied to the robot and a small threshold is set as acceptable for the movements and rotation. This was to ensure that the robot did not keep oscillating.
+
+Listing \ref{lst:turn} is pseduo code for the implementation of turning the robot. It shows that the endDegree is calculated based on the startDegree plus the angle that the robot should turn. A while loop then keeps running until it hits the threshold. If it overshoots the robot turns one way and if it undershoots the robot turns the other way.
+
+\lstset{style=sharpc}
+\begin{lstlisting}[caption={Pseduo code for turning the robot}, label=lst:turn, mathescape=true]             
+var startDegree = _robotSensing.GetGyroData();
+var endDegree = startDegree + degrees;
+while (currentDegree < endDegree - treshhold 
+|| currentDegree > endDegree + treshhold)
+{	
+	.....
+}
+while(endDegree > )
+\end{lstlisting}
+
+
+\FloatBarrier
+\subsection{Measurements}
+The robot had both gyroscope and a ultrasonic sensor which in the project was used for measuring angle and distance. They were both use for implementing more precise movements while the ultrasonic sensor was also used for the particle filter. A scan method was therefore implemented to scan the area. The scan function is illustrated in figure \ref{fig:scan}. The robot rotates around it self while taking measurements. Four measurements was taking during a scan at every 90 degrees.
+
+\myFigure{scan.png}{Robot scan}{fig:scan}{0.5} 
+
+\FloatBarrier
 \section{Particle Filter}
 In this project a particle filter was implemented and used for localiation of the robot. Furthermore a class for robot movement and robot sensing was implemented. 
 
 The particle filter is initialized with 3 parameters: the number of particles to be randomly generated and the length on the x and y axis.
 
 \lstset{style=sharpc}
-\begin{lstlisting}[caption={Initialization of the particle filter}, label=lst:wheel, mathescape=true]             
+\begin{lstlisting}[caption={Initialization of the particle filter}, label=lst:initPart, mathescape=true]             
 _particleFilter.GenerateParticles(_numberOfParticles, world.GetLength(0),
 world.GetLength(1));
 \end{lstlisting}
@@ -160,7 +196,12 @@ The optimal path that was found by the algorithm is shown in the last part of th
 
 \myFigure{Simulation/AstarSimulate.JPG}{A* simulation console output}{fig:consOut}{0.2}
 
-
 \section{Combining Particle Filter and A*}
 
-The Particle filter and the A* algorithm handles two different aspects of the kidnapped robot problem. The Particle filter makes sure the robot can find its own position in an arbitrary environment, and the A* algorithm makes sure the robot can find a path to its destination.
+The Particle filter and the A* algorithm handles two different aspects of the kidnapped robot problem. The Particle filter makes sure the robot can find its own position in an arbitrary environment, and the A* algorithm makes sure the robot can find a path to its destination. This showed a strong combination for solving the problem.
+
+\myFigure{iterationPartA.PNG}{Iterates between localization and path finding}{fig:itePartA}{0.6}
+\FloatBarrier
+When placing the robot in the world it starts by scanning the area and updating the particle filter. A position and orientation in the map is estimated by calculating the mean of the particles location and orientation. This location and orientation is the expected and is used as start position for the A* algorithm. The robot then moves 10 centimeters along the calculated path. After moving its scans again and resamples the particles. This iteration keeps going until the robot reaches it target location. This iteration between localization and path finding is illustrated in figure \ref{fig:itePartA}. 
+
+

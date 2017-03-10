@@ -43,6 +43,3 @@ In figure \ref{fig:KFGaussian} a simple one dimensional example is shown. The ex
 In figure \ref{fig:KFGaussian}.(a) is shown an initial belief of the robots position. Figure \ref{fig:KFGaussian}.(b) show a measurement in bold. In figure \ref{fig:KFGaussian}.(c) the inital prediction and the measurement is combined using the Kalman Filter. This gives a more certain prediction than the initial or the measurement alone. Figure \ref{fig:KFGaussian}.(d) illustrates the prediction of the robots position after it has moved. As illustrated the robots position is now more uncertain, this is caused by the motion of the robot. In figure \ref{fig:KFGaussian}.(e) a new measurement is taken. In Figure \ref{fig:KFGaussian}.(f) the prediction and measurement is again combined into a more certain belief of the robots position.
 
 \myFigure{kalmanFilterGaussians.PNG}{Kalman Filter example of locating a robot \citep{propRobotics}}{fig:KFGaussian}{1} 
-
-\section{Extended Kalman Filter}
-As described the Kalman filter is used for filtering and prediction of linear systems. If the state transition is not linear the Kalman filter will not give the optimal solution. Instead the Extended Kalman filter is used.
