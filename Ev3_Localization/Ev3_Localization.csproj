@@ -62,7 +62,6 @@
     <Compile Include="AStarSearch.cs" />
     <Compile Include="GaussianNoise.cs" />
     <Compile Include="Models\Landmark.cs" />
-    <Compile Include="Measurement.cs" />
     <Compile Include="Models\MeanAndVariance.cs" />
     <Compile Include="Models\Pair.cs" />
     <Compile Include="Models\Particle.cs" />

@@ -121,14 +121,17 @@ namespace Ev3_Localization
             double meanY = 0;
             double varianceX = 0;
             double varianceY = 0;
+            double meanOrientation = 0;
            
             foreach (var particle in Particles)
             {
                 meanX += particle.Position.X;
                 meanY += particle.Position.Y;
+                meanOrientation += particle.OrientationInRadians;
             }
             meanX = meanX / Particles.Count;
             meanY = meanY / Particles.Count;
+            meanOrientation = meanOrientation / Particles.Count;
 
             foreach (var particle in Particles)
             {
@@ -142,7 +145,8 @@ namespace Ev3_Localization
             return new MeanAndVariance()
             {
                 Mean = new Point(meanX, meanY),
-                Variance = new Point(varianceX, varianceY)
+                Variance = new Point(varianceX, varianceY),
+                MeanOrientation = meanOrientation
             };
         }
 

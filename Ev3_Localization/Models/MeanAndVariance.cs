@@ -10,6 +10,7 @@ namespace Ev3_Localization.Models
     public class MeanAndVariance
     {
         public Point Mean { get; set; }
+        public double MeanOrientation { get; set; }
         public Point Variance { get; set; }
     }
 }
