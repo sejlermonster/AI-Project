@@ -141,7 +141,22 @@ for (int i = 0; i < delta.Count; i++)
 The A* part of this loop is when the heuristic function is introduced. \emph{g2} is the distance value from the robots position to the path point in question, \emph{h2} is the distance from the path point to the goal, and \emph{f2} is the combination of the two. By combining them the algorithm can chose the shortest path to the goal.
 
 \subsection{Simulation}
+In this section a simple simulation of the A* algorithm is illustrated. A 10x10 array is set up with some obstacles. The algorithm is given its start position and its goal destination. All this is illustrated in the first part of the console output shown in figure \ref{fig:consOut}, where:
 
+\begin{itemize}
+	\item \emph{S} is the start location
+	\item \emph{E} is the goal destination
+	\item \emph{*} is the free space
+	\item The rest are the obstacles
+\end{itemize}
+
+The algorithm then produces the heuristic function, and outputs it. This is shown in the second part of the console output. Since the heuristic function alone does not take obstacles into account, it is represented by a 10x10 array filled with distance values to the goal. 
+
+When the algorithm has found its optimal path to the goal it outputs an array containing the distance from start to goal, along with the x an y-value of the goal destination. This is the third section of the console output, meaning that for this example the distance from start to goal is 12 steps. 
+
+The optimal path that was found by the algorithm is shown in the last part of the console output, and shows that the robot will not need to do any unnecessary movement to get to the goal destination. The reason it does not just show one path, is that there are more paths with equal cost.  
+
+\myFigure{Simulation/AstarSimulate.JPG}{A* simulation console output}{fig:consOut}{0.2}
 
 
 \section{Combining Particle Filter and A*}
