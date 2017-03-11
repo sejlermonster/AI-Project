@@ -1,6 +1,6 @@
 \chapter{PID}
 \label{chp:pid}
-A PID controller is used for control problems.It is short for \emph{proportional-integral-derivative} which describes the three different part of the algorithm. The PID controller only relies on measured process variables. Different combinations of controllers exists were only some terms are combined. For example P, PI or PD can be used for different scenarios. 
+A PID controller is used for control problems. It is short for \emph{proportional-integral-derivative} which describes the three different part of the algorithm. The PID controller only relies on measured process variables. Different combinations of controllers exists were only some terms are combined. For example P, PI or PD can be used for different scenarios. 
 
 The proportional term depends on the measured error. So this can be use to correct when for example turning a robot. This term only depends on the error, $e(t)$ and therefore it will only be marginally stable. When using only a P controller the robot overshoot and it will oscillate around the correct value. In a PID controller the proportional term is weighted by a gain. The formula for the P term can be seen below.
 \begin{center}

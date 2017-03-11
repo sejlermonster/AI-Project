@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
+This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: plainnat.bst
@@ -12,23 +12,22 @@ A level-1 auxiliary file: chapter/Search.aux
 A level-1 auxiliary file: chapter/PID.aux
 A level-1 auxiliary file: chapter/SLAM.aux
 A level-1 auxiliary file: chapter/project.aux
-A level-1 auxiliary file: chapter/SystemDescription.aux
 A level-1 auxiliary file: chapter/Implementation.aux
 A level-1 auxiliary file: chapter/Resultater.aux
 A level-1 auxiliary file: chapter/Discussion.aux
 A level-1 auxiliary file: chapter/Conclusion.aux
 Database file #1: bibliografi.bib
 Warning--entry type for "udacity" isn't style-file defined
---line 25 of file bibliografi.bib
+--line 13 of file bibliografi.bib
 Warning--entry type for "PIDImage" isn't style-file defined
---line 39 of file bibliografi.bib
+--line 20 of file bibliografi.bib
 Warning--entry type for "pointTurn" isn't style-file defined
---line 53 of file bibliografi.bib
+--line 27 of file bibliografi.bib
 Warning--empty publisher in feedbackSystem
 Warning--empty publisher in propRobotics
 You've used 5 entries,
             2773 wiz_defined-function locations,
-            634 strings with 5753 characters,
+            633 strings with 5724 characters,
 and the built_in function-call counts, 1510 in all, are:
 = -- 120
 > -- 50

@@ -26,9 +26,9 @@
 \contentsline {subsection}{\numberline {8.5.1}Simulation}{28}{subsection.8.5.1}
 \contentsline {section}{\numberline {8.6}Combining Particle Filter and A*}{30}{section.8.6}
 \contentsline {chapter}{\chapternumberline {9}Results}{31}{chapter.9}
-\contentsline {chapter}{\chapternumberline {10}Discussion}{32}{chapter.10}
-\contentsline {chapter}{\chapternumberline {11}Conclusion}{33}{chapter.11}
-\contentsline {chapter}{Bibliography}{34}{section*.24}
+\contentsline {chapter}{\chapternumberline {10}Discussion}{37}{chapter.10}
+\contentsline {chapter}{\chapternumberline {11}Conclusion}{38}{chapter.11}
+\contentsline {chapter}{Bibliography}{39}{section*.35}
 \setcounter {tocdepth}1
 \setlength \cftchapternumwidth {1cm}
 \changetocdepth {0}
