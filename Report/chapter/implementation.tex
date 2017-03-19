@@ -1,40 +1,40 @@
 \chapter{Implementation}
 \label{chp:impl}
 
-This chapter describes the implementation of the project. The project tries to solve the kidnapped robot problem. This is a classic problem where a self driving robot is carried to an abitrary location in a world map. In this project the robot must find its way to a pre defined location as well. In the implementation Particle filter is used for localization while A* is used for path finding.
+This chapter describes the implementation of the project. The project tries to solve the kidnapped robot problem. This is a classic problem where a self driving robot is carried to an arbitrary location in a world. In this project the robot must find its way to a predefined location as well. In the implementation a Particle filter is used for localization while A* is used for path finding.
 
 \section{Hardware}
-The chosen hardware for the project was a Lego Mindstorm EV3 robot. The robot set included two motors along with sensors such as a gyroscope and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem. The assembled robot is shown in figure \ref{fig:legoRobot}
+The chosen hardware for the project is a Lego Mindstorm EV3 robot. The used robot includes two motors along with a gyroscope sensor for angle measurement and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem. The assembled robot is shown in figure \ref{fig:legoRobot}
 
-\myFigure{LegoRobot.jpg}{Assembled Lego Mindstor EV3 robot}{fig:legoRobot}{0.7} 
+\myFigure{LegoRobot.jpg}{Assembled Lego Mindstorm EV3 robot}{fig:legoRobot}{0.7} 
 \FloatBarrier
 
 Using the motors, gyroscope and ultrasound sensor showed some inaccuracy.  The gyroscope has a documented accuracy of +/- 3 degrees and the ultrasonic sensor has a documented accuracy of +/-1 centimeters. Further experiments showed that the ultrasonic sensor could not guarantee any accuracy if the angle to the measured object was not perpendicular. This gave some problems throughout the development and the ultrasonic sensor could yield measurements of for example 90 centimeters when the distance was only 10 centimeters. 
 
-Through the various testruns the robot also showed different performance depending on the current batterylife. This meant that to get a proper testrun, it was important to make sure that the battery was fully charged. 
+Through the various test runs the robot also showed different performance depending on the current battery life. This meant that to get a proper test run, it was important to make sure that the battery was fully charged. 
 
-Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors. 
+Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors.
 
 \subsection{Devloping for Lego Mindstorm}
-A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This allowed for easily developing advanced algorithms for the Lego Mindstorm robot. It also enabled the to easily follow how the algorithms processed and for example graphically draw all the particles on a map
+A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This enabled for easily developing advanced algorithms for the Lego Mindstorm robot. By using Bluetooth communication between the robot and a PC it was also easy to follow of the algorithms performed.
 
 \section{Structure and design}
-The structure of the developed software is illustrated with a UML class diagram in figure \ref{fig:class}. Note that the diagram only illustrates public functions, this was chosen to make it easier to read. The main class initializes the world map and the landmarks in it. Main also initializes ParticleFilter, Astar, RobotMotion and RobotSensing. The ParticleFilter class manipulates a list of the type \emph{Particle}. The class \emph{Particle} uses \emph{GaussianNoise} to apply gaussian noise for movement and measurements. RobotMotion and RobotSensing is used to control and sense with the robot.
+The structure of the developed software is illustrated with a UML class diagram in figure \ref{fig:class}. Note that the diagram only illustrates public functions, this was chosen to make it easier to read. The class \emph{Main} initializes the world map and the landmarks in it. \emph{Main} also initializes \emph{ParticleFilter}, \emph{Astar}, \emph{RobotMotion} and \emph{RobotSensing}. The \emph{ParticleFilter} class manipulates a list of the type \emph{Particle}. The class \emph{Particle} uses \emph{GaussianNoise} to apply gaussian noise for movement and measurements. \emph{RobotMotion} and \emph{RobotSensing} is used to control and sense with the robot.
 
-\myFigure{classDiagram.png}{Class diagram}{fig:class}{1} 
+\myFigure{classDiagram.png}{UML class diagram of the implemented project}{fig:class}{1} 
 
-In the following sections the implemented particle filter and A* algorithm will be explained in details.
+In the following sections implementation details a further explained.
 
 \section{Robot motion and measurements}
 \subsection{Motion}
-Robot motion is implemented for rotation around the center of the robot and movement forwards and backwards. The rotation of the robot is implemented with a "point turn" where one wheel moves forward while the other moves backwards. The rotation of the robot is illustrated on figure \ref{fig:rotation}
+Robot motion is implemented for rotation around the center of the robot and movement forwards and backwards. The rotation of the robot is implemented with a \emph{point turn}, where one wheel moves forward while the other moves backwards. The rotation of the robot is illustrated on figure \ref{fig:rotation}
 
 
 \myFigure{RobotRotation.png}{Robot rotation around point \citep{pointTurn}}{fig:rotation}{0.7} 
 
 The movement forwards and backwards simply applies force to both motors. 
 
-On both rotation and movement a P controller was implemented. When rotating the robot the gyroscope is use for calculating the error. For movements, the ultrasonic sensor is used for calculating the error. In general for both rotation and movement a very small force was applied to the robot and a small threshold is set as acceptable for the movements and rotation. This was to ensure that the robot did not keep oscillating.
+On both rotation and movement a P controller was implemented. When rotating the robot, the gyroscope was used for calculating the error. For movements, the ultrasonic sensor was used for calculating the error. In general for both rotation and movement a very small force was applied to the robot and a small threshold was set as acceptable for the movements and rotation. This was to ensure that the robot did not keep oscillating.
 
 Listing \ref{lst:turn} is pseduo code for the implementation of turning the robot. It shows that the endDegree is calculated based on the startDegree plus the angle that the robot should turn. A while loop then keeps running until it hits the threshold. If it overshoots the robot turns one way and if it undershoots the robot turns the other way.
 
@@ -47,19 +47,18 @@ while (currentDegree < endDegree - treshhold
 {	
 	.....
 }
-while(endDegree > )
 \end{lstlisting}
 
 
 \FloatBarrier
 \subsection{Measurements}
-The robot had both gyroscope and a ultrasonic sensor which in the project was used for measuring angle and distance. They were both use for implementing more precise movements while the ultrasonic sensor was also used for the particle filter. A scan method was therefore implemented to scan the area. The scan function is illustrated in figure \ref{fig:scan}. The robot rotates around it self while taking measurements. Four measurements was taking during a scan at every 90 degrees.
+The robot had both gyroscope and a ultrasonic sensor which in the project was used for measuring angle and distance. They were both use for implementing more precise movements while the ultrasonic sensor was also used for the particle filter. A scan method was therefore implemented to scan the area. The scan function is illustrated in figure \ref{fig:scan}. The robot rotates around itself while taking measurements. Four measurements was taking during a scan at every 90 degrees.
 
 \myFigure{scan.png}{Robot scan}{fig:scan}{0.5} 
 
 \FloatBarrier
 \section{Particle Filter}
-In this project a particle filter was implemented and used for localiation of the robot. Furthermore a class for robot movement and robot sensing was implemented. 
+In this project a particle filter was implemented and used for localization of the robot. 
 
 The particle filter is initialized with 3 parameters: the number of particles to be randomly generated and the length on the x and y axis.
 
@@ -71,7 +70,7 @@ world.GetLength(1));
 
 After the particles are generated the Particle filter can be used for moving around the particles and resampling. The resampling is implemented as explained in chapter \ref{chp:partFilter} with the resampling wheel algorithm. The implemented resampling function is shown in Listing \ref{lst:wheel}. The method is called with a measurement. First a method is called for calculating the importance weight of each particle. This function looks at each particle and calculates the distance to the nearest object in the orientation of the particle. This distance is then compared with the measurement and based on this the weight is calculated.
 
-When the importance weight is calculated a new list of particles is create and then the resampling wheel algorithm is implemented and particles are added to the new list: \emph{particles2}. When the algorithm is done the list of particles is set equal to the new list \emph{particles2} and the weights are normalized.
+When the importance weight is calculated a new list of particles is created \emph{particles2}. The resampling wheel algorithms then adds particles to the new list. Based on the importance weight, the particle has a higher probability of being added to the new list of particles. When the algorithm is done the list of particles is set equal to the new list \emph{particles2} and the weights are normalized.
 
 \lstset{style=sharpc}
 \begin{lstlisting}[caption={Resampling wheel}, label=lst:wheel, mathescape=true]                          
@@ -98,7 +97,7 @@ public void Resampling(double measurement)
 }
 \end{lstlisting}
 
-When moving particles forwards or backwards the function MoveParticle is used. This function can be seen in listing \ref{lst:move}. The function ensures that the particles are moved in the direction of the particle by using sine and cosine. When the position is set for a particle Gaussian noise is added for the particle. This is done because the movement of the robot is inaccurate. 
+When moving particles forwards or backwards the function MoveParticle is used. This function can be seen in listing \ref{lst:move}. The function ensures that the particles are moved in the direction of the particle by using sine and cosine. When the new position is set for a particle, Gaussian noise is added for the particle. This is done because the movement of the robot is inaccurate. 
 
 \lstset{style=sharpc}
 \begin{lstlisting}[caption={Resampling wheel}, label=lst:move,  basicstyle=\tiny, mathescape=true]        
@@ -115,7 +114,7 @@ public void MoveParticles(double distance)
 \end{lstlisting}
 
 \subsection{Simulation}
-This section present a simple simulation of the particle filter. In the example the simulated robot is placed in the world at coordinates (23,64) and will first scan the area, then drive forward twice and scan the area again. When the simulated robot drives forward it also measures the distance in that direction. This is similar to how the lego mindstorm is implemented.
+This section presents a simple simulation of the particle filter. In the example the simulated robot is placed in the world at coordinates (23,64) and will first scan the area, then drive forward twice and scan the area again. When the simulated robot drives forward it also measures the distance when its finished driving. This is similar to how the Lego Mindstorm robot is implemented.
 
 In figure \ref{fig:sim1} the world is initialized. The red dot is the robot, the direction of the robot is displayed by the small line drawn from the square. The particles are the black dots. The landmarks placed in the world are colored green, orange and blue. In the illustration the particles are spread out uniformly in the world. In figure \ref{fig:sim2} the robot has made its first 360 degree scan and taken measurement every 90 degree. The particles are now centered around a few specific places in the world. The location is still very uncertain, this is mainly caused by the symmetry of the world.
 
@@ -128,7 +127,7 @@ In figure \ref{fig:sim3} and \ref{fig:sim4} the robot drives forward 10 centimet
 \FloatBarrier
 In figure \ref{fig:5} the robots makes 360 degree scan and takes measurement every 90 degree. After the scan the location is very certain and the particles are all located around the simulated robot.
 
-\myFigure{Simulation/5_afterScan.PNG}{Robot makes a 360 degree scan}{fig:5}{0.4} 
+\myFigure{Simulation/5_afterScan.PNG}{Robot makes a 360 degree scan}{fig:5}{0.5} 
 
 \section{A*}
 When the approximate location of the robot in this project is found, an A* algorithm is used to determine a path to the goal destination. The A* algorithm is initialized with 3 parameters: the length on the x an y axis, and the coordinates of the landmarks of the environment in which the robot is placed. 
@@ -139,7 +138,7 @@ _aStarSearch = new AStarSearch(world.GetLength(0), world.GetLength(1),
  _landmarks);
 \end{lstlisting}
 
-It uses the environment information to create its heuristic function and to make a path from its own position to the goal destination. The basis for the algorithm is explained in chapter \ref{chp:search} and as it is mentioned the A* algorithm is a more efficient variant of the Search algorithm, meaning the basic functionality is the same. 
+It uses the environment information to create its heuristic function and to make a path from its own position to the goal destination. The basis for the algorithm is explained in chapter \ref{chp:search} and as mentioned the A* algorithm is a more efficient variant of the Search algorithm, meaning the basic functionality is the same. 
 
 When the algorithm has knowledge of the environment, it can begin searching for paths to the goal destination. It does this by exploring adjacent paths to see if they are walkable. However it first checks two things: if it has run out of paths to explore, or if it is already at the goal destination. If neither of these are true it will go into the for-loop illustrated in listing \ref{lst:search_func}. 
 
@@ -175,9 +174,9 @@ for (int i = 0; i < delta.Count; i++)
 }
 \end{lstlisting}
 
-\emph{delta} is a list of directions the robot can go to explore new paths, meaning the loop checks all the directions from the state it is at that moment. For every one of those directions it checks if it can move that way, or if there is an obstacle. It also checks if the direction is even inside the environment in which it is placed. If the direction is indeed a possible path to expand to it will add it to the list of open expansions, it will close the path so it cannot be explored more than once, and it will add it to the list of possible movements.
+\emph{delta} is a list of directions the robot can go to explore new paths, meaning the loop checks all the directions from the state at that moment. For every one of those directions it checks if it can move that way, or if there is an obstacle. It also checks if the direction is even inside the environment in which it is placed. If the direction is indeed a possible path to expand to it will add it to the list of open expansions, it will close the path so it cannot be explored more than once, and it will add it to the list of possible movements.
 
-The A* part of this loop is when the heuristic function is introduced. \emph{g2} is the distance value from the robots position to the path point in question, \emph{h2} is the distance from the path point to the goal, and \emph{f2} is the combination of the two. By combining them the algorithm can chose the shortest path to the goal.
+The A* part of this loop is when the heuristic function is introduced. \emph{g2} is the distance value from the robots position to the path point in question, \emph{h2} is the distance from the path point to the goal, and \emph{f2} is the combination of the two. By combining them, the algorithm can chose the shortest path to the goal.
 
 \subsection{Simulation}
 In this section a simple simulation of the A* algorithm is illustrated. A 10x10 array is set up with some obstacles. The algorithm is given its start position and its goal destination. All this is illustrated in the first part of the console output shown in figure \ref{fig:consOut}, where:
@@ -193,16 +192,16 @@ The algorithm then produces the heuristic function, and outputs it. This is show
 
 When the algorithm has found its optimal path to the goal it outputs an array containing the distance from start to goal, along with the x an y-value of the goal destination. This is the third section of the console output, meaning that for this example the distance from start to goal is 12 steps. 
 
-The optimal path that was found by the algorithm is shown in the last part of the console output, and shows that the robot will not need to do any unnecessary movement to get to the goal destination. The reason it does not just show one path, is that there are more paths with equal cost.  
+The optimal path that was found by the algorithm is shown in the last part of the console output, and shows that the robot will not need to do any unnecessary movement to get to the goal destination. The reason it does not just show one path, is that there are more paths with equal cost. Not that the printed arrows indicates how the robot has moved to reach the position and the algorithm successfully found an optimal path.
 
 \myFigure{Simulation/AstarSimulate.JPG}{A* simulation console output}{fig:consOut}{0.2}
 
 \section{Combining Particle Filter and A*}
 
-The Particle filter and the A* algorithm handles two different aspects of the kidnapped robot problem. The Particle filter makes sure the robot can find its own position in an arbitrary environment, and the A* algorithm makes sure the robot can find a path to its destination. This showed a strong combination for solving the problem.
+The Particle filter and the A* algorithm handles two different aspects of the kidnapped robot problem. The Particle filter makes sure the robot can find its own position in an arbitrary environment, and the A* algorithm makes sure the robot can find a path to its final predefined destination. This showed a strong combination for solving the problem.
 
-\myFigure{iterationPartA.PNG}{Iterates between localization and path finding}{fig:itePartA}{0.6}
+\myFigure{iterationPartA.PNG}{Iterates between localization and path finding}{fig:itePartA}{0.8}
 \FloatBarrier
-When placing the robot in the world it starts by scanning the area and updating the particle filter. A position and orientation in the map is estimated by calculating the mean of the particles location and orientation. This location and orientation is the expected and is used as start position for the A* algorithm. The robot then moves 10 centimeters along the calculated path. After moving its scans again and resamples the particles. This iteration keeps going until the robot reaches it target location. This iteration between localization and path finding is illustrated in figure \ref{fig:itePartA}. 
+When placing the robot in the world it starts by scanning the area and updating the particle filter. A position and orientation in the map is estimated by calculating the mean of the particles location and orientation. This location and orientation is the expected and is used as start position for the A* algorithm. The robot then moves 10 centimeters along the calculated path. After moving it scans again and resamples the particles. This iteration keeps going until the robot reaches it target location. This iteration between localization and path finding is illustrated in figure \ref{fig:itePartA}. 
 
 

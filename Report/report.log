@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.9.3)  19 MAR 2017 08:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.9.3)  19 MAR 2017 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1589,11 +1589,7 @@ Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 (./chapter/Frontpage.aux) (./chapter/introduction.aux) (./chapter/theory.aux)
 (./chapter/Localization.aux) (./chapter/KalmanFilter.aux)
 (./chapter/ParticleFilter.aux) (./chapter/Search.aux) (./chapter/PID.aux)
-(./chapter/SLAM.aux
-
-LaTeX Warning: Label `fig:Omegatable' multiply defined.
-
-) (./chapter/project.aux) (./chapter/Implementation.aux
+(./chapter/SLAM.aux) (./chapter/project.aux) (./chapter/Implementation.aux
 
 LaTeX Warning: Label `lst:wheel' multiply defined.
 
@@ -1912,41 +1908,42 @@ Package pdftex.def Info: figure/PID.PNG used on input line 30.
 \openout2 = `chapter/SLAM.aux'.
 
  (./chapter/SLAM.tex
-<figure/SLAMex.PNG, id=325, 383.4325pt x 245.91875pt>
+<figure/SLAMex.PNG, id=328, 383.4325pt x 245.91875pt>
 File: figure/SLAMex.PNG Graphic file (type png)
  <use figure/SLAMex.PNG>
-Package pdftex.def Info: figure/SLAMex.PNG used on input line 30.
-(pdftex.def)             Requested size: 418.25368pt x 268.2675pt.
+Package pdftex.def Info: figure/SLAMex.PNG used on input line 29.
+(pdftex.def)             Requested size: 188.21288pt x 120.71512pt.
 
-<figure/Table.PNG, id=330, 1587.9325pt x 307.1475pt>
+[18
+
+
+
+ <./figure/SLAMex.PNG>]
+<figure/Table.PNG, id=344, 1587.9325pt x 307.1475pt>
 File: figure/Table.PNG Graphic file (type png)
  <use figure/Table.PNG>
-Package pdftex.def Info: figure/Table.PNG used on input line 35.
+Package pdftex.def Info: figure/Table.PNG used on input line 36.
 (pdftex.def)             Requested size: 418.25368pt x 80.9016pt.
 
-<figure/newtable.PNG, id=333, 1585.925pt x 307.1475pt>
+<figure/newtable.PNG, id=348, 1585.925pt x 307.1475pt>
 File: figure/newtable.PNG Graphic file (type png)
 
 <use figure/newtable.PNG>
-Package pdftex.def Info: figure/newtable.PNG used on input line 39.
+Package pdftex.def Info: figure/newtable.PNG used on input line 40.
 (pdftex.def)             Requested size: 418.25368pt x 81.00002pt.
-) [18
-
-
-
-] [19 <./figure/SLAMex.PNG> <./figure/Table.PNG> <./figure/newtable.PNG>]
+) [19 <./figure/Table.PNG> <./figure/newtable.PNG>]
 \openout2 = `chapter/project.aux'.
 
- (./chapter/project.tex [20
+
+(./chapter/project.tex [20
 
 
 
 ])
 \openout2 = `chapter/Implementation.aux'.
 
-
-(./chapter/Implementation.tex
-<figure/LegoRobot.jpg, id=358, 1508.63625pt x 1598.97375pt>
+ (./chapter/Implementation.tex
+<figure/LegoRobot.jpg, id=364, 1508.63625pt x 1598.97375pt>
 File: figure/LegoRobot.jpg Graphic file (type jpg)
 
 <use figure/LegoRobot.jpg>
@@ -1957,14 +1954,14 @@ Package pdftex.def Info: figure/LegoRobot.jpg used on input line 9.
 
 
  <./figure/LegoRobot.jpg>]
-<figure/classDiagram.png, id=365, 949.5475pt x 475.7775pt>
+<figure/classDiagram.png, id=371, 949.5475pt x 475.7775pt>
 File: figure/classDiagram.png Graphic file (type png)
 
 <use figure/classDiagram.png>
 Package pdftex.def Info: figure/classDiagram.png used on input line 24.
 (pdftex.def)             Requested size: 418.25368pt x 209.5678pt.
  [22]
-<figure/RobotRotation.png, id=372, 517.935pt x 276.03125pt>
+<figure/RobotRotation.png, id=378, 517.935pt x 276.03125pt>
 File: figure/RobotRotation.png Graphic file (type png)
 
 <use figure/RobotRotation.png>
@@ -1974,92 +1971,92 @@ Package pdftex.def Info: figure/RobotRotation.png used on input line 33.
 (c:/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-<figure/scan.png, id=386, 632.3625pt x 569.87906pt>
+<figure/scan.png, id=392, 632.3625pt x 569.87906pt>
 File: figure/scan.png Graphic file (type png)
  <use figure/scan.png>
-Package pdftex.def Info: figure/scan.png used on input line 58.
+Package pdftex.def Info: figure/scan.png used on input line 57.
 (pdftex.def)             Requested size: 209.12683pt x 188.46066pt.
 
 [24 <./figure/scan.png>] [25]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 106.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
 
 
 (c:/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 
-<figure/Simulation/1_Initialized.PNG, id=437, 377.91188pt x 377.91188pt>
+<figure/Simulation/1_Initialized.PNG, id=442, 377.91188pt x 377.91188pt>
 File: figure/Simulation/1_Initialized.PNG Graphic file (type png)
 
 <use figure/Simulation/1_Initialized.PNG>
 Package pdftex.def Info: figure/Simulation/1_Initialized.PNG used on input line
- 123.
+ 122.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/2_afterScan.PNG, id=438, 378.28828pt x 378.28828pt>
+<figure/Simulation/2_afterScan.PNG, id=443, 378.28828pt x 378.28828pt>
 File: figure/Simulation/2_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/2_afterScan.PNG>
 Package pdftex.def Info: figure/Simulation/2_afterScan.PNG used on input line 1
-23.
+22.
 (pdftex.def)             Requested size: 209.12683pt x 209.12704pt.
 
-<figure/Simulation/3_afterMoveAndMeas.PNG, id=441, 377.91188pt x 377.91188pt>
+<figure/Simulation/3_afterMoveAndMeas.PNG, id=446, 377.91188pt x 377.91188pt>
 File: figure/Simulation/3_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/3_afterMoveAndMeas.PNG>
 Package pdftex.def Info: figure/Simulation/3_afterMoveAndMeas.PNG used on input
- line 127.
+ line 126.
 (pdftex.def)             Requested size: 209.12683pt x 209.12656pt.
 
-<figure/Simulation/4_afterMoveAndMeas.PNG, id=442, 377.91188pt x 378.66469pt>
+<figure/Simulation/4_afterMoveAndMeas.PNG, id=447, 377.91188pt x 378.66469pt>
 File: figure/Simulation/4_afterMoveAndMeas.PNG Graphic file (type png)
 
 <use figure/Simulation/4_afterMoveAndMeas.PNG>
 Package pdftex.def Info: figure/Simulation/4_afterMoveAndMeas.PNG used on input
- line 127.
+ line 126.
 (pdftex.def)             Requested size: 209.12683pt x 209.54314pt.
  [26] [27 <./figure/Simulation/1_Initialized.PNG> <./figure/Simulation/2_afterS
 can.PNG> <./figure/Simulation/3_afterMoveAndMeas.PNG> <./figure/Simulation/4_af
 terMoveAndMeas.PNG>]
-<figure/Simulation/5_afterScan.PNG, id=475, 377.53546pt x 377.91188pt>
+<figure/Simulation/5_afterScan.PNG, id=480, 377.53546pt x 377.91188pt>
 File: figure/Simulation/5_afterScan.PNG Graphic file (type png)
 
 <use figure/Simulation/5_afterScan.PNG>
 Package pdftex.def Info: figure/Simulation/5_afterScan.PNG used on input line 1
-31.
-(pdftex.def)             Requested size: 167.2989pt x 167.46385pt.
+30.
+(pdftex.def)             Requested size: 209.12683pt x 209.33415pt.
  [28
 
  <./figure/Simulation/5_afterScan.PNG>] [29]
-<figure/Simulation/AstarSimulate.JPG, id=522, 118.94438pt x 416.05438pt>
+<figure/Simulation/AstarSimulate.JPG, id=527, 118.94438pt x 416.05438pt>
 File: figure/Simulation/AstarSimulate.JPG Graphic file (type jpg)
 
 <use figure/Simulation/AstarSimulate.JPG>
 Package pdftex.def Info: figure/Simulation/AstarSimulate.JPG used on input line
- 198.
+ 197.
 (pdftex.def)             Requested size: 83.64944pt x 292.60735pt.
- [30 <./figure/Simulation/AstarSimulate.JPG>] <figure/iterationPartA.PNG, id=52
-8, 1149.5447pt x 411.78844pt>
+ [30 <./figure/Simulation/AstarSimulate.JPG>] <figure/iterationPartA.PNG, id=53
+3, 1149.5447pt x 411.78844pt>
 File: figure/iterationPartA.PNG Graphic file (type png)
 
 <use figure/iterationPartA.PNG>
-Package pdftex.def Info: figure/iterationPartA.PNG used on input line 204.
-(pdftex.def)             Requested size: 250.95476pt x 89.89627pt.
+Package pdftex.def Info: figure/iterationPartA.PNG used on input line 203.
+(pdftex.def)             Requested size: 334.60422pt x 119.8617pt.
 ) [31 <./figure/iterationPartA.PNG>]
 \openout2 = `chapter/Resultater.aux'.
 
 
-(./chapter/Resultater.tex <figure/worldmap.PNG, id=536, 3276.24pt x 2457.18pt>
+(./chapter/Resultater.tex <figure/worldmap.PNG, id=541, 3276.24pt x 2457.18pt>
 File: figure/worldmap.PNG Graphic file (type png)
 
 <use figure/worldmap.PNG>
 Package pdftex.def Info: figure/worldmap.PNG used on input line 6.
 (pdftex.def)             Requested size: 250.95476pt x 188.17987pt.
 
-<figure/RobotSnippets/00_initial.JPG, id=540, 675.02188pt x 541.52313pt>
+<figure/RobotSnippets/00_initial.JPG, id=545, 675.02188pt x 541.52313pt>
 File: figure/RobotSnippets/00_initial.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/00_initial.JPG>
@@ -2067,7 +2064,7 @@ Package pdftex.def Info: figure/RobotSnippets/00_initial.JPG used on input line
  13.
 (pdftex.def)             Requested size: 209.12683pt x 167.76302pt.
 
-<figure/FinalRun/00_BeforeFirstScan.PNG, id=541, 503.8825pt x 503.8825pt>
+<figure/FinalRun/00_BeforeFirstScan.PNG, id=546, 503.8825pt x 503.8825pt>
 File: figure/FinalRun/00_BeforeFirstScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/00_BeforeFirstScan.PNG>
@@ -2075,7 +2072,7 @@ Package pdftex.def Info: figure/FinalRun/00_BeforeFirstScan.PNG used on input l
 ine 13.
 (pdftex.def)             Requested size: 167.2989pt x 167.29663pt.
 
-<figure/RobotSnippets/0_firstMeasurement.JPG, id=542, 674.52pt x 543.02875pt>
+<figure/RobotSnippets/0_firstMeasurement.JPG, id=547, 674.52pt x 543.02875pt>
 File: figure/RobotSnippets/0_firstMeasurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/0_firstMeasurement.JPG>
@@ -2083,7 +2080,7 @@ Package pdftex.def Info: figure/RobotSnippets/0_firstMeasurement.JPG used on in
 put line 18.
 (pdftex.def)             Requested size: 209.12683pt x 168.35373pt.
 
-<figure/FinalRun/0_AfterFirstScan.PNG, id=543, 380.54672pt x 385.44pt>
+<figure/FinalRun/0_AfterFirstScan.PNG, id=548, 380.54672pt x 385.44pt>
 File: figure/FinalRun/0_AfterFirstScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/0_AfterFirstScan.PNG>
@@ -2096,7 +2093,7 @@ e 18.
 
  <./figure/worldmap.PNG> <./figure/RobotSnippets/00_initial.JPG> <./figure/Fina
 lRun/00_BeforeFirstScan.PNG>]
-<figure/RobotSnippets/1_measurement.JPG, id=554, 674.01813pt x 540.51938pt>
+<figure/RobotSnippets/1_measurement.JPG, id=559, 674.01813pt x 540.51938pt>
 File: figure/RobotSnippets/1_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/1_measurement.JPG>
@@ -2104,7 +2101,7 @@ Package pdftex.def Info: figure/RobotSnippets/1_measurement.JPG used on input l
 ine 26.
 (pdftex.def)             Requested size: 209.12683pt x 167.69948pt.
 
-<figure/FinalRun/1_AfterFirstMove.PNG, id=555, 379.04109pt x 380.54672pt>
+<figure/FinalRun/1_AfterFirstMove.PNG, id=560, 379.04109pt x 380.54672pt>
 File: figure/FinalRun/1_AfterFirstMove.PNG Graphic file (type png)
 
 <use figure/FinalRun/1_AfterFirstMove.PNG>
@@ -2112,7 +2109,7 @@ Package pdftex.def Info: figure/FinalRun/1_AfterFirstMove.PNG used on input lin
 e 26.
 (pdftex.def)             Requested size: 167.2989pt x 167.96367pt.
 
-<figure/RobotSnippets/2_measurement.JPG, id=557, 674.52pt x 543.02875pt>
+<figure/RobotSnippets/2_measurement.JPG, id=562, 674.52pt x 543.02875pt>
 File: figure/RobotSnippets/2_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/2_measurement.JPG>
@@ -2120,7 +2117,7 @@ Package pdftex.def Info: figure/RobotSnippets/2_measurement.JPG used on input l
 ine 33.
 (pdftex.def)             Requested size: 209.12683pt x 168.35373pt.
 
-<figure/FinalRun/2_AfterScan.PNG, id=558, 380.54672pt x 385.0636pt>
+<figure/FinalRun/2_AfterScan.PNG, id=563, 380.54672pt x 385.0636pt>
 File: figure/FinalRun/2_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/2_AfterScan.PNG>
@@ -2130,7 +2127,7 @@ Package pdftex.def Info: figure/FinalRun/2_AfterScan.PNG used on input line 33.
  [33 <./figure/RobotSnippets/0_firstMeasurement.JPG> <./figure/FinalRun/0_After
 FirstScan.PNG> <./figure/RobotSnippets/1_measurement.JPG> <./figure/FinalRun/1_
 AfterFirstMove.PNG>]
-<figure/RobotSnippets/3_measurement.JPG, id=573, 675.02188pt x 541.52313pt>
+<figure/RobotSnippets/3_measurement.JPG, id=577, 675.02188pt x 541.52313pt>
 File: figure/RobotSnippets/3_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/3_measurement.JPG>
@@ -2138,7 +2135,7 @@ Package pdftex.def Info: figure/RobotSnippets/3_measurement.JPG used on input l
 ine 41.
 (pdftex.def)             Requested size: 209.12683pt x 167.76302pt.
 
-<figure/FinalRun/3_AfterScan.PNG, id=574, 380.54672pt x 383.55797pt>
+<figure/FinalRun/3_AfterScan.PNG, id=578, 380.54672pt x 383.55797pt>
 File: figure/FinalRun/3_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/3_AfterScan.PNG>
@@ -2146,7 +2143,7 @@ Package pdftex.def Info: figure/FinalRun/3_AfterScan.PNG used on input line 41.
 
 (pdftex.def)             Requested size: 167.2989pt x 168.62555pt.
 
-<figure/RobotSnippets/4_measurement.JPG, id=576, 674.52pt x 541.52313pt>
+<figure/RobotSnippets/4_measurement.JPG, id=580, 674.52pt x 541.52313pt>
 File: figure/RobotSnippets/4_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/4_measurement.JPG>
@@ -2154,7 +2151,7 @@ Package pdftex.def Info: figure/RobotSnippets/4_measurement.JPG used on input l
 ine 49.
 (pdftex.def)             Requested size: 209.12683pt x 167.88696pt.
 
-<figure/FinalRun/4_AfterScan.PNG, id=577, 380.92313pt x 381.29953pt>
+<figure/FinalRun/4_AfterScan.PNG, id=581, 380.92313pt x 381.29953pt>
 File: figure/FinalRun/4_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/4_AfterScan.PNG>
@@ -2164,7 +2161,7 @@ Package pdftex.def Info: figure/FinalRun/4_AfterScan.PNG used on input line 49.
  [34 <./figure/RobotSnippets/2_measurement.JPG> <./figure/FinalRun/2_AfterScan.
 PNG> <./figure/RobotSnippets/3_measurement.JPG> <./figure/FinalRun/3_AfterScan.
 PNG>]
-<figure/RobotSnippets/5_measurement.JPG, id=591, 674.01813pt x 542.025pt>
+<figure/RobotSnippets/5_measurement.JPG, id=595, 674.01813pt x 542.025pt>
 File: figure/RobotSnippets/5_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/5_measurement.JPG>
@@ -2172,7 +2169,7 @@ Package pdftex.def Info: figure/RobotSnippets/5_measurement.JPG used on input l
 ine 57.
 (pdftex.def)             Requested size: 209.12683pt x 168.16661pt.
 
-<figure/FinalRun/5_AfterScan.PNG, id=592, 383.93437pt x 382.05234pt>
+<figure/FinalRun/5_AfterScan.PNG, id=596, 383.93437pt x 382.05234pt>
 File: figure/FinalRun/5_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/5_AfterScan.PNG>
@@ -2180,7 +2177,7 @@ Package pdftex.def Info: figure/FinalRun/5_AfterScan.PNG used on input line 57.
 
 (pdftex.def)             Requested size: 167.2989pt x 166.48291pt.
 
-<figure/RobotSnippets/7_measurement.JPG, id=594, 674.01813pt x 542.52687pt>
+<figure/RobotSnippets/7_measurement.JPG, id=598, 674.01813pt x 542.52687pt>
 File: figure/RobotSnippets/7_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/7_measurement.JPG>
@@ -2188,7 +2185,7 @@ Package pdftex.def Info: figure/RobotSnippets/7_measurement.JPG used on input l
 ine 65.
 (pdftex.def)             Requested size: 209.12683pt x 168.32231pt.
 
-<figure/FinalRun/7_AfterScan.PNG, id=595, 376.40625pt x 382.80516pt>
+<figure/FinalRun/7_AfterScan.PNG, id=599, 376.40625pt x 382.80516pt>
 File: figure/FinalRun/7_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/7_AfterScan.PNG>
@@ -2198,7 +2195,7 @@ Package pdftex.def Info: figure/FinalRun/7_AfterScan.PNG used on input line 65.
  [35 <./figure/RobotSnippets/4_measurement.JPG> <./figure/FinalRun/4_AfterScan.
 PNG> <./figure/RobotSnippets/5_measurement.JPG> <./figure/FinalRun/5_AfterScan.
 PNG>]
-<figure/RobotSnippets/8_measurement.JPG, id=609, 657.45625pt x 526.46687pt>
+<figure/RobotSnippets/8_measurement.JPG, id=613, 657.45625pt x 526.46687pt>
 File: figure/RobotSnippets/8_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/8_measurement.JPG>
@@ -2206,7 +2203,7 @@ Package pdftex.def Info: figure/RobotSnippets/8_measurement.JPG used on input l
 ine 73.
 (pdftex.def)             Requested size: 209.12683pt x 167.46065pt.
 
-<figure/FinalRun/8_AfterScan.PNG, id=610, 379.4175pt x 383.93437pt>
+<figure/FinalRun/8_AfterScan.PNG, id=614, 379.4175pt x 383.93437pt>
 File: figure/FinalRun/8_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/8_AfterScan.PNG>
@@ -2214,7 +2211,7 @@ Package pdftex.def Info: figure/FinalRun/8_AfterScan.PNG used on input line 73.
 
 (pdftex.def)             Requested size: 167.2989pt x 169.29486pt.
 
-<figure/RobotSnippets/10_measurement.JPG, id=612, 674.52pt x 531.9875pt>
+<figure/RobotSnippets/10_measurement.JPG, id=616, 674.52pt x 531.9875pt>
 File: figure/RobotSnippets/10_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/10_measurement.JPG>
@@ -2222,7 +2219,7 @@ Package pdftex.def Info: figure/RobotSnippets/10_measurement.JPG used on input
 line 81.
 (pdftex.def)             Requested size: 209.12683pt x 164.93065pt.
 
-<figure/FinalRun/10_AfterScan.PNG, id=613, 381.67593pt x 386.94562pt>
+<figure/FinalRun/10_AfterScan.PNG, id=617, 381.67593pt x 386.94562pt>
 File: figure/FinalRun/10_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/10_AfterScan.PNG>
@@ -2232,7 +2229,7 @@ Package pdftex.def Info: figure/FinalRun/10_AfterScan.PNG used on input line 81
  [36 <./figure/RobotSnippets/7_measurement.JPG> <./figure/FinalRun/7_AfterScan.
 PNG> <./figure/RobotSnippets/8_measurement.JPG> <./figure/FinalRun/8_AfterScan.
 PNG>]
-<figure/RobotSnippets/11_measurement.JPG, id=628, 675.02188pt x 541.52313pt>
+<figure/RobotSnippets/11_measurement.JPG, id=632, 675.02188pt x 541.52313pt>
 File: figure/RobotSnippets/11_measurement.JPG Graphic file (type jpg)
 
 <use figure/RobotSnippets/11_measurement.JPG>
@@ -2240,7 +2237,7 @@ Package pdftex.def Info: figure/RobotSnippets/11_measurement.JPG used on input
 line 89.
 (pdftex.def)             Requested size: 209.12683pt x 167.76302pt.
 
-<figure/FinalRun/11_AfterScan.PNG, id=629, 381.67593pt x 383.18156pt>
+<figure/FinalRun/11_AfterScan.PNG, id=633, 381.67593pt x 383.18156pt>
 File: figure/FinalRun/11_AfterScan.PNG Graphic file (type png)
 
 <use figure/FinalRun/11_AfterScan.PNG>
@@ -2302,12 +2299,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
  33503 strings out of 493091
- 601646 string characters out of 6138532
- 810234 words of memory out of 5000000
- 36091 multiletter control sequences out of 15000+600000
+ 601648 string characters out of 6138532
+ 812533 words of memory out of 5000000
+ 36092 multiletter control sequences out of 15000+600000
  16825 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,12n,92p,10419b,1918s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,12n,92p,10419b,1435s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2015/texmf-dist/fonts/type1
@@ -2331,10 +2328,10 @@ msfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
 fb><c:/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/tex
 live/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2015/
 texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on report.pdf (41 pages, 14630722 bytes).
+Output written on report.pdf (41 pages, 14631749 bytes).
 PDF statistics:
- 798 PDF objects out of 1000 (max. 8388607)
- 634 compressed objects within 7 object streams
- 251 named destinations out of 1000 (max. 500000)
+ 802 PDF objects out of 1000 (max. 8388607)
+ 638 compressed objects within 7 object streams
+ 250 named destinations out of 1000 (max. 500000)
  355 words of extra memory for PDF output out of 10000 (max. 10000000)
 

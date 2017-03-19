@@ -48,7 +48,7 @@ After four scans the scans the robot seems to have found itself, since the parti
 {Robot position}{Particle filter output}{fig:result4}{fig:rob4}{fig:part4}
 
 \FloatBarrier
-In figure \ref{fig:result4} it is seen that the particles actually split up again, even though the robot is now up to five scans. This is due to the fact that the map has symmetric constructions and therefore some of the measurements will fit in more than one direction. That is why the particles was in the right cluster at the last scan, but some did not have the right rotation. 
+In figure \ref{fig:result4} it is seen that the particles actually split up again, even though the robot is now up to five scans. This is due to the fact that the map has symmetric constructions and therefore the measurements of multiple particles fit. The reason the particles are even able to spread out again is the added Gaussian noise. This noise is necessary because the robot moves inaccurately. 
 
 
 \mySubFigureA{RobotSnippets/5_measurement.JPG}{FinalRun/5_AfterScan.PNG}
