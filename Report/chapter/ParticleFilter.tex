@@ -1,30 +1,30 @@
 \chapter{Particle Filter}
 \label{chp:partFilter}
 
-The Kalman filter described in chapter \ref{chp:kalman} used Gaussians to describe the belif of posterio. The particle filter instead represents this by a set of random samples. This enables it to represent the belief in a much broader space of distribution.
+The Kalman filter described in chapter \ref{chp:kalman} used gaussians to describe the belief of posterior. The particle filter instead represents this by a set of random samples. This enables it to represent the belief in a much broader space of distribution.
 
 In a particle filter a set of particles are sampled and they all denote a possible true state at time $t$. Every particle include a likelihood of that particle being the true state. This means that the denser an area is of particles the more likely the true state is in that area.
 
 The algorithm can be described with the following steps:
-\begin{itemize}
-	\item 1. Generate hypothetical state for time t 
-	\item 2. Calculate importance weight based on measurement and normalize
-	\item 3. Resample based on importance weight
-\end{itemize}
+\begin{enumerate}
+	\item Generate hypothetical state for time t 
+	\item Calculate importance weight based on measurement and normalize
+	\item Resample based on importance weight
+\end{enumerate}
 
-First the particles are generated randomly. Then given a measurement the importance weight is calculated. This indicates how much a specific particle agrees with the measurement. The particles are then resampled. The resampling is done by creating a new set of replacement particles based on the importance weight. The higher the importance weight the higher probability of the particle being added multiple times.
+First the particles are generated randomly and with a uniform distribution. Then, given a measurement, the importance weight is calculated. This indicates how much a specific particle agrees with the measurement. The particles are then resampled. The resampling is done by creating a new set of replacement particles based on the importance weight. The higher the importance weight, the higher probability of the particle being added multiple times.
 
 One specific algorithm for resampling is using a technique presented in the udacity course \emph{Artifical Intelligence in Robotcs}\citep{udacity}. The algorithm is called the resampling wheel. This algorithm randomly draws from the old particle set. The likelihood of the particle being picked is determined by the weight.
 
 \myFigure{ResampleWheel.PNG}{Resample wheel algorithm}{fig:ResampleWheel}{0.4} 
 
 
-The is illustrated in figure \ref{fig:ResampleWheel}. The weight of the particle is illustrated by the size of the slice of the circle. So basically the bigger the slice the higher the probability of the particle being drawn.
+The is illustrated in figure \ref{fig:ResampleWheel}. The weight of the particle is illustrated by the size of the slice of the circle. So basically the bigger the slice, the higher the probability of the particle being drawn.
 
 \FloatBarrier
-The algorithm first defines an index randomly from 0 up to $N-1,$ where $N$ is the number of particles. $\beta$ is then initialized to 0. 
+The pseduo code for the algorithm is shown in listing \ref{lst:wheel}. The algorithm first defines an index randomly from 0 up to $N-1,$ where $N$ is the number of particles. $\beta$ is then initialized to 0. 
 
-A for loop then runs from i = 0 up to N-1. A new $\beta$ value is picked by $\beta$ and adding a random picked number from the uniform distribution from 0 to 2 times the maximum $\omega$ value, where $\omega$ is the weight of the particles. A while loop then runs while $\beta$ is bigger than the weight of the particle at the index. In every iteration the weight of the particle at the index is subtracted from $\beta$ and the next index is then picked. Modulus N ensures that the algorithm does go out of index. 
+A for loop then runs from i = 0 up to N-1. A new $\beta$ value is picked by adding $\beta$ to a random picked number from the uniform distribution from 0 to 2 multiplied the maximum $\omega$ value, where $\omega$ is the weight of the particles. A while loop then runs while $\beta$ is bigger than the weight of the particle at the index. In every iteration the weight of the particle at the index is subtracted from $\beta$ and the next index is then picked. Modulus N ensures that the algorithm does go out of index. 
 
 When the value of $\beta$ is smaller than the weight of the particle at index, then the particle at the index is picked. So a higher weight of the particle means bigger chance of being picked for the new set particles. 
 
@@ -39,6 +39,6 @@ for i = 0, i < N, i++
 	pick p[index]
 \end{lstlisting}
 
-An example of using a particle filter is for localization of a moving robot. In this example every movement of the robot will also be applied to the particles. The sensor measurement of the robot will be used to calculate the importance weight of the particles. Resampling enough time will lead the particles to approximately located at the position of the robot.
+An example of using a particle filter is for localization of a moving robot. In this example every movement of the robot will also be applied to the particles. The sensor measurement of the robot will be used to calculate the importance weight of the particles. Enough measurements and resampling will eventually lead the particles to approximate the location of the robot.
 
 

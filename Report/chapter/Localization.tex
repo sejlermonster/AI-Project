@@ -1,26 +1,27 @@
 \chapter{Localization}
 \label{chp:local}
 
-Localization is the ability for a machine to locate itself in space. When talking about localization it is often divided into local and global. Local is when the robot knows it initial position and global is when the robot does not know its initial position. Then there is also the kidnapped robot problem which is when a robot is moved at runtime in a global localization. multiple sensors can be used to help the machine gain da in the world it is located in.
+Localization is the ability for a machine to locate itself in an environment. Localization can be divided into local localization and global localization. Local is when the robot has an initial approximate position. Global localization instead requires the robot to locate itself without any initial knowledge. If the initial position is unknown the robots position is initially described by a uniform probabilistic distribution. 
+
+To locate itself the robot must use sensor measurements to gain certainty about its position. One measurement is rarely enough and the robot must therefore move around in the environment and take multiple sensor measurements. The robot then iterates between motion and sensing. When the robot moves it adds uncertainty to the position while measurements adds certainty to the position.
  
-A way for the robot to localize itself in the world is by using Monte Carlo Localization. 
-It works in a static environment where it use data from sensors to locate where it is in the world.
-The robot sense to gain information about the world, and can make an estimate of the most likely position in the world. when the robot moves it lose information about where it is in the world. So the robot then sense again an make a new most likely position in the world.
+\section{Markov localization}
+A technique for global localization is Markov localization. It uses a Bayes filter for locating the robot. It works in a static environment where it uses control data, measurements and a map to locate itself.
 
-The interesting part in this scenario is how the robot makes the estimate of its most likely position. 
-It uses Bayes rule:
+The algorithm for Markov Localization is described in \ref{fig:MarkovAlgo}. The algorithm iterates through all values of $x_t$. In line 3 the algorithm predicts the state of the robot. It does so by calculating the probability of a state $x_t$ given the control $u_t$, the previous state $x_{t-1}$ and the map $m$.
 
-\begin{center}
-	$P(X_xy|Z) = \dfrac{P(Z|X_xy) P(X_xy)}{P(Z)}$
-\end{center}
+In line 4 the belief is updated based on a measurement. The algorithm looks at the probability of a measurement $z_t$ given the position $x_t$ and the map $m$.
 
-$P(X_i|Z)$ seeks to calculate the believe of the robots location after seeing the measurement. And we compute it with the calculation right for the equal sign. 
-$P(X)$ is the prior and its multiplied with the chances of seeing a given measurement for every given position namely $P(Z|X)$. In other words, it is the measurement probability. \emph{xy} represents that the robot does this for every coordinate in the world. $P(Z)$ is divided to normalize the result and it is the sum over all \emph{i} of $P(Z|X_xy) P(X_xy)$.
+\myFigure{markovAlgo.PNG}{Markov localization algorithm \citep{propRobotics}}{fig:MarkovAlgo}{1} 
 
-The robot becomes more insecure about its location when moving because it adds uncertainty of the estimation of the location and moving can add errors in the calculation. An example is when the robot turns 90$\degree$ i actually turns 92$\degree$. This does not as much, but if it turn ten times the robot will be 20$\degree$ off. So moving can add uncertainty to the calculation. 
 
-An Monte Carlo localization example is shown in figure \ref{fig:MCLex}. Is shows a robot moving right in a one dimensional world with three doors. in \emph{a} is has not detected anything, so the believe is uniform. Then it detects a door in \emph{b}. $P(Z|X)$ shows that the robot either are in front of one of the three doors. now the believe reflects the measurements. 
-\emph{c} shows the robot moving more to the right. In \emph{d} the robots detect another door. now we multiplies our believes and the robot now has a strong believe that it is in front of the door no. two. 
-\emph{e} shows that the believe reflects the position of the robot pretty well. 
+Different implementation exists of the Markov localization such as using a histogram, Gaussians or particles to represent the robots belief. The different implementations has different advantages and disadvantages as shown in figur \ref{fig:markovCompare}. 
 
-\myFigure{MCLex.PNG}{Monte Carlo localization example of locating a robot \citep{propRobotics}}{fig:MCLex}{1} 
+\myFigure{MarkovComparison.png}{Comparison of different implementations of Markov localization \citep{propRobotics}}{fig:markovCompare}{1} 
+
+
+A Markov localization example is shown in figure \ref{fig:MCLex}. It illustrates a robot moving to the right in a one dimensional world with three doors. In figure \ref{fig:MCLex}(\emph{a}) it has not measured anything yet, so the belief is uniform. It then measures and detects a door in \ref{fig:MCLex}(\emph{b}). $P(Z|X)$ shows that the robot most likely is in front of one of the three doors. The belief reflects this measurements. 
+Figure \ref{fig:MCLex}(\emph{c}) shows the robot moving further to the right. As illustrated this adds uncertainty to the belief. In \ref{fig:MCLex}(\emph{d}) the robots detect another door. Based on the prior position and the new measurement, the robot now has a strong belief of its position.
+In figure \ref{fig:MCLex}(\emph{e}) uncertainty is again added when the robot moves.
+
+\myFigure{MCLex.PNG}{Markov localization example of locating a robot \citep{propRobotics}}{fig:MCLex}{1} 

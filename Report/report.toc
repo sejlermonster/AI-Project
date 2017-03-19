@@ -3,32 +3,32 @@
 \contentsline {chapter}{\chapternumberline {1}Introduction}{3}{chapter.1}
 \contentsline {part}{\partnumberline {I}Theory}{4}{part.1}
 \contentsline {chapter}{\chapternumberline {2}Localization}{5}{chapter.2}
-\contentsline {chapter}{\chapternumberline {3}Kalman Filter}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Kalman Filter}{7}{section.3.1}
-\contentsline {chapter}{\chapternumberline {4}Particle Filter}{9}{chapter.4}
-\contentsline {chapter}{\chapternumberline {5}Search}{11}{chapter.5}
-\contentsline {section}{\numberline {5.1}Search algorithm}{11}{section.5.1}
-\contentsline {section}{\numberline {5.2}A* algorithm}{12}{section.5.2}
-\contentsline {chapter}{\chapternumberline {6}PID}{14}{chapter.6}
-\contentsline {chapter}{\chapternumberline {7}SLAM}{17}{chapter.7}
-\contentsline {section}{\numberline {7.1}Graph SLAM}{17}{section.7.1}
-\contentsline {part}{\partnumberline {II}Project}{19}{part.2}
-\contentsline {chapter}{\chapternumberline {8}Implementation}{20}{chapter.8}
-\contentsline {section}{\numberline {8.1}Hardware}{20}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Devloping for Lego Mindstorm}{21}{subsection.8.1.1}
-\contentsline {section}{\numberline {8.2}Structure and design}{21}{section.8.2}
-\contentsline {section}{\numberline {8.3}Robot motion and measurements}{22}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Motion}{22}{subsection.8.3.1}
-\contentsline {subsection}{\numberline {8.3.2}Measurements}{23}{subsection.8.3.2}
-\contentsline {section}{\numberline {8.4}Particle Filter}{24}{section.8.4}
-\contentsline {subsection}{\numberline {8.4.1}Simulation}{25}{subsection.8.4.1}
-\contentsline {section}{\numberline {8.5}A*}{27}{section.8.5}
-\contentsline {subsection}{\numberline {8.5.1}Simulation}{28}{subsection.8.5.1}
-\contentsline {section}{\numberline {8.6}Combining Particle Filter and A*}{30}{section.8.6}
-\contentsline {chapter}{\chapternumberline {9}Results}{31}{chapter.9}
-\contentsline {chapter}{\chapternumberline {10}Discussion}{37}{chapter.10}
-\contentsline {chapter}{\chapternumberline {11}Conclusion}{38}{chapter.11}
-\contentsline {chapter}{Bibliography}{39}{section*.35}
+\contentsline {section}{\numberline {2.1}Markov localization}{5}{section.2.1}
+\contentsline {chapter}{\chapternumberline {3}Kalman Filter}{8}{chapter.3}
+\contentsline {chapter}{\chapternumberline {4}Particle Filter}{10}{chapter.4}
+\contentsline {chapter}{\chapternumberline {5}Search}{12}{chapter.5}
+\contentsline {section}{\numberline {5.1}Search algorithm}{12}{section.5.1}
+\contentsline {section}{\numberline {5.2}A* algorithm}{13}{section.5.2}
+\contentsline {chapter}{\chapternumberline {6}PID}{15}{chapter.6}
+\contentsline {chapter}{\chapternumberline {7}SLAM}{18}{chapter.7}
+\contentsline {section}{\numberline {7.1}Graph SLAM}{18}{section.7.1}
+\contentsline {part}{\partnumberline {II}Project}{20}{part.2}
+\contentsline {chapter}{\chapternumberline {8}Implementation}{21}{chapter.8}
+\contentsline {section}{\numberline {8.1}Hardware}{21}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Devloping for Lego Mindstorm}{22}{subsection.8.1.1}
+\contentsline {section}{\numberline {8.2}Structure and design}{22}{section.8.2}
+\contentsline {section}{\numberline {8.3}Robot motion and measurements}{23}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Motion}{23}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Measurements}{24}{subsection.8.3.2}
+\contentsline {section}{\numberline {8.4}Particle Filter}{25}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Simulation}{26}{subsection.8.4.1}
+\contentsline {section}{\numberline {8.5}A*}{28}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Simulation}{29}{subsection.8.5.1}
+\contentsline {section}{\numberline {8.6}Combining Particle Filter and A*}{31}{section.8.6}
+\contentsline {chapter}{\chapternumberline {9}Results}{32}{chapter.9}
+\contentsline {chapter}{\chapternumberline {10}Discussion}{38}{chapter.10}
+\contentsline {chapter}{\chapternumberline {11}Conclusion}{39}{chapter.11}
+\contentsline {chapter}{Bibliography}{40}{section*.37}
 \setcounter {tocdepth}1
 \setlength \cftchapternumwidth {1cm}
 \changetocdepth {0}
