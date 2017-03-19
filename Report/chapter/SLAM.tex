@@ -1,7 +1,7 @@
 \chapter{SLAM}
 \label{chp:slam}
 
-SLAM is a method for mapping and it a short term for \emph{\textbf{S}imultaneous \textbf{L}ocalization \textbf{A}nd \textbf{M}apping}.
+SLAM is a method for mapping and is short for \emph{\textbf{S}imultaneous \textbf{L}ocalization \textbf{A}nd \textbf{M}apping}.
 In the previous chapters the world or map has been known, but what if the robot moves in a map that is unknown? This is a problem SLAM can solve. SLAM computes the position of the robot while simultaneously mapping the environment. In this chapter the technique called \emph{Graph SLAM} will be explained.
 
 \section{Graph SLAM}
@@ -22,11 +22,11 @@ SLAM graph calculates with different constraints namely
 	\item Relative measurements constraints
 \end{itemize}
 
-The initial location is the start position of the robot. It counts as the only absolute constraint. Relative motion constraints is when the robot moves in the world and relative measurements constraints is if the robot measures landmarks in the world.
+The initial location is the start position of the robot. It counts as the only absolute constraint. Relative motion constraints are when the robot moves in the world and relative measurements constraints are if the robot measures landmarks in the world.
 
-This can to explained with the illustration in figure \ref{fig:SLAMex}, \ref{fig:Omegatable} and \ref{fig:Omegatable2}
+This is visualized with the illustration in figure \ref{fig:SLAMex}, \ref{fig:Omegatable} and \ref{fig:Omegatable2}
 
-\myFigure{SLAMex.PNG}{SLAM example where a robot moves and i measures a landmark \citep{propRobotics}}{fig:SLAMex}{0.45} 
+\myFigure{SLAMex.PNG}{SLAM example where a robot moves and measures a landmark \citep{propRobotics}}{fig:SLAMex}{0.45} 
  
 The robot has its initial location in $X_1$ and moves to $X_2$ and then to $X_3$. The square with the \emph{L} inside is a landmark. When the robot is in position $X_1$ and $X_3$ it measures the distance to the landmark.
 Now this can be transform into a $\Omega$ matrix and a $\xi$ vector. This is illustrated in figure \ref{fig:Omegatable}
@@ -35,10 +35,10 @@ Now this can be transform into a $\Omega$ matrix and a $\xi$ vector. This is ill
 
 \myFigure{Table.PNG}{$\Omega$ and $\xi$ tables for the example in figure \ref{fig:SLAMex}}{fig:Omegatable}{1}
 
-In this example the robot moves 5 steps from $X_1$ to $X_2$. It can then be calculated as $X_2 = X_1 + 5$. The new information is then insterted into the $\Omega$ matrix. On position $X_1/X_1$ and $X_2/X_2$ a 1 is inserted and on position $X_1/X_2$ and $X_2/X_1$ a -1 is inserted. This gives the equation $X_1$ - $X_2$ = -5 and $X_2$ - $X_1$ = 5. This values is added to the vector. The inserted values are shown in figure \ref{fig:Omegatable2}.
+In this example the robot moves 5 steps from $X_1$ to $X_2$. It can then be calculated as $X_2 = X_1 + 5$. The new information is then inserted into the $\Omega$ matrix. On position $X_1/X_1$ and $X_2/X_2$ a 1 is inserted and on position $X_1/X_2$ and $X_2/X_1$ a -1 is inserted. This gives the equation $X_1$ - $X_2$ = -5 and $X_2$ - $X_1$ = 5. These values are added to the vector. The inserted values are shown in figure \ref{fig:Omegatable2}.
 
 \myFigure{newtable.PNG}{The table with the added values in the $\Omega$ and $\xi$ tables for the example in figure \ref{fig:SLAMex}}{fig:Omegatable2}{1}
 
-This continuous while the robot moves around and takes measurements. When the matrix and vector is completed, the dot product of the matrix and the vector is $\mu$ which will contain all the best estimated positions for landmarks and the world
+This continues while the robot moves around and takes measurements. When the matrix and vector is completed, the dot product of the matrix and the vector is $\mu$ which will contain all the best estimated positions for landmarks and the world.
 
 If new constraints are performed or discovered these can be added to the $\Omega$ matrix and $\mu$ vector.

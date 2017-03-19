@@ -1,7 +1,7 @@
 \chapter{Localization}
 \label{chp:local}
 
-Localization is the ability for a machine to locate itself in an environment. Localization can be divided into local localization and global localization. Local is when the robot has an initial approximate position. Global localization instead requires the robot to locate itself without any initial knowledge. If the initial position is unknown the robots position is initially described by a uniform probabilistic distribution. 
+Localization is the ability for a machine to locate itself in an environment. Localization can be divided into local localization and global localization. Local is when the robot has an initial approximate position. Global localization instead requires the robot to locate itself without any initial knowledge. If the initial position is unknown the robot's position is initially described by a uniform probabilistic distribution. 
 
 To locate itself the robot must use sensor measurements to gain certainty about its position. One measurement is rarely enough and the robot must therefore move around in the environment and take multiple sensor measurements. The robot then iterates between motion and sensing. When the robot moves it adds uncertainty to the position while measurements adds certainty to the position.
  
@@ -15,12 +15,12 @@ In line 4 the belief is updated based on a measurement. The algorithm looks at t
 \myFigure{markovAlgo.PNG}{Markov localization algorithm \citep{propRobotics}}{fig:MarkovAlgo}{1} 
 
 
-Different implementation exists of the Markov localization such as using a histogram, Gaussians or particles to represent the robots belief. The different implementations has different advantages and disadvantages as shown in figur \ref{fig:markovCompare}. 
+Different implementations exist of the Markov localization such as using a histogram, Gaussians or particles to represent the robots belief. The different implementations has different advantages and disadvantages as shown in figur \ref{fig:markovCompare}. 
 
 \myFigure{MarkovComparison.png}{Comparison of different implementations of Markov localization \citep{propRobotics}}{fig:markovCompare}{1} 
 
 
-A Markov localization example is shown in figure \ref{fig:MCLex}. It illustrates a robot moving to the right in a one dimensional world with three doors. In figure \ref{fig:MCLex}(\emph{a}) it has not measured anything yet, so the belief is uniform. It then measures and detects a door in \ref{fig:MCLex}(\emph{b}). $P(Z|X)$ shows that the robot most likely is in front of one of the three doors. The belief reflects this measurements. 
+A Markov localization example is shown in figure \ref{fig:MCLex}. It illustrates a robot moving to the right in a one dimensional world with three doors. In figure \ref{fig:MCLex}(\emph{a}) it has not measured anything yet, so the belief is uniform. It then measures and detects a door in \ref{fig:MCLex}(\emph{b}). $P(Z|X)$ shows that the robot most likely is in front of one of the three doors. The belief reflects these measurements. 
 Figure \ref{fig:MCLex}(\emph{c}) shows the robot moving further to the right. As illustrated this adds uncertainty to the belief. In \ref{fig:MCLex}(\emph{d}) the robots detect another door. Based on the prior position and the new measurement, the robot now has a strong belief of its position.
 In figure \ref{fig:MCLex}(\emph{e}) uncertainty is again added when the robot moves.
 

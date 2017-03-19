@@ -1,8 +1,8 @@
 \chapter{PID}
 \label{chp:pid}
-A PID controller is used for control problems. It is short for \emph{proportional-integral-derivative} which describes the three different parts of the algorithm. The PID controller only relies on measured process variables. Different combinations of controllers exists were only some terms are combined. For example P, PI or PD can be used for different scenarios. 
+A PID controller is used for control problems. It is short for \emph{proportional-integral-derivative} which describes the three different parts of the algorithm. The PID controller only relies on measured process variables. Different combinations of controllers exists where only some terms are combined. For example P, PI or PD can be used for different scenarios. 
 
-The proportional term depends on the measured error. This can be use to correct when a robot for example turns. This term only depends on the error, $e(t)$ and therefore it will only be marginally stable. When using only a P controller the robot will very likely overshoot and it will oscillate around the correct value. In a PID controller the proportional term is weighted by a gain. The formula for the P term can be seen below.
+The proportional term depends on the measured error. This can be used to correct when a robot for example turns. This term only depends on the error, $e(t)$ and therefore it will only be marginally stable. When using only a P controller the robot will very likely overshoot and it will oscillate around the correct value. In a PID controller the proportional term is weighted by a gain. The formula for the P term can be seen below.
 \begin{center}
 	$K_p e(t)$
 \end{center}
@@ -32,7 +32,7 @@ Also this process of combing the three terms is illustrated in figure \ref{fig:p
 \FloatBarrier
 
 
-The gain values $K_p$, $K_i$ and $K_d$ in the formulas also has to be calculated. A big part of creating a sufficient PID controller is finding good gain values. Different algorithms for doing so exists. The Twiddle algorithm is an example of such an algorithm. The Twiddle algorithm works as a local hill climbing algorithm and by doing so tries to find the best values for $K_p$, $K_i$ and $K_d$
+The gain values $K_p$, $K_i$ and $K_d$ in the formulas also have to be calculated. A big part of creating a sufficient PID controller is finding good gain values. Different algorithms for doing so exists. The Twiddle algorithm is an example of such an algorithm. The Twiddle algorithm works as a local hill climbing algorithm and by doing so tries to find the best values for $K_p$, $K_i$ and $K_d$
 
 Pseduo code for the Twiddle algorithm is illustrated in listing \ref{lst:twiddle}. Twiddle initializes a parameter vector to zero and initialize a change vector to one.  Then the error is calculated. An iteration then runs until a specified threshold is achieved. First the change vector is added to the parameter vector. The algorithm then check if this yields a better error. If not it then tries lowering the value and checks if this yields a better error. If this does not yield a better error then the parameter vector is changed with smaller step sizes.  In this way it tries to optimize each of the gains.
 

@@ -3,7 +3,7 @@
 
 The Kalman filter described in chapter \ref{chp:kalman} used gaussians to describe the belief of posterior. The particle filter instead represents this by a set of random samples. This enables it to represent the belief in a much broader space of distribution.
 
-In a particle filter a set of particles are sampled and they all denote a possible true state at time $t$. Every particle include a likelihood of that particle being the true state. This means that the denser an area is of particles the more likely the true state is in that area.
+In a particle filter a set of particles are sampled and they all denote a possible true state at time $t$. Every particle includes a likelihood of that particle being the true state. This means that the denser an area is of particles the more likely the true state is in that area.
 
 The algorithm can be described with the following steps:
 \begin{enumerate}

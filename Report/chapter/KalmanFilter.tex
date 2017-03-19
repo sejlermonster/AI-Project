@@ -10,7 +10,7 @@ The algorithm recursively iterates the following two steps:
 	\item Corretion/Update
 \end{itemize}
 
-The prediction step estimates the state of the system based on a model of the system. The correction step corrects the prediction based on a measurement. It is important to note that both estimate and measurement must be representable by a Gaussian function. By using data fusion, as described, the Kalman Filter achieves a more precise belief than the prediction and measurement could have done by themselves.The calculation of the prediction and update step is described as follow.
+The prediction step estimates the state of the system based on a model of the system. The correction step corrects the prediction based on a measurement. It is important to note that both estimate and measurement must be representable by a Gaussian function. By using data fusion, as described, the Kalman Filter achieves a more precise belief than the prediction and measurement could have done by themselves. The calculation of the prediction and update step is described as follows.
 
 When calculating the prediction for time $t$ a new mean, $\overline{\mu}_t$, and covariance, $\overline{\Sigma}_t$, is calculated. These are calculated based on the control and transition. By multiplying these with $A_t$ and $B_t$ the state transition function becomes linear.
 
@@ -19,7 +19,7 @@ $\overline{\mu}_t = At \mu_(t-1)+B_t u_t$  \\
 $\overline{\Sigma}_t = A_t \Sigma_(t-1) A^T_t+R_t $ \\
 \end{center}
 
-In the update step the Kalman gain $K_t$ is first computed. This parameters specifies the degree in which the measurements are incorporated into the new state estimate. It could be said, that the Kalman gain describes how much the measurements are trusted over the prediction. A Kalman gain of one would mean that the prediction is ignored and the final estimate only is based on the measurement.
+In the update step the Kalman gain $K_t$ is first computed. These parameters specifies the degree in which the measurements are incorporated into the new state estimate. It could be said, that the Kalman gain describes how much the measurements are trusted over the prediction. A Kalman gain of one would mean that the prediction is ignored and the final estimate only is based on the measurement.
 
 \begin{center}
 $K_t = \overline{\Sigma}_t \ C^T_t \ (C_t \ \overline{\Sigma}_t \ C^T_t +\ Q_t )^{-1}$ \\
@@ -39,6 +39,6 @@ $\Sigma_t = (I - \ K_t \ C_t) \ \overline{\Sigma}_t$ \\
 
 In figure \ref{fig:KFGaussian} a simple one dimensional example is shown. The example illustrates the use of a Kalman filter for localization of a robot. 
 
-In figure \ref{fig:KFGaussian}.(a) is shown an initial belief of the robots position. Figure \ref{fig:KFGaussian}.(b) shows a measurement in bold. In figure \ref{fig:KFGaussian}.(c) the inital prediction and the measurement is combined using the Kalman Filter. This gives a more certain prediction than the initial or the measurement alone. Figure \ref{fig:KFGaussian}.(d) illustrates the prediction of the robots position after it has moved. As illustrated the robots position is now more uncertain, this is caused by the motion of the robot. In figure \ref{fig:KFGaussian}.(e) a new measurement is taken. In Figure \ref{fig:KFGaussian}.(f) the prediction and measurement is again combined into a more certain belief of the robots position. Note how the combination of both the motion prediction and the measurement gives a lower covariance than any of the two alone. 
+In figure \ref{fig:KFGaussian}.(a) is shown an initial belief of the robots position. Figure \ref{fig:KFGaussian}.(b) shows a measurement in bold. In figure \ref{fig:KFGaussian}.(c) the inital prediction and the measurement is combined using the Kalman Filter. This gives a more certain prediction than the initial or the measurement alone. Figure \ref{fig:KFGaussian}.(d) illustrates the prediction of the robot's position after it has moved. As illustrated the robot's position is now more uncertain, this is caused by the motion of the robot. In figure \ref{fig:KFGaussian}.(e) a new measurement is taken. In Figure \ref{fig:KFGaussian}.(f) the prediction and measurement is again combined into a more certain belief of the robot's position. Note how the combination of both the motion prediction and the measurement gives a lower covariance than any of the two alone. 
 
 \myFigure{kalmanFilterGaussians.PNG}{Kalman Filter example of locating a robot \citep{propRobotics}}{fig:KFGaussian}{1} 

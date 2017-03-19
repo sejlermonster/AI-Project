@@ -4,7 +4,7 @@
 This chapter describes the implementation of the project. The project tries to solve the kidnapped robot problem. This is a classic problem where a self driving robot is carried to an arbitrary location in a world. In this project the robot must find its way to a predefined location as well. In the implementation a Particle filter is used for localization while A* is used for path finding.
 
 \section{Hardware}
-The chosen hardware for the project is a Lego Mindstorm EV3 robot. The used robot includes two motors along with a gyroscope sensor for angle measurement and an ultrasound for distance measurement. This is sufficient for solving the kidnapped robot problem. The assembled robot is shown in figure \ref{fig:legoRobot}
+The chosen hardware for the project is a Lego Mindstorm EV3 robot. The used robot includes two motors along with a gyroscope sensor for angle measurement and an ultrasound sensor for distance measurement. This is sufficient for solving the kidnapped robot problem. The assembled robot is shown in figure \ref{fig:legoRobot}
 
 \myFigure{LegoRobot.jpg}{Assembled Lego Mindstorm EV3 robot}{fig:legoRobot}{0.7} 
 \FloatBarrier
@@ -16,7 +16,7 @@ Through the various test runs the robot also showed different performance depend
 Even though the Lego Mindstorm robot was very inaccurate in some situations it allowed for focus on developing software instead of setting up hardware and sensors.
 
 \subsection{Devloping for Lego Mindstorm}
-A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This enabled for easily developing advanced algorithms for the Lego Mindstorm robot. By using Bluetooth communication between the robot and a PC it was also easy to follow of the algorithms performed.
+A framework(https://github.com/BrianPeek/legoev3/wiki) was choosen to develop for the Lego Mindstorm. This framework allowed to code in C\# and communicate with the Lego Mindstorm robot via Bluetooth from a computer. This enabled for easily developing advanced algorithms for the Lego Mindstorm robot. By using Bluetooth communication between the robot and a PC it was also easy to follow all of the algorithms performed.
 
 \section{Structure and design}
 The structure of the developed software is illustrated with a UML class diagram in figure \ref{fig:class}. Note that the diagram only illustrates public functions, this was chosen to make it easier to read. The class \emph{Main} initializes the world map and the landmarks in it. \emph{Main} also initializes \emph{ParticleFilter}, \emph{Astar}, \emph{RobotMotion} and \emph{RobotSensing}. The \emph{ParticleFilter} class manipulates a list of the type \emph{Particle}. The class \emph{Particle} uses \emph{GaussianNoise} to apply gaussian noise for movement and measurements. \emph{RobotMotion} and \emph{RobotSensing} is used to control and sense with the robot.
@@ -36,10 +36,10 @@ The movement forwards and backwards simply applies force to both motors.
 
 On both rotation and movement a P controller was implemented. When rotating the robot, the gyroscope was used for calculating the error. For movements, the ultrasonic sensor was used for calculating the error. In general for both rotation and movement a very small force was applied to the robot and a small threshold was set as acceptable for the movements and rotation. This was to ensure that the robot did not keep oscillating.
 
-Listing \ref{lst:turn} is pseduo code for the implementation of turning the robot. It shows that the endDegree is calculated based on the startDegree plus the angle that the robot should turn. A while loop then keeps running until it hits the threshold. If it overshoots the robot turns one way and if it undershoots the robot turns the other way.
+Listing \ref{lst:turn} is pseudo code for the implementation of turning the robot. It shows that the endDegree is calculated based on the startDegree plus the angle that the robot should turn. A while loop then keeps running until it hits the threshold. If it overshoots the robot turns one way and if it undershoots the robot turns the other way.
 
 \lstset{style=sharpc}
-\begin{lstlisting}[caption={Pseduo code for turning the robot}, label=lst:turn, mathescape=true]             
+\begin{lstlisting}[caption={Pseudo code for turning the robot}, label=lst:turn, mathescape=true]             
 var startDegree = _robotSensing.GetGyroData();
 var endDegree = startDegree + degrees;
 while (currentDegree < endDegree - treshhold 
@@ -52,7 +52,7 @@ while (currentDegree < endDegree - treshhold
 
 \FloatBarrier
 \subsection{Measurements}
-The robot had both gyroscope and a ultrasonic sensor which in the project was used for measuring angle and distance. They were both use for implementing more precise movements while the ultrasonic sensor was also used for the particle filter. A scan method was therefore implemented to scan the area. The scan function is illustrated in figure \ref{fig:scan}. The robot rotates around itself while taking measurements. Four measurements was taking during a scan at every 90 degrees.
+The robot had both gyroscope and an ultrasonic sensor which in the project was used for measuring angle and distance. They were both used for implementing more precise movements while the ultrasonic sensor was also used for the particle filter. A scan method was therefore implemented to scan the area. The scan function is illustrated in figure \ref{fig:scan}. The robot rotates around itself while taking measurements. Four measurements was taking during a scan at every 90 degrees.
 
 \myFigure{scan.png}{Robot scan}{fig:scan}{0.5} 
 
@@ -114,9 +114,9 @@ public void MoveParticles(double distance)
 \end{lstlisting}
 
 \subsection{Simulation}
-This section presents a simple simulation of the particle filter. In the example the simulated robot is placed in the world at coordinates (23,64) and will first scan the area, then drive forward twice and scan the area again. When the simulated robot drives forward it also measures the distance when its finished driving. This is similar to how the Lego Mindstorm robot is implemented.
+This section presents a simple simulation of the particle filter. In the example the simulated robot is placed in the world at coordinates (23,64) and will first scan the area, then drive forward twice and scan the area again. When the simulated robot drives forward it also measures the distance when it's finished driving. This is similar to how the Lego Mindstorm robot is implemented.
 
-In figure \ref{fig:sim1} the world is initialized. The red dot is the robot, the direction of the robot is displayed by the small line drawn from the square. The particles are the black dots. The landmarks placed in the world are colored green, orange and blue. In the illustration the particles are spread out uniformly in the world. In figure \ref{fig:sim2} the robot has made its first 360 degree scan and taken measurement every 90 degree. The particles are now centered around a few specific places in the world. The location is still very uncertain, this is mainly caused by the symmetry of the world.
+In figure \ref{fig:sim1} the world is initialized. The red dot is the robot, the direction of the robot is displayed by the small line drawn from the square. The particles are the black dots. The landmarks placed in the world are colored green, orange and blue. In the illustration the particles are spread out uniformly in the world. In figure \ref{fig:sim2} the robot has made its first 360 degree scan and taken a measurement every 90 degrees. The particles are now centered around a few specific places in the world. The location is still very uncertain, this is mainly caused by the symmetry of the world.
 
 \mySubFigure{Simulation/1_Initialized.PNG}{Simulation/2_afterScan.PNG}{}{Intialized particles and world}{Robot makes a 360 degree scan}{fig:sim}{fig:sim1}{fig:sim2}
 
@@ -192,7 +192,7 @@ The algorithm then produces the heuristic function, and outputs it. This is show
 
 When the algorithm has found its optimal path to the goal it outputs an array containing the distance from start to goal, along with the x an y-value of the goal destination. This is the third section of the console output, meaning that for this example the distance from start to goal is 12 steps. 
 
-The optimal path that was found by the algorithm is shown in the last part of the console output, and shows that the robot will not need to do any unnecessary movement to get to the goal destination. The reason it does not just show one path, is that there are more paths with equal cost. Not that the printed arrows indicates how the robot has moved to reach the position and the algorithm successfully found an optimal path.
+The optimal path that was found by the algorithm is shown in the last part of the console output, and shows that the robot will not need to do any unnecessary movement to get to the goal destination. The reason it does not just show one path, is that there are more paths with equal cost. Note that the printed arrows indicates how the robot has moved to reach that specific position and the algorithm successfully found an optimal path.
 
 \myFigure{Simulation/AstarSimulate.JPG}{A* simulation console output}{fig:consOut}{0.2}
 
